@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Movie {
     //should private be change to protected to allow access for same package?
     private String title, synopsis, director;
-    private ArrayList<String> casts = new ArrayList<>();
+    private ArrayList<String> casts;
     protected enum ShowingStatus { COMING_SOON, PREVIEW, NOW_SHOWING};
     private ShowingStatus status;
     private double overallRating;
@@ -23,6 +23,22 @@ public class Movie {
         this.casts = casts;
         this.status = status;
         this.overallRating = overallRating;
+    }
+
+    public String toString(){
+        StringBuilder info = new StringBuilder();
+        info.append("Title:\t\t").append(this.title).append("\n");
+        info.append("Synopsis:\t").append(this.synopsis).append("\n");
+        info.append("Director:\t").append(this.director).append("\n");
+        info.append("Casts:\t\t");
+        for (String s: casts){
+            if(s != casts.get(casts.size()- 1)) info.append(s).append(", ");
+            else info.append(s).append("\n");
+        } 
+        info.append("Status:\t\t").append(this.status).append("\n");
+        info.append("Ratings:\t").append(this.overallRating).append("\n");
+
+        return info.toString();
     }
 
     // get and set methods
