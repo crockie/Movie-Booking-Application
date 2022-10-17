@@ -6,6 +6,7 @@ public class Movie {
     private ArrayList<String> casts;
     protected enum ShowingStatus { COMING_SOON, PREVIEW, NOW_SHOWING};
     private ShowingStatus status;
+    private int sales;
     private double overallRating;
     // to be implemented
     //private ArrayList<Review> reviews = new ArrayList<>();
@@ -23,6 +24,10 @@ public class Movie {
         this.casts = casts;
         this.status = status;
         this.overallRating = overallRating;
+        this.sales = 0;
+    }
+    public void incrementSales(){
+        this.sales += 1;
     }
 
     public String toString(){
@@ -47,6 +52,13 @@ public class Movie {
     }
     public void setTitle(String title){
         this.title = title;
+    }
+
+    public int getSales(){
+        return this.sales;
+    }
+    public void setSales(int sales){
+        this.sales = sales;
     }
 
     public String getSynopsis(){
