@@ -29,7 +29,7 @@ public class Movie {
     public void incrementSales(){
         this.sales += 1;
     }
-
+    
     public String toString(){
         StringBuilder info = new StringBuilder();
         info.append("Title:\t\t").append(this.title).append("\n");

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Entity.Movie;
+
 
 public class MovieApp {
     public static void main(String[] args){
