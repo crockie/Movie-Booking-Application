@@ -2,15 +2,18 @@ package Entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MovieTime implements BookMovie{
+    private Cinema cinema;
     private Hall hall;
     private LocalDateTime movieDateTime;
     private Movie movie;
     private ArrayList<Booking> bookings = new ArrayList<Booking>();
 
-    protected MovieTime(Hall hall, LocalDateTime movieDateTime, Movie movie){
+    protected MovieTime(Cinema cinema, Hall hall, LocalDateTime movieDateTime, Movie movie){
+        this.cinema = cinema;
         this.hall = hall;
         this.movieDateTime = movieDateTime;
         this.movie = movie;
@@ -18,10 +21,16 @@ public class MovieTime implements BookMovie{
     }
 
 
-    public Booking createBooking(MovieGoer movieGoer, boolean[][] selectedSeats, double price ){
-		Booking newBooking = new Booking(createTransactionId(), movieGoer, selectedSeats, price);
+    public Booking createBooking(User user, boolean[][] bookedSeats, double price ){
+		Booking newBooking = new Booking(createTransactionId(), user, bookedSeats, price);
 		this.bookings.add(newBooking);
 		return newBooking;
+	}
+
+    public String createTransactionId() {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+		String transaction = cinema.getName() + hall.getName() + LocalDateTime.now().format(format);
+		return transaction;
 	}
 
     public double getTotalSales(){
