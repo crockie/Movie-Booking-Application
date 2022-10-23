@@ -16,8 +16,8 @@ public class Booking {
 		for (int i = 0; i < bookedSeats.length ; i++){
 			for(int j = 0; j < bookedSeats[i].length; j++){
 				if(bookedSeats[i][j] == true){
-					Ticket newTicket = new Ticket(i, j);
-					tickets.add(newTicket);
+					Ticket ticket = new Ticket(i, j);
+					tickets.add(ticket);
 				}
 			}
 		}
