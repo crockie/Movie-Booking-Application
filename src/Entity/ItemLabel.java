@@ -1,5 +1,5 @@
 package Entity;
 
-public interface ItemLabel {
-	public String getName();
+public interface ItemName {
+	public String nameToString();
 }
