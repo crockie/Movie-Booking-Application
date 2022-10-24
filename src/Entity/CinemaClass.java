@@ -9,10 +9,8 @@ public enum CinemaClass {
         this.cinemaClass = cinemaClass;
     }
 
-    /*
     private String getCinemaClass(){
         return this.cinemaClass;
     }
-     */
     
 }

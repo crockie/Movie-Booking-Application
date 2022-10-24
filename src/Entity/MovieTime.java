@@ -7,14 +7,12 @@ import java.util.ArrayList;
 
 public class MovieTime implements BookMovie{
     private Cinema cinema;
-    private Hall hall;
     private LocalDateTime movieDateTime;
     private Movie movie;
     private ArrayList<Booking> bookings = new ArrayList<Booking>();
 
-    protected MovieTime(Cinema cinema, Hall hall, LocalDateTime movieDateTime, Movie movie){
+    protected MovieTime(Cinema cinema, LocalDateTime movieDateTime, Movie movie){
         this.cinema = cinema;
-        this.hall = hall;
         this.movieDateTime = movieDateTime;
         this.movie = movie;
         movie.addMovieTime(this);
@@ -29,7 +27,7 @@ public class MovieTime implements BookMovie{
 
     public String createTransactionId() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
-		String transaction = cinema.getName() + hall.getName() + LocalDateTime.now().format(format);
+		String transaction = cinema.getName() + LocalDateTime.now().format(format);
 		return transaction;
 	}
 
@@ -45,7 +43,7 @@ public class MovieTime implements BookMovie{
     
     @Override
     public SeatStatus[][] getAvailableSeats(){
-        boolean[][] seatLayout = hall.getSeatLayout();
+        boolean[][] seatLayout = cinema.getSeatLayout();
         SeatStatus[][] seatAvail = new SeatStatus[seatLayout.length][];
 
         for(int i = 0; i < seatLayout.length; i++){
@@ -87,7 +85,7 @@ public class MovieTime implements BookMovie{
 
     @Override
     public boolean[][] getSeatLayout(){
-        return hall.getSeatLayout();
+        return cinema.getSeatLayout();
     }
 
     @Override
@@ -132,10 +130,6 @@ public class MovieTime implements BookMovie{
 		this.movie.getMovieTimes().remove(this);
 		this.cinema.getMovieTimes().remove(this);
 	}
-
-    public Hall getHall(){
-        return this.hall;
-    }
 
     public ArrayList<Booking> getBookings(){
         return this.bookings;

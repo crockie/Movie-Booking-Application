@@ -1,19 +1,22 @@
 package Entity;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Cinema {
     private String name;
     private CinemaClass cinemaClass;
-    private ArrayList<Hall> halls = new ArrayList<Hall>();
+    private boolean[][] seatLayout;
+    private ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
 
-    public Cinema(String name, CinemaClass cinemaClass){
+    public Cinema(String name, CinemaClass cinemaClass, boolean[][] seatLayout){
         this.name = name;
         this.cinemaClass = cinemaClass;
+        this.seatLayout = seatLayout;
     }
 
-    public void createHalls(String hallName, boolean[][] seatLayout){
-        Hall hall = new Hall(hallName, seatLayout);
-        this.halls.add(hall);
+    public void addMovieTime(LocalDateTime movieDateTime, Movie movie){
+        MovieTime movieTime = new MovieTime(this, movieDateTime, movie);
+        this.movieTimes.add(movieTime);
     }
 
     public String getName(){
@@ -22,7 +25,10 @@ public class Cinema {
     public CinemaClass getCinemaClass(){
         return this.cinemaClass;
     }
-    public ArrayList<Hall> getHalls(){
-        return this.halls;
+    public boolean[][] getSeatLayout(){
+        return this.seatLayout;
     }
+    public ArrayList<MovieTime> getMovieTimes(){
+        return this.movieTimes;
+}
 }

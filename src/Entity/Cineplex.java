@@ -8,6 +8,11 @@ public class Cineplex {
     public Cineplex(String name){
         this.name = name;
     }
+    
+    public void addCinema(String cinemaName, CinemaClass cinemaClass){
+        Cinema cinema = new Cinema(cinemaName, cinemaClass);
+        this.cinemas.add(cinema);
+    }
 
     public ArrayList<MovieTime> getMovieTimes(){
         ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
@@ -17,17 +22,10 @@ public class Cineplex {
                 movieTimes.addAll(hall.getMovieTimes());
             }
         }
-
         return movieTimes;
     }
 
     
-
-    public void addCinema(String cinemaName, CinemaClass cinemaClass){
-        Cinema cinema = new Cinema(cinemaName, cinemaClass);
-        this.cinemas.add(cinema);
-    }
-
     public ArrayList<Cinema> getCinemas(){
         return cinemas;
     }

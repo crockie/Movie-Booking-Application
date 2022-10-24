@@ -1,98 +1,149 @@
+package Entity;
+
+import java.time.Duration;
 import java.util.ArrayList;
 
-public class Movie {
-    //should private be change to protected to allow access for same package?
-    private String title, synopsis, director;
-    private ArrayList<String> casts;
-    protected enum ShowingStatus { COMING_SOON, PREVIEW, NOW_SHOWING};
-    private ShowingStatus status;
-    private int sales;
-    private double overallRating;
-    // to be implemented
-    //private ArrayList<Review> reviews = new ArrayList<>();
+public class Movie implements ItemLabel {
+	private String title;
+	
+	private String synopsis;
+	
+	private String director;
+	
+	private String[] cast;
+	
+	// Coming Soon, Preview, Now Showing, End Of Showing 
+	private ShowStatus showStatus;
+	
+	// PG, NC16, M18
+	private MovieRating movieRating;
+	
+	// Blockbuster, 3D
+	private MovieType movieType;
+	
+	private ArrayList<ReviewAndRating> reviewAndRating = new ArrayList<ReviewAndRating>();
+	
+	private ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
+	
+	// might change
+	private Duration duration;
+	
+	public Movie(String title, String synopsis, String director, String[] cast, ShowStatus showStatus, MovieRating movieRating,
+			MovieType movieType, Duration duration) 
+	{
+		this.title = title;
+		this.synopsis = synopsis;
+		this.director = director;
+		this.cast = cast;
+		this.showStatus = showStatus;
+		this.movieRating = movieRating;
+		this.movieType = movieType;
+		this.duration = duration;
+	}
+	
+	protected void addMovieTime(MovieTime movieTime) {
+		this.movieTimes.add(movieTime);
+	}
+	
+	public ArrayList<MovieTime> getMovieTimes() {
+		return movieTimes;
+	}
+	
+	public Double getTotalRating() {
+		double sum = 0.0;
+		double totalRating;
+		int reviewCount = reviewAndRating.size();
+		
+		if (reviewCount <= 1)
+			return null;
+		
+		for (ReviewAndRating reviewAndRating: reviewAndRating)
+			sum += reviewAndRating.getRating();
+		
+		totalRating = sum / reviewCount;
+		return totalRating;
+	}
+	
+	public double getTotalSales() {
+		double totalSales = 0;
+		
+		for (MovieTime movieTime: movieTimes)
+			totalSales += movieTime.getTotalSales();
+		
+		return totalSales;
+	}
 
+	@Override
+	public String getLabel() {
+		return title;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
 
-    //constructors
-    public Movie(String title){
-        this.title = title;
-    }
+	public String getSynopsis() {
+		return synopsis;
+	}
+	
+	public String getDirector() {
+		return director;
+	}
+	
+	public String[] getCast() {
+		return cast;
+	}
 
-    public Movie(String title, String synopsis, String director, ArrayList<String> casts, ShowingStatus status, double overallRating){
-        this.title = title;
-        this.synopsis = synopsis;
-        this.director = director;
-        this.casts = casts;
-        this.status = status;
-        this.overallRating = overallRating;
-        this.sales = 0;
-    }
-    public void incrementSales(){
-        this.sales += 1;
-    }
-    
-    public String toString(){
-        StringBuilder info = new StringBuilder();
-        info.append("Title:\t\t").append(this.title).append("\n");
-        info.append("Synopsis:\t").append(this.synopsis).append("\n");
-        info.append("Director:\t").append(this.director).append("\n");
-        info.append("Casts:\t\t");
-        for (String s: casts){
-            if(s != casts.get(casts.size()- 1)) info.append(s).append(", ");
-            else info.append(s).append("\n");
-        } 
-        info.append("Status:\t\t").append(this.status).append("\n");
-        info.append("Ratings:\t").append(this.overallRating).append("\n");
+	public MovieRating getMovieRating() {
+		return movieRating;
+	}
 
-        return info.toString();
-    }
+	public MovieType getMovieType() {
+		return movieType;
+	}
 
-    // get and set methods
-    public String getTitle(){
-        return this.title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+	public ArrayList<ReviewAndRating> getReviewAndRating() {
+		return reviewAndRating;
+	}
 
-    public int getSales(){
-        return this.sales;
-    }
-    public void setSales(int sales){
-        this.sales = sales;
-    }
+	public ShowStatus getShowStatus() {
+		return showStatus;
+	}
+	
+	public Duration getDuration() {
+		return duration;
+	}
 
-    public String getSynopsis(){
-        return this.synopsis;
-    }
-    public void setSynopsis(String synopsis){
-        this.synopsis = synopsis;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getDirector(){
-        return this.director;
-    }
-    public void setDirector(String director){
-        this.director = director;
-    }
+	public void setSynopsis(String synopsis) {  
+		this.synopsis = synopsis;
+	}
 
-    public ArrayList<String> getCasts(){
-        return this.casts;
-    }
-    public void setCasts(ArrayList<String> casts){
-        this.casts = casts;
-    }
+	public void setDirector(String director) {  
+		this.director = director;
+		
+	}
 
-    public ShowingStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ShowingStatus status){
-        this.status = status;
-    }
+	public void setCast(String[] cast) {
+		this.cast = cast;
+	}
+	
+	public void setMovieRating(MovieRating movieRating) {
+		this.movieRating = movieRating;	
+	}
 
-    public double getOverallRating(){
-        return this.overallRating;
-    }
-    public void setOverallRating(double overallRating){
-        this.overallRating = overallRating;
-    }
+	public void setMovieType(MovieType movieType) {
+		this.movieType = movieType;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
+	public void setShowStatus(ShowStatus showStatus) {
+		this.showStatus = showStatus;
+	}
 }
