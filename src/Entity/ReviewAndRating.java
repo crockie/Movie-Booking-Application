@@ -3,7 +3,7 @@ package Entity;
 import java.io.Serializable;
 
 // This class contains all information on reviews and ratings
-public class ReviewAndRating implements Serializable, LabelledItem {
+public class ReviewAndRating implements Serializable, ItemName {
     /**
      * The serialisation version number <-- TO BE REVISITED
      */
@@ -54,7 +54,7 @@ public class ReviewAndRating implements Serializable, LabelledItem {
     }
 
     @Override
-    public String getLabel() {
+    public String nameToString() {
         return review + " (" + rating + "/5) —— " + user.getName();
     }
 }
