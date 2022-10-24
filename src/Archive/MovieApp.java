@@ -1,7 +1,6 @@
+package Archive;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import Entity.Movie;
 
 
 public class MovieApp {
