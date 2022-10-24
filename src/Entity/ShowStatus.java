@@ -11,14 +11,14 @@ public enum ShowStatus implements LabelledItem {
 
     END_OF_SHOWING("End of Showing"); /** Assignment does not ask for End Of Showing, delete? */
 
-    String label;
+    String name;
 
-    private ShowStatus(String label) {
-        this.label = label;
+    private ShowStatus(String name) {
+        this.name = name;
     }
 
     @Override
-    public String getLabel() {
-        return label;
+    public String getName() {
+        return this.name;
     }
 }
