@@ -2,8 +2,13 @@ package Entity;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Movie implements ItemName {
+public class Movie implements ItemName, Serializable {
+	/*
+	 * Serialization number
+	 */
+	private static final long serialVersionUID = 5822630624504041207L;
 	/*
 	 * Title of Movie
 	 */
@@ -104,7 +109,7 @@ public class Movie implements ItemName {
 	 * 
 	 */
 	@Override
-	public String nameToString() {
+	public String getLabel() {
 		return title;
 	}
 	/*
