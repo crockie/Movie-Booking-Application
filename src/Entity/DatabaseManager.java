@@ -3,7 +3,7 @@ package Entity;
 /**
  * Manages data stored in database
  */
-public class DataController {
+public class DatabaseManager {
 
     /**
      * To store data
@@ -18,7 +18,7 @@ public class DataController {
     /**
      * Constructor of the class
      */
-    public DataController() {
+    public DatabaseManager() {
     }
 
     /**
