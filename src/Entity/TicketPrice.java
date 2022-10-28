@@ -113,7 +113,7 @@ public class TicketPrice {
      * @param price       The price to be updated
      */
     public void setCinemaClassPrice(CinemaClass cinemaClass, double price) {
-        cinemaClassPrice.replace(cinemaClass, price);
+        cinemaClassPrice.put(cinemaClass, price);
     }
 
     /**
@@ -133,7 +133,7 @@ public class TicketPrice {
      * @param price The additional price to be updated
      */
     public void setAgePrice(AgeGroup age, double price) {
-        agePrice.replace(age, price);
+        agePrice.put(age, price);
     }
 
     /**
@@ -153,7 +153,7 @@ public class TicketPrice {
      * @param price     The additional price to be updated
      */
     public void setMovieTypePrice(MovieType movieType, double price) {
-        movieTypePrice.replace(movieType, price);
+        movieTypePrice.put(movieType, price);
     }
 
     /**
@@ -198,6 +198,6 @@ public class TicketPrice {
      * @param price     The additional price
      */
     public void setDatePrice(DateGroup dateGroup, double price) {
-        dateGroupPrice.replace(dateGroup, price);
+        dateGroupPrice.put(dateGroup, price);
     }
 }
