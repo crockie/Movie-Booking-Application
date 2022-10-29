@@ -52,9 +52,9 @@ public class DatabaseManager {
     /**
      * Return the database
      * 
-     * @return
+     * @return the database
      */
-    public DataBase getDataBase() {
+    public static DataBase getDataBase() {
         return database;
     }
 
