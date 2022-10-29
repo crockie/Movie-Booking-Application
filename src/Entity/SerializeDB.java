@@ -7,15 +7,24 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.EOFException;
 
+/**
+ * The class to read the database and write to the database
+ */
 public class SerializeDB {
-    public static Object readSerializedObject(String filename) {
-        Object myObj = null;
+    /**
+     * Read the database
+     * 
+     * @param pathName The path of the database
+     * @return the database
+     */
+    public static DataBase readSerializedObject(String path) {
+        DataBase database = null;
         FileInputStream fis = null;
         ObjectInputStream in = null;
         try {
-            fis = new FileInputStream(filename);
+            fis = new FileInputStream(path);
             in = new ObjectInputStream(fis);
-            myObj = in.readObject();
+            database = (DataBase) in.readObject();
             in.close();
         } catch (EOFException ex) {
             return null;
@@ -25,18 +34,24 @@ public class SerializeDB {
             ex.printStackTrace();
         }
         // print out the size
-        // System.out.println(" Details Size: " + pDetails.size());
+        // System.out.println(" Database Size: " + database.size());
         // System.out.println();
-        return myObj;
+        return database;
     }
 
-    public static void writeSerializedObject(String filename, Object myObj) {
+    /**
+     * Write to the database
+     * 
+     * @param path     The path of the database
+     * @param database The database to be written
+     */
+    public static void writeSerializedObject(String path, DataBase database) {
         FileOutputStream fos = null;
         ObjectOutputStream out = null;
         try {
-            fos = new FileOutputStream(filename);
+            fos = new FileOutputStream(path);
             out = new ObjectOutputStream(fos);
-            out.writeObject(myObj);
+            out.writeObject(database);
             out.close();
             // System.out.println("Object Persisted");
         } catch (IOException ex) {
