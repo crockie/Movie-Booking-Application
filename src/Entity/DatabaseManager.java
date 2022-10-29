@@ -34,12 +34,10 @@ public class DatabaseManager {
      * Else, downcast the file to DataBase type
      */
     public static void read() {
-        Object newObj = SerializeDB.readSerializedObject(path);
+        DataBase database = SerializeDB.readSerializedObject(path);
 
-        if (newObj == null || !(newObj instanceof DataBase))
+        if (database == null)
             init();
-        else
-            database = (DataBase) newObj;
     }
 
     /**
