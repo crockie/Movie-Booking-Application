@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.time.Duration;
 import java.util.ArrayList;

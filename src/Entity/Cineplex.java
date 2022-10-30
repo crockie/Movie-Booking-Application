@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 import java.util.ArrayList;
 
 public class Cineplex {
@@ -9,8 +9,8 @@ public class Cineplex {
         this.name = name;
     }
     
-    public void addCinema(String cinemaName, CinemaClass cinemaClass){
-        Cinema cinema = new Cinema(cinemaName, cinemaClass);
+    public void addCinema(String cinemaName, CinemaClass cinemaClass, boolean[][] seatLayout){
+        Cinema cinema = new Cinema(cinemaName, cinemaClass, seatLayout);
         this.cinemas.add(cinema);
     }
 
@@ -18,9 +18,7 @@ public class Cineplex {
         ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
 
         for(Cinema cinema: cinemas){
-            for(Hall hall: cinema.getHalls()){
-                movieTimes.addAll(hall.getMovieTimes());
-            }
+            movieTimes.addAll(cinema.getMovieTimes());
         }
         return movieTimes;
     }

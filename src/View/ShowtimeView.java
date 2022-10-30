@@ -1,15 +1,15 @@
-package View;
-
-import Entity.DatabaseManager;
-import Entity.Cineplex;
-import Entity.DataBase;
-import Entity.MovieTime;
-import Entity.Movie;
-import Entity.ShowStatus;
+package view;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import entity.Cineplex;
+import entity.DataBase;
+import entity.DatabaseManager;
+import entity.Movie;
+import entity.MovieTime;
+import entity.ShowStatus;
 
 /**
  * This class shows all showtimes

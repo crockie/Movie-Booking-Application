@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
  * The different age groups available for ticket pricing

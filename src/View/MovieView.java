@@ -1,13 +1,13 @@
-package View;
-
-import Entity.DatabaseManager;
-import Entity.DataBase;
-import Entity.Movie;
-import Entity.ReviewAndRating;
-import Entity.Customer;
+package view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import entity.Customer;
+import entity.DataBase;
+import entity.DatabaseManager;
+import entity.Movie;
+import entity.ReviewAndRating;
 
 /**
  * Display movie details to user

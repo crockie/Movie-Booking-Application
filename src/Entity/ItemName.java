@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
  * Interface for all the items to get the name

@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
 * Show the movie statuses

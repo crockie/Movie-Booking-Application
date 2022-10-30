@@ -1,15 +1,15 @@
 //HAVENT CHANGED COMMENTS AND VARIABLES YET
 
-package Control;
+package control;
 
 import java.util.List;
 
-import Entity.DatabaseManager;
-import Entity.Movie;
-import Entity.Customer;
 import Boundary.ListView;
 import Boundary.MenuView;
 import Boundary.MovieView;
+import entity.Customer;
+import entity.DatabaseManager;
+import entity.Movie;
 
 /**
  * This class controls the display of the movies and their details and reviews.

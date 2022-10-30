@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
  * Manages data stored in database

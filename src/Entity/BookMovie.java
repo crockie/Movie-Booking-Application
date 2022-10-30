@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
 * This is the interface for booking movies

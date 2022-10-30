@@ -1,5 +1,5 @@
 //HAVENT CHANGED COMMENTS AND VARIABLES YET
-package Control;
+package control;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -8,15 +8,15 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import Entity.AgeGroup;
-import Entity.Booking;
-import Entity.Cineplex;
-import Entity.DatabaseManager;
-import Entity.Movie;
-import Entity.Customer;
-import Entity.TicketPrice;
-import Entity.MovieTime;
-import Entity.ShowStatus;
+import entity.AgeGroup;
+import entity.Booking;
+import entity.Cineplex;
+import entity.Customer;
+import entity.DatabaseManager;
+import entity.Movie;
+import entity.MovieTime;
+import entity.ShowStatus;
+import entity.TicketPrice;
 import view.BookingView;
 import view.IOController;
 import view.MenuView;

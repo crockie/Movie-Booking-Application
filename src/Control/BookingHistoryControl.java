@@ -1,14 +1,14 @@
-package Control;
+package control;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Entity.Booking;
-import Entity.Cinema;
-import Entity.Cineplex;
-import Entity.DataController;
-import Entity.Customer;
-import Entity.MovieTime;
+import entity.Booking;
+import entity.Cinema;
+import entity.Cineplex;
+import entity.Customer;
+import entity.DataController;
+import entity.MovieTime;
 import view.ListView;
 
 /**

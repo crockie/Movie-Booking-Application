@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
  * Serves as the login system of cinema staff

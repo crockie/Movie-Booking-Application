@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
 * The cinema classes for a cinema

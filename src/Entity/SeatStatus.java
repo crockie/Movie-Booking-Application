@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
 * Seat statuses for a show time seat

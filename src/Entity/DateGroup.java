@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 /**
  * The different date categories available for ticket pricing
