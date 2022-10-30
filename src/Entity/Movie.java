@@ -125,7 +125,7 @@ public class Movie implements ItemName, Serializable {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getLabel() {
+	public String nameToString() {
 		return title;
 	}
 	/**
