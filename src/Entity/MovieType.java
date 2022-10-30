@@ -1,22 +1,43 @@
 package Entity;
 
-// Type of movie
-public enum MovieType implements LabelledItem {
-
+/**
+* The movie types
+*/
+public enum MovieType implements ItemName {
+	
+    /**
+    * 3D movie
+    */
     _3D("3D"),
-
+	
+    /**
+    * Blockbuster movie
+    */
     BLOCKBUSTER("Blockbuster"),
-
+	
+    /**
+    * Regular movie
+    */
     REGULAR("Regular");
-
-    private final String label;
-
-    private MovieType(String label) {
-        this.label = label;
+    
+    /**
+    * The name of the movie type
+    */
+    private final String name;
+    
+    /**
+    * Creates a {@code MovieType} object with the given name
+    * @param name
+    */
+    private MovieType(String name) {
+        this.name = name;
     }
 
+    /**
+    * {@inheritDoc}
+    */
     @Override
-    public String getLabel() {
-        return label;
+    public String nameToString() {
+        return name;
     }
 }
