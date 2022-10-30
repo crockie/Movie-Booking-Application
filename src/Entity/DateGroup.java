@@ -4,7 +4,18 @@ package Entity;
  * The different date categories available for ticket pricing
  */
 public enum DateGroup implements ItemName{
-	WEEKDAY("Weekday"), WEEKEND("Weekend"), HOLIDAY("Holiday");
+	/**
+	 * Weekday
+	 */
+	WEEKDAY("Weekday"), 
+	/**
+	 * Weekend
+	 */
+	WEEKEND("Weekend"),
+	/**
+	 * Holiday
+	 */
+	HOLIDAY("Holiday");
 	private String dateGroup;
 	
 	/**

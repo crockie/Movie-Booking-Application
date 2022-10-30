@@ -4,7 +4,18 @@ package Entity;
  * The different age groups available for ticket pricing
  */
 public enum AgeGroup implements ItemName{
-	SENIOR_CITIZEN("Senior Citizen"), ADULT("Adult"), CHILD("Child");
+	/**
+	 * Senior citizen
+	 */
+	SENIOR_CITIZEN("Senior Citizen"),
+	/**
+	 * Adult
+	 */
+	ADULT("Adult"),
+	/**
+	 * Child
+	 */
+	CHILD("Child");
 	private String ageGroup;
 	
 	/**
