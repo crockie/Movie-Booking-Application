@@ -9,7 +9,7 @@ public enum AgeGroup implements ItemName{
 	
 	/**
 	 * This creates a {@code AgeGroup} object with the input
-	 * @param name
+	 * @param ageGroup
 	 */
 	private AgeGroup(String ageGroup) {
 		this.ageGroup = ageGroup;
