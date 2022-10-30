@@ -2,9 +2,12 @@ package Entity;
 
 import java.io.Serializable;
 
+/** 
+ * This class contains the information of the Customer
+ */
 public class Customer implements Serializable{
     
-	/**
+    /**
      * The serialisation version number
      */
     private static final long serialVersionUID = 7689870075709929042L;
