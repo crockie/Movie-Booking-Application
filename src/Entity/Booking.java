@@ -3,19 +3,19 @@ import java.util.ArrayList;
 
 public class Booking {
 	private String transactionId; 
-	private User user;
+	private Customer customer;
 	private ArrayList<Ticket> tickets;
 	private double price;
 	
 	// Creates a Booking object with transaction id, user, selected seats and price
-	public Booking(String transactionId, User user, boolean[][] selectedSeats, double price) {
+	public Booking(String transactionId, Customer customer, boolean[][] selectedSeats, double price) {
 		this.transactionId = transactionId;
-		this.user = user;
+		this.customer = customer;
 		this.price = price;
 		this.tickets = new ArrayList<Ticket>();
 		for (int i = 0; i < selectedSeats.length ; i++){
 			for(int j = 0; j < selectedSeats[i].length; j++){
-				if(bookedSeats[i][j] == true){
+				if(selectedSeats[i][j] == true){
 					Ticket ticket = new Ticket(i, j);
 					tickets.add(ticket);
 				}
@@ -27,8 +27,8 @@ public class Booking {
 		return transactionId;
 	}
 	
-	public User getUser() {
-		return user;
+	public Customer getUser() {
+		return customer;
 	}
 	
 	public ArrayList<Ticket> getTickets() {
