@@ -32,7 +32,7 @@ public class MovieLogicControl implements MainControl {
 			
 			switch (option) {
 				case 1: 
-					Movie movie = MenuView.getLabelledItem("Select a movie", movieList);
+					Movie movie = MenuView.getLabelledItem("Choose a movie", movieList);
 					MovieView.printMovieDetails(movie);
 					break;
 					

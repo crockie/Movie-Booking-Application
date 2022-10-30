@@ -28,7 +28,7 @@ public class CustomerControl implements MainControl {
 			
 			switch (option) {
 				case 1:
-					this.customerr = CustomerLoginView.signupCustomer();
+					this.customer = CustomerLoginView.signupCustomer();
 					break;
 					
 				case 2:
@@ -69,7 +69,7 @@ public class CustomerControl implements MainControl {
 				break;
 				
 			case 3:
-				NavigationController.load(new MovieController(customer));
+				NavigationController.load(new MovieControl(customer));
 				break;
 				
 				

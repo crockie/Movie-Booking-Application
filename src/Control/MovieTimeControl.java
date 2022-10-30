@@ -13,6 +13,6 @@ public class MovieTimeControl implements MainControl {
 	@Override
 	public void begin() {
 		ShowTimeView.displayAllShowTimes();
-		NavigationController.goBack();
+		NavigateControl.popOne();
 	}
 }

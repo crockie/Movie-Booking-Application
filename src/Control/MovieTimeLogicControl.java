@@ -5,9 +5,9 @@ import view.ShowTimeEditView;
 import view.ShowTimeView;
 
 /**
- * This class controls the creation, modification and removal of showtimes
+ * This class controls the creation, change and removal of showtimes
  */
-public class MovieTimeEditController implements MainControl {
+public class MovieTimeLogicControl implements MainControl {
 
 	/**
 	 * {@inheritDoc}
@@ -42,7 +42,7 @@ public class MovieTimeEditController implements MainControl {
 					break;
 					
 				case 5:
-					NavigationController.goBack();
+					NavigateControl.popOne();
 					return;
 			}
 		}
