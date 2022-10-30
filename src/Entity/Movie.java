@@ -4,6 +4,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.io.Serializable;
 
+/**
+ * This class contains the information for the Movie
+ */
 public class Movie implements ItemName, Serializable {
 	/**
 	 * Serialization number
