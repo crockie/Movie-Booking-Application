@@ -30,6 +30,7 @@ public class Customer implements Serializable{
     private String password;
     /**
      * Constructor for Customer's account
+     * Creates a {@code Customer} object with the given username, name, mobile/handphone number, email address and password
      * @param username the username of the Customer's account
      * @param name the name of the Customer
      * @param mobileNumber the mobile/handphone number of the Customer
