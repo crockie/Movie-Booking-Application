@@ -8,7 +8,7 @@ public class Booking {
 	private double price;
 	
 	// Creates a Booking object with transaction id, user, selected seats and price
-	public Booking(String transactionId, User user, boolean[][] bookedSeats, double price) {
+	public Booking(String transactionId, User user, boolean[][] selectedSeats, double price) {
 		this.transactionId = transactionId;
 		this.user = user;
 		this.price = price;
