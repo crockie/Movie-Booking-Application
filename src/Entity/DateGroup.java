@@ -1,6 +1,6 @@
 package Entity;
 
-public enum DateGroup implements ItemLabel{
+public enum DateGroup implements ItemName{
 	WEEKDAY("Weekday"), WEEKEND("Weekend"), HOLIDAY("Holiday");
 	private String name;
 	
@@ -9,7 +9,7 @@ public enum DateGroup implements ItemLabel{
 	}
 	
 	@Override
-	public String getName() {
+	public String nameToString() {
 		return name;
 	}
 }
