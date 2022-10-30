@@ -4,6 +4,7 @@ import Entity.DatabaseManager;
 import Entity.DataBase;
 import Entity.Movie;
 import Entity.ReviewAndRating;
+import Entity.Customer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class MovieView {
 
         for (Movie movie : movieList) {
             System.out.println("Title: " + movie.getTitle());
-            System.out.println("Showing status: " + movie.getShowStatus().getName());
+            System.out.println("Showing status: " + movie.getShowStatus().nameToString());
             System.out.println("Synopsis: " + movie.getSynopsis());
             System.out.println("Director: " + movie.getDirector());
             for (String cast : movie.getCast())
@@ -44,7 +45,7 @@ public class MovieView {
      */
     public static void getMovieView(Movie movie) {
         System.out.println("Title: " + movie.getTitle());
-        System.out.println("Showing status: " + movie.getShowStatus().getName());
+        System.out.println("Showing status: " + movie.getShowStatus().nameToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
         for (String cast : movie.getCast())
@@ -64,16 +65,21 @@ public class MovieView {
      * @param movie The movie that user wants to review
      * @param user  The user
      */
-    public static void addMovieReview(Movie movie, User user) {
+    public static void addMovieReview(Movie movie, Customer customer) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Rating: ");
-        int rating = sc.nextInt();
-        System.out.print("Review: ");
-        String review = sc.nextLine();
+        try {
+            System.out.print("Rating: ");
+            int rating = sc.nextInt();
+            System.out.print("Review: ");
+            String review = sc.nextLine();
 
-        ReviewAndRating reviewAndRating = ReviewAndRating.createReviewRating(user, review, rating);
+            ReviewAndRating reviewAndRating = ReviewAndRating.createReviewRating(customer, review, rating);
 
-        movie.getReviewAndRating().add(reviewAndRating);
-        System.out.println("Review and rating added!");
+            movie.getReviewAndRating().add(reviewAndRating);
+            System.out.println("Review and rating added!");
+        } finally {
+            sc.close();
+        }
+
     }
 }
