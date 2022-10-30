@@ -55,7 +55,7 @@ public class CinemaStaffControl implements MainControl {
 
         switch (choice) {
             case 1:
-                NavigateControl.load(new TopMoviesController());
+                NavigateControl.load(new TopMoviesControl());
                 break;
 
             case 2:
@@ -63,7 +63,7 @@ public class CinemaStaffControl implements MainControl {
                 break;
 
             case 3:
-                NavigateControl.load(new MovieEditController());
+                NavigateControl.load(new MovieLogicControl());
                 break;
 
             case 4:

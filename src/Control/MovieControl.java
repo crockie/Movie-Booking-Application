@@ -4,9 +4,9 @@ package control;
 
 import java.util.List;
 
-import Boundary.ListView;
-import Boundary.MenuView;
-import Boundary.MovieView;
+import view.ListView;
+import view.MenuView;
+import view.MovieView;
 import entity.Customer;
 import entity.DatabaseManager;
 import entity.Movie;
@@ -14,7 +14,7 @@ import entity.Movie;
 /**
  * This class controls the display of the movies and their details and reviews.
  */
-public class MovieController implements Controller {
+public class MovieControl implements MainControl {
 	/**
 	 * The movie goer that wants to view the movie
 	 */
@@ -28,14 +28,14 @@ public class MovieController implements Controller {
 	 * Creates a new {@code MovieController} object for the given movie goer
 	 * @param movieGoer the movie goer that wants to view the movie
 	 */
-	public MovieController(Customer customer) {
+	public MovieControl(Customer customer) {
 		this.customer = customer;
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	public void start() {
+	public void begin() {
 		this.movie = selectMovie();
 		
 		while (true) {

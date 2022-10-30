@@ -14,7 +14,7 @@ import view.ListView;
 /**
  * This class manages the display of the booking history for the Customer
  */
-public class BookingHistoryControl implements Controller {
+public class BookingHistoryControl implements MainControl {
 	/**
 	 * The Customer that the booking history is being displayed for 
 	 */
@@ -33,7 +33,7 @@ public class BookingHistoryControl implements Controller {
 	 * Displaying of Booking History for Customer
 	 */
 	@Override
-	public void start() {
+	public void begin() {
 		ListView.displayList("Booking History", getBookingHistory(), "No bookings made by this customer");
 		NavigationController.goBack();
 	}

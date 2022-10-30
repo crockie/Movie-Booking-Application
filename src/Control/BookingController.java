@@ -24,7 +24,7 @@ import view.MenuView;
 /**
  * This class handles the control flow of movie booking for a movie goer
  */
-public class BookingController implements Controller {
+public class BookingController implements MainControl {
 	/**
 	 * The movie goer who wants to do the booking
 	 */
@@ -46,7 +46,7 @@ public class BookingController implements Controller {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void start() {		
+	public void begin() {		
 		this.movieTime = selectShowTime();
 		
 		if (movieTime.checkFull()) {

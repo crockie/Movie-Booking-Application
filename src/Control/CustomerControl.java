@@ -1,13 +1,13 @@
 package control;
 
-import model.Customer;
+import entity.Customer;
 import view.MenuView;
 import view.CustomerLoginView;
 
 /**
  * This class controls the sign up, login and main menu for Customers
  */
-public class CustomerControl implements Control {
+public class CustomerControl implements MainControl {
 	/**
 	 * The Customer that is currently logged in
 	 */
@@ -17,7 +17,7 @@ public class CustomerControl implements Control {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void start() {
+	public void begin() {
 		while (this.customer == null) {
 			int option = MenuView.getMenuOption(
 				"Please select an option",
@@ -61,7 +61,7 @@ public class CustomerControl implements Control {
 		
 		switch (option) {
 			case 1:
-				NavigationController.load(new MovieTimeController());
+				NavigationController.load(new MovieTimeControl());
 				break;
 				
 			case 2:
@@ -74,7 +74,7 @@ public class CustomerControl implements Control {
 				
 				
 			case 4:
-				NavigationController.load(new TopMoviesController());
+				NavigationController.load(new TopMoviesControl());
 				break;
 				
 			case 5:

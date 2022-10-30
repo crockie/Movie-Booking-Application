@@ -3,7 +3,7 @@ package entity;
 /**
 * The cinema classes for a cinema
 */
-public enum CinemaClass {
+public enum CinemaClass implements ItemName{
     /**
     * Standard cinema class
     */
@@ -28,10 +28,10 @@ public enum CinemaClass {
     }
 
     /**
-    * !!!
-    * Should we stick with implementing ItemName instead of this?
-    */
-    private String getCinemaClass(){
+	 * {@inheritDoc}
+	 */
+	@Override
+    public String nameToString(){
         return this.cinemaClass;
     }   
 }

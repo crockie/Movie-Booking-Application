@@ -24,8 +24,7 @@ public interface BookMovie {
     public boolean[][] getSeatLayout();
     
     /**
-    * !!!
-    * Edit this comment Eddy
-    */
+     * @return true if the movie is fully booked, otherwise false
+     */
     public boolean checkFull();
 }
