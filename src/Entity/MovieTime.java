@@ -19,8 +19,8 @@ public class MovieTime implements BookMovie{
     }
 
 
-    public Booking createBooking(User user, boolean[][] bookedSeats, double price ){
-		Booking newBooking = new Booking(createTransactionId(), user, bookedSeats, price);
+    public Booking createBooking(Customer customer, boolean[][] bookedSeats, double price ){
+		Booking newBooking = new Booking(createTransactionId(), customer, bookedSeats, price);
 		this.bookings.add(newBooking);
 		return newBooking;
 	}
@@ -58,7 +58,7 @@ public class MovieTime implements BookMovie{
         for (Booking booking: bookings) {
 			for (Ticket t: booking.getTickets()) {
 				int row = t.getRow();
-				int col = t.getCol();
+				int col = t.getColumn();
 				
 				if (seatAvail[row][col] == SeatStatus.EMPTY)
 					seatAvail[row][col] = SeatStatus.TAKEN;
