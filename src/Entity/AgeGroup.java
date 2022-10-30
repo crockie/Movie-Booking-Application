@@ -1,6 +1,6 @@
 package Entity;
 
-public enum AgeGroup implements ItemLabel{
+public enum AgeGroup implements ItemName{
 	SENIOR_CITIZEN("Senior Citizen"), ADULT("Adult"), CHILD("Child");
 	private String name;
 	
@@ -9,7 +9,7 @@ public enum AgeGroup implements ItemLabel{
 	}
 	
 	@Override
-	public String getName() {
+	public String nameToString() {
 		return name;
 	}
 }
