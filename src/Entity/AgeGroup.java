@@ -1,7 +1,7 @@
 package Entity;
 
 /**
- * The different age groups available for ticket
+ * The different age groups available for ticket pricing
  */
 public enum AgeGroup implements ItemName{
 	SENIOR_CITIZEN("Senior Citizen"), ADULT("Adult"), CHILD("Child");
@@ -11,7 +11,7 @@ public enum AgeGroup implements ItemName{
 	 * This creates a {@code AgeGroup} object with the input
 	 * @param ageGroup
 	 */
-	private AgeGroup(String ageGroup) {
+	private AgeGroup (String ageGroup) {
 		this.ageGroup = ageGroup;
 	}
 	
