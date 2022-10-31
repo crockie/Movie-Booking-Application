@@ -76,7 +76,7 @@ public class BookingController implements MainControl {
 			IOController.displayMessage("Booking cancelled");
 		}
 		
-		NavigationController.goBack();
+		NavigateControl.popOne();
 	}
 	
 	/**
@@ -88,13 +88,13 @@ public class BookingController implements MainControl {
 		List<Cineplex> cineplexList = DatabaseManager.getDataBase().getCineplexList();
 		Cineplex cineplex = MenuView.getLabelledItem("Select a Cineplex", cineplexList);
 	
-		// Group show times by movie
-		List<MovieTime> showTimeList = cineplex.getMovieTimes();
-		Map<Movie, List<MovieTime>> showTimesByMovie = showTimeList.stream().collect(Collectors.groupingBy(MovieTime::getMovie));
+		// Group the timing by movie
+		List<MovieTime> movieTimeList = cineplex.getMovieTimes();
+		Map<Movie, List<MovieTime>> movieTimesByMovie = movieTimeList.stream().collect(Collectors.groupingBy(MovieTime::getMovie));
 		
 		// Select a movie
 		List<Movie> movieList = new ArrayList<Movie>();
-		for (Movie movie: showTimesByMovie.keySet()) {
+		for (Movie movie: movieTimesByMovie.keySet()) {
 			ShowStatus showStatus = movie.getShowStatus();
 			if (showStatus == showStatus.PREVIEW || showStatus == showStatus.NOW_SHOWING)
 				movieList.add(movie);
@@ -102,24 +102,25 @@ public class BookingController implements MainControl {
 		
 		Movie movie = MenuView.getLabelledItem("Select a movie", movieList);
 		
-		// Select a show time
-		List<MovieTime> movieShowTimeList = showTimesByMovie.get(movie);
+		// Select a movie show time
+		List<MovieTime> movieShowTimeList = movieTimesByMovie.get(movie);
 		Comparator<MovieTime> dateComparator = Comparator.comparing(MovieTime::getStartDateTime);
 		movieShowTimeList.sort(dateComparator);
-		MovieTime showTime = MenuView.getLabelledItem("Select a Show Time", movieShowTimeList);
+		MovieTime movieTime = MenuView.getLabelledItem("Select a Show Time", movieShowTimeList);
 		
-		return showTime;
+		return movieTime;
 	}
 	
 	/**
 	 * This method calculates the price of booking transaction
-	 * @param ageGroupCount an {@code EnumMap} containing the number of tickets for each age group
-	 * @return the price of booking transaction
+	 * @param ageGroupCount an {@code EnumMap} containing the number of tickets in each age group
+	 * @return the total cost of the tickets
 	 */
 	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount) {
 		TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 		
 		double totalPrice = 0;
+		
 		// ??????????
 		for (AgeGroup ageGroup : AgeGroup.values()) {
 			totalPrice += ageGroupCount.get(ageGroup) * ticketPrice.getPrice(
@@ -129,7 +130,6 @@ public class BookingController implements MainControl {
 				movieTime.getMovie().getMovieType()
 			);
 		}
-		
 		return totalPrice;
 	}
 }

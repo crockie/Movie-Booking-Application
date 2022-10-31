@@ -1,5 +1,3 @@
-//HAVENT CHANGED COMMENTS AND VARIABLES YET
-
 package control;
 
 import java.util.List;
@@ -16,7 +14,7 @@ import entity.Movie;
  */
 public class MovieControl implements MainControl {
 	/**
-	 * The customer
+	 * Customer
 	 */
 	private Customer customer;
 	/**
@@ -53,7 +51,7 @@ public class MovieControl implements MainControl {
 					break;
 					
 				case 2:
-					ListView.displayLabelledItemList("Past Reviews & Ratings", movie.getReviewAndRating(), "No reviews & ratings available");
+					ListView.displayLabelledItemList("Reviews & Ratings", movie.getReviewAndRating(), "No Reviews & Ratings available");
 					break;
 					
 				case 3:
