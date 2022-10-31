@@ -22,21 +22,21 @@ import view.IOController;
 import view.MenuView;
 
 /**
- * This class handles the control flow of movie booking for a movie goer
+ * This class handles the control flow of movie booking for a customer
  */
 public class BookingController implements MainControl {
 	/**
-	 * The movie goer who wants to do the booking
+	 * The customer who is doing the booking
 	 */
 	private Customer customer;
 	/**
-	 * The show time that the movie goer wants to book
+	 * The show time that the customer wants to book
 	 */
 	private MovieTime movieTime;
 
 	/**
-	 * Creates a new {@code BookingController} object for the given movie goer
-	 * @param movieGoer the movie goer who wants to do the booking
+	 * Creates a {@code BookingController} object for the customer
+	 * @param customer the customer who wants to do the booking
 	 */
 	public BookingController(Customer customer) {
 		this.customer = customer;
@@ -79,10 +79,10 @@ public class BookingController implements MainControl {
 	}
 	
 	/**
-	 * This method is used to control the flow of the show time selction. The movie goer is asked to select a cineplex, then a movie, then a show time.
-	 * @return the selected  {@code ShowTime} object
+	 * This method is used to control the flow of the show time selction. The customer is asked to select a cineplex, then a movie, then a timing.
+	 * @return the selected  {@code MovieTime} object
 	 */
-	private MovieTime selectShowTime() {
+	private MovieTime selectMovieTime() {
 		// Select a cineplex
 		List<Cineplex> cineplexList = DatabaseManager.getDataBase().getCineplexList();
 		Cineplex cineplex = MenuView.getLabelledItem("Select a Cineplex", cineplexList);
@@ -93,7 +93,6 @@ public class BookingController implements MainControl {
 		
 		// Select a movie
 		List<Movie> movieList = new ArrayList<Movie>();
-		
 		for (Movie movie: showTimesByMovie.keySet()) {
 			ShowStatus showingStatus = movie.getShowStatus();
 			if (showingStatus == showingStatus.PREVIEW || showingStatus == showingStatus.NOW_SHOWING)
