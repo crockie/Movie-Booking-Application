@@ -61,7 +61,7 @@ public class MovieControl implements MainControl {
 					break;
 					
 				case 4:
-					NavigationController.goBack();
+					NavigateControl.popOne();
 					return;
 			}
 		}

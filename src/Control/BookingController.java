@@ -47,11 +47,11 @@ public class BookingController implements MainControl {
 	 */
 	@Override
 	public void begin() {		
-		this.movieTime = selectShowTime();
+		this.movieTime = selectMovieTime();
 		
 		if (movieTime.checkFull()) {
 			IOController.displayMessage("Sorry, this show time is fully booked");
-			NavigationController.goBack();
+			NavigateControl.popOne();
 			return;
 		}
 		
@@ -95,8 +95,8 @@ public class BookingController implements MainControl {
 		// Select a movie
 		List<Movie> movieList = new ArrayList<Movie>();
 		for (Movie movie: showTimesByMovie.keySet()) {
-			ShowStatus showingStatus = movie.getShowStatus();
-			if (showingStatus == showingStatus.PREVIEW || showingStatus == showingStatus.NOW_SHOWING)
+			ShowStatus showStatus = movie.getShowStatus();
+			if (showStatus == showStatus.PREVIEW || showStatus == showStatus.NOW_SHOWING)
 				movieList.add(movie);
 		}
 		
@@ -120,7 +120,7 @@ public class BookingController implements MainControl {
 		TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 		
 		double totalPrice = 0;
-		
+		// ??????????
 		for (AgeGroup ageGroup : AgeGroup.values()) {
 			totalPrice += ageGroupCount.get(ageGroup) * ticketPrice.getPrice(
 				movieTime.getDate(),
