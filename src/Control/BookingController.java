@@ -64,6 +64,7 @@ public class BookingController implements MainControl {
 		
 		boolean confirm = IOController.readBoolean("Confirm booking (y/n): ", "y", "n");
 		
+		// ????
 		if (confirm) {
 			Booking booking = movieTime.createBooking(customer, selectedSeats, totalPrice);
 			BookingView.displaySeats(movieTime);
