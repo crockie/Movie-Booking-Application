@@ -1,6 +1,6 @@
 package control;
 
-import view.ShowTimeView;
+import boundary.ShowTimeView;
 
 /**
  * This class controls the display of all the available movie times

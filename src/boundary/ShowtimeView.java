@@ -1,4 +1,4 @@
-package view;
+package boundary;
 
 import java.util.List;
 import java.util.Map;

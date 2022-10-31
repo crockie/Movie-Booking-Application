@@ -1,7 +1,7 @@
 package control;
 
-import view.IOController; // Need to implement
-import view.MenuView; // Need to implement
+import boundary.IOController;
+import boundary.MenuView;
 
 /**
  * Controls the selection of the respective user portal

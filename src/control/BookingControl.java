@@ -8,6 +8,9 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import boundary.BookingView;
+import boundary.IOController;
+import boundary.MenuView;
 import entity.AgeGroup;
 import entity.Booking;
 import entity.Cineplex;
@@ -17,9 +20,6 @@ import entity.Movie;
 import entity.MovieTime;
 import entity.ShowStatus;
 import entity.TicketPrice;
-import view.BookingView;
-import view.IOController;
-import view.MenuView;
 
 /**
  * This class handles the control flow of movie booking for a customer
