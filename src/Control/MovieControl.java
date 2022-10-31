@@ -49,7 +49,7 @@ public class MovieControl implements MainControl {
 		
 			switch (option) {
 				case 1:
-					MovieView.printMovieDetails(movie);
+					MovieView.printMovieDetails(this.movie);
 					break;
 					
 				case 2:
@@ -57,7 +57,7 @@ public class MovieControl implements MainControl {
 					break;
 					
 				case 3:
-					MovieView.addMovieReview(movie, customer);
+					MovieView.addMovieReview(this.movie, this.customer);
 					break;
 					
 				case 4:
