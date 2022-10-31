@@ -16,7 +16,7 @@ import entity.Movie;
  */
 public class MovieControl implements MainControl {
 	/**
-	 * The movie goer that wants to view the movie
+	 * The customer
 	 */
 	private Customer customer;
 	/**
@@ -25,8 +25,8 @@ public class MovieControl implements MainControl {
 	private Movie movie;
 	
 	/**
-	 * Creates a new {@code MovieController} object for the given movie goer
-	 * @param movieGoer the movie goer that wants to view the movie
+	 * Creates a new {@code MovieControl} object for the customer
+	 * @param customer the customer that wants to view the movie
 	 */
 	public MovieControl(Customer customer) {
 		this.customer = customer;
