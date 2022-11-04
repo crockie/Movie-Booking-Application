@@ -13,7 +13,15 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * To edit the ticket price (Normal Price and Additional Price)
+ */
 public class TicketPriceEditView {
+    /**
+     * Edit the normal price of the ticket
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateNormalPrice(TicketPrice ticketPrice) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Current normal price is: " + ticketPrice.getNormalPrice());
@@ -21,6 +29,11 @@ public class TicketPriceEditView {
         ticketPrice.setNormalPrice(newNormalPrice);
     }
 
+    /**
+     * Edit the additional price of the ticket
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateAdditionalPrice(TicketPrice ticketPrice) {
         System.out.println("Select the type to modify the additional price: ");
         System.out.println("1) Movie Type");
@@ -47,6 +60,11 @@ public class TicketPriceEditView {
         }
     }
 
+    /**
+     * Edit the additional price according to cinema class
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateCinemaAdditionalPrice(TicketPrice ticketPrice) {
         CinemaClass cinemaClass = MenuView.getLabelledItem("Please select the cinema class to be modified:",
                 CinemaClass.values());
@@ -60,6 +78,11 @@ public class TicketPriceEditView {
         ticketPrice.setCinemaClassPrice(cinemaClass, newCinemaClassPrice);
     }
 
+    /**
+     * Edit the additional price according to movie type
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateMovieAdditionalPrice(TicketPrice ticketPrice) {
         MovieType movieType = MenuView.getLabelledItem("Please select the movie type to be modified:",
                 MovieType.values());
@@ -73,6 +96,11 @@ public class TicketPriceEditView {
         ticketPrice.setMovieTypePrice(movieType, newMovieTypePrice);
     }
 
+    /**
+     * Edit the additional price according to age group
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateAgeAdditionalPrice(TicketPrice ticketPrice) {
         AgeGroup ageGroup = MenuView.getLabelledItem("Please select the cinema class to be modified:",
                 AgeGroup.values());
@@ -86,6 +114,11 @@ public class TicketPriceEditView {
         ticketPrice.setAgePrice(ageGroup, newAgeGroupPrice);
     }
 
+    /**
+     * Edit the additional price according to date group
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void updateDateAdditionalPrice(TicketPrice ticketPrice) {
         DateGroup dateGroup = MenuView.getLabelledItem("Please select the cinema class to be modified:",
                 AgeGroup.values());
@@ -99,6 +132,11 @@ public class TicketPriceEditView {
         ticketPrice.setDatePrice(dateGroup, newDateGroupPrice);
     }
 
+    /**
+     * Add holiday to holiday array
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void addHoliday(TicketPrice ticketPrice) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Scanner sc = new Scanner(System.in);
@@ -118,6 +156,11 @@ public class TicketPriceEditView {
         ticketPrice.getHoliday().add(holidayDate);
     }
 
+    /**
+     * Remove holiday from holiday array
+     * 
+     * @param ticketPrice Ticket Price database
+     */
     public static void removeHoliday(TicketPrice ticketPrice) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(("dd/MM/yyyy"));
         ArrayList<LocalDate> holidayDates = ticketPrice.getHoliday();
