@@ -8,10 +8,15 @@ import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 import entity.*;
 
+/*
+ * This class is the boundary class for the show time edit view
+ */
 public class MovieTimeEditView {
+    /*
+     * This method is used to display the add show time view
+     */
     public static LocalDateTime addMovieTime(){
         Scanner sc = new Scanner(System.in);
 
@@ -46,7 +51,9 @@ public class MovieTimeEditView {
             sc.close();
         }
     }
-
+    /*
+     * This method is used to display the remove show time view
+     */
     public static void removeMovieTime() {
         Scanner sc = new Scanner(System.in);
 
@@ -62,7 +69,9 @@ public class MovieTimeEditView {
             sc.close();
         }
     }
-
+    /*
+     * This method is used to update the show time of a movie
+     */
     public static void updateMovieTime(){
         Scanner sc = new Scanner(System.in);
 
@@ -110,7 +119,9 @@ public class MovieTimeEditView {
             sc.close();
         }
     }
-
+    /*
+     * This method is used to check if the movie time clashes with another movie time
+     */
     public static boolean isClash(LocalDateTime movieTime, Duration duration, Cinema cinema) {
         ArrayList<MovieTime> movieTimeList = cinema.getMovieTimes();
         

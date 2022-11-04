@@ -64,7 +64,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName{
      */
     public String createTransactionId() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
-		String transaction = cinema.getName() + LocalDateTime.now().format(format);
+		String transaction = cinema.getCinemaCode() + LocalDateTime.now().format(format);
 		return transaction;
 	}
 
