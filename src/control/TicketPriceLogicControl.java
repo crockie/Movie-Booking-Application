@@ -2,8 +2,8 @@ package control;
 
 import entity.DatabaseManager;
 import entity.TicketPrice;
-import view.MenuView;
-import view.PricingSchemeEditView;
+import boundary.MenuView;
+import boundary.TicketPriceEditView;
 
 /**
  * This class controls the change of the ticket prices and the list of holidays.
@@ -22,28 +22,33 @@ public class TicketPriceLogicControl implements MainControl {
 			int option = MenuView.getMenuOption(
 				"Enter your choice: ",
 				"Edit normal price",
-				"Edit modifiers",
-				"Edit list of holidays",
+				"Edit additional price",
+				"Add holidays",
+				"Remove holidays",
 				"Exit"
 			);
 			
 			switch (option) {
 				case 1:
-					PricingSchemeEditView.updateNormalPrice(ticketPrice);
+					TicketPriceEditView.updateNormalPrice(ticketPrice);
 					break;
 					
 				case 2:
-					PricingSchemeEditView.updateModifiers(ticketPrice);
+					TicketPriceEditView.updateAdditionalPrice(ticketPrice);(ticketPrice);
 					break;
 					
 				case 3:
-					PricingSchemeEditView.updateHolidays(ticketPrice);
+					TicketPriceEditView.addHoliday(ticketPrice);
 					break;
-					
+				
 				case 4:
+					TicketPriceEditView.removeHoliday(ticketPrice);
+					break;
+
+				case 5:
 					NavigateControl.popOne();
 					return;
 			}
 		}
-	}	            		
+	}
 }
