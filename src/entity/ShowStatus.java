@@ -23,7 +23,7 @@ public enum ShowStatus implements ItemName {
     /**
     * End of showing
     */    
-    END_OF_SHOWING("End of Showing"); /** Assignment does not ask for End Of Showing, delete? */
+    END_OF_SHOWING("End of Showing");
 
     /**
     * The name of the showing status
