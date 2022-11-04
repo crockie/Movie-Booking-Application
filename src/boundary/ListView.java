@@ -1,6 +1,7 @@
 package boundary;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import entity.ItemName;
 
@@ -15,7 +16,7 @@ public class ListView {
      * @param stringList The list of strings
      * @param nullString The string to show if the stringList is empty
      */
-    public static void showStringList(String name, ArrayList<String> stringList, String nullString) {
+    public static void showStringList(String name, List<String> stringList, String nullString) {
         System.out.println(name);
 
         if (stringList.size() == 0)
@@ -37,7 +38,7 @@ public class ListView {
      */
     public static <T extends ItemName> void showItemList(String name, ArrayList<T> itemList,
             String nullString) {
-        ArrayList<String> stringList = new ArrayList<String>();
+        List<String> stringList = new ArrayList<String>();
 
         for (ItemName itemName : itemList) {
             stringList.add(itemName.nameToString());
