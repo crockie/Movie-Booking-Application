@@ -9,7 +9,7 @@ import entity.Cineplex;
 import entity.Customer;
 import entity.DatabaseManager;
 import entity.MovieTime;
-import view.ListView;
+import boundary.ListView;
 
 /**
  * This class manages the display of the booking history for the Customer
@@ -35,7 +35,7 @@ public class BookingHistoryControl implements MainControl {
 	 */
 	@Override
 	public void begin() {
-		ListView.displayList("Booking History", getBookingHistory(), "No bookings made by this customer");
+		ListView.showStringList("Booking History", getBookingHistory(), "No bookings made by this customer");
 		NavigationController.goBack();
 	}
 
