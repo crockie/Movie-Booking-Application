@@ -40,14 +40,13 @@ public class MenuView {
 	
 	/**
 	 * This method display the numbered list of options and prompts the user choose an option. The numbering starts from 1.
-	 * @param <T> a class that implements the {@code LabelledItem} interface
+	 * @param <T> a class that implements the {@code ItemName} interface
 	 * @param title the title of the menu
 	 * @param itemNames the options of type {@code T}
 	 * @return the selected {@code T} object
 	 */
 	public static <T extends ItemName> T getItemName(String title, T[] itemNames) {
 		String[] options = new String[itemNames.length];
-		
 		for (int i = 0; i < itemNames.length; i++)
 			options[i] = itemNames[i].nameToString();
 		
@@ -66,11 +65,17 @@ public class MenuView {
 	public static <T extends ItemName> T getItemName(String title, List<T> itemNames) {
 		int size = itemNames.size();
 		String[] options = new String[size];
-		int i = 0;
+		for (int i = 0; i < size; i ++) {
+			options[i] = itemNames.get(i+1).nameToString();
+		}
+	
+		/*
+		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		 * int i = 0;
 		for (T itemName: itemNames) {
 			options[i] = itemName.nameToString();
 			i++;
-		}
+		}*/
 		int option = getMenuOption(title, options);
 		return itemNames.get(option - 1);
 	}
