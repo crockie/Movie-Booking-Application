@@ -2,7 +2,7 @@ package control;
 
 import java.util.List;
 
-import view.ListView;
+import boundary.ListView;
 import view.MenuView;
 import view.MovieView;
 import entity.Customer;
@@ -21,52 +21,54 @@ public class MovieControl implements MainControl {
 	 * The selected movie
 	 */
 	private Movie movie;
-	
+
 	/**
 	 * Creates a new {@code MovieControl} object for the customer
+	 * 
 	 * @param customer the customer that wants to view the movie
 	 */
 	public MovieControl(Customer customer) {
 		this.customer = customer;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void begin() {
 		this.movie = selectMovie();
-		
+
 		while (true) {
 			int option = MenuView.getMenuOption(
-				this.movie.getTitle(),
-				"View movie details",
-				"View past reviews & ratings",
-				"Add a review",
-				"Exit"
-			);
-		
+					this.movie.getTitle(),
+					"View movie details",
+					"View past reviews & ratings",
+					"Add a review",
+					"Exit");
+
 			switch (option) {
 				case 1:
 					MovieView.printMovieDetails(this.movie);
 					break;
-					
+
 				case 2:
-					ListView.displayLabelledItemList("Reviews & Ratings", movie.getReviewAndRating(), "No Reviews & Ratings available");
+					ListView.showItemList("Reviews & Ratings", movie.getReviewAndRating(),
+							"No Reviews & Ratings available");
 					break;
-					
+
 				case 3:
 					MovieView.addMovieReview(this.movie, this.customer);
 					break;
-					
+
 				case 4:
 					NavigateControl.popOne();
 					return;
 			}
 		}
 	}
-	
+
 	/**
 	 * This method controls the selection of the movie
+	 * 
 	 * @return the selected movie
 	 */
 	private Movie selectMovie() {
