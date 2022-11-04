@@ -22,8 +22,7 @@ public class CinemaStaffControl implements MainControl {
             int choice = MenuView.getMenuOption(
                     "Please select an option:",
                     "Login",
-                    "Exit"
-            );
+                    "Exit");
 
             switch (choice) {
                 case 1:
@@ -50,8 +49,7 @@ public class CinemaStaffControl implements MainControl {
                 "Modify Movie Listings",
                 "Modify Cinema Showtimes",
 
-                "Exit"
-        );
+                "Exit");
 
         switch (choice) {
             case 1:
@@ -59,7 +57,7 @@ public class CinemaStaffControl implements MainControl {
                 break;
 
             case 2:
-                NavigateControl.load(new PricingSchemeEditController());
+                NavigateControl.load(new TicketPriceLogicControl());
                 break;
 
             case 3:
