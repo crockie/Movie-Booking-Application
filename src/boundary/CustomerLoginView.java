@@ -1,5 +1,8 @@
 package boundary;
 
+import java.io.Console;
+import java.util.Scanner;
+
 import entity.*;
 
 /**
@@ -41,24 +44,21 @@ public class CustomerLoginView {
 		}
 		
 		System.out.print("Name: ");
-		Scanner sc = new Scanner(System.in);
 		String name = sc.nextLine();
 		
 		int mobileNumber=0;
 		while (true) {
 			try {
 				System.out.print("Mobile Number: ");
-				Scanner sc = new Scanner(System.in);
 				mobileNumber = sc.nextInt();
 				break;
 
-			} catch (InputMismatchException e) {
+			} catch (Exception e) {
 				System.out.println("Please enter an integer");
 			}
 		}
 		
 		System.out.print("Email Address: ");
-		Scanner sc = new Scanner(System.in);	
 		String emailAddress = sc.nextLine();
 		
 		String password1 = "", password2;
@@ -79,6 +79,7 @@ public class CustomerLoginView {
 		if (!DatabaseManager.getDataBase().addCustomer(customer))
 			System.out.println("Error: Unable to add customer");
 		
+		sc.close();
 		return customer;
 	}
 	
@@ -93,6 +94,7 @@ public class CustomerLoginView {
 		
 		if (!DatabaseManager.getDataBase().checkCustomerUsername(username)) {
 			System.out.println("Error: User with that that username doesn't exist");
+			sc.close();
 			return null;
 		}
 		
@@ -103,6 +105,7 @@ public class CustomerLoginView {
 		if (customer == null)
 			System.out.println("Error: Incorrect password");
 		
+		sc.close();
 		return customer;
 	}
 }

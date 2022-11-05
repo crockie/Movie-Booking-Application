@@ -27,21 +27,28 @@ public class CinemaStaffLoginView {
 		}
 		
 		System.out.println("Please enter your password: ");
-		Console console = System.console();
 
-		String password;
-		if (console != null) {
-			password = new String(console.readPassword());
-		} else {
-			password = sc.nextLine();
-		}
-		
-		System.out.println("Logging in...");
+		String password = inputPassword("Password: ");
 		
 		CinemaStaff cinemaStaff = DatabaseManager.getDataBase().getCinemaStaff(username, password);
 		
 		if (cinemaStaff == null)
 			System.out.println("Error: Incorrect password");
 		return cinemaStaff;
+	}
+
+	public static String inputPassword(String message) {
+		Console console = System.console();
+		if (console != null) {
+			char[] passwordArray = console.readPassword(message);
+		    return new String(passwordArray);
+
+		} 
+		else {
+			// Fallback
+			System.out.print(message);
+			Scanner sc = new Scanner(System.in);
+			return sc.nextLine();
+		}
 	}
 }
