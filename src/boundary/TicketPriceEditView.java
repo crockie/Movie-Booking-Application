@@ -4,7 +4,6 @@ import entity.AgeGroup;
 import entity.DateGroup;
 import entity.CinemaClass;
 import entity.MovieType;
-import entity.Ticket;
 import entity.TicketPrice;
 
 import java.time.LocalDate;
