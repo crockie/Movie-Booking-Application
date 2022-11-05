@@ -26,7 +26,7 @@ public class UserControl implements MainControl {
                 break;
 
             case 2:
-                NavigateControl.load(new CinemaStaffController());
+                NavigateControl.load(new CinemaStaffControl());
                 break;
 
             case 3:

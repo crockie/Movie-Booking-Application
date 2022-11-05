@@ -204,6 +204,15 @@ public class MovieTime implements Serializable, BookMovie, ItemName{
     }
 
     /** 
+     * This method returns the cinema
+     * @return Cinema the cinema where the movie is shown
+     */
+    public Cinema getCinema() {
+        return this.cinema;
+    }
+
+
+    /** 
      * This method remove the movie time from the movie and cinema
      */
     public void remove() {

@@ -1,5 +1,8 @@
 package boundary;
 
+import java.io.Console;
+import java.util.Scanner;
+
 import entity.CinemaStaff;
 import entity.DatabaseManager;
 
@@ -13,20 +16,32 @@ public class CinemaStaffLoginView {
 	 * @return the logged in cinema staff
 	 */
 	public static CinemaStaff loginCinemaStaff() {
-		String username = IOController.readLine("Username: ");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Cinema Staff Login");
+		System.out.println("Please enter your username: ");
+		String username = sc.nextLine();
 		
-		if (!DataManager.getDataStore().checkCinemaStaffUsername(username)) {
-			IOController.displayMessage("Error: User with that that username doesn't exist");
+		if (!DatabaseManager.getDataBase().checkStaffUsername(username)) {
+			System.out.println("Error: User with that that username doesn't exist");
 			return null;
 		}
 		
-		String password = IOController.readPassword("Password: ");
+		System.out.println("Please enter your password: ");
+		Console console = System.console();
+
+		String password;
+		if (console != null) {
+			password = new String(console.readPassword());
+		} else {
+			password = sc.nextLine();
+		}
+		
+		System.out.println("Logging in...");
 		
 		CinemaStaff cinemaStaff = DatabaseManager.getDataBase().getCinemaStaff(username, password);
 		
 		if (cinemaStaff == null)
-			IOController.displayMessage("Error: Incorrect password");
-
+			System.out.println("Error: Incorrect password");
 		return cinemaStaff;
 	}
 }

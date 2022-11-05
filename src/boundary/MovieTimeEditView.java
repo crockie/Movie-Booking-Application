@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class MovieTimeEditView {
     /*
      * This method is used to display the add show time view
      */
-    public static LocalDateTime addMovieTime() {
+    public static void addMovieTime() {
         Scanner sc = new Scanner(System.in);
 
         try {
@@ -35,12 +34,14 @@ public class MovieTimeEditView {
             while (true) {
                 try {
                     movieTime = LocalDateTime.parse(sc.nextLine(), format);
+                    break;
                 } catch (DateTimeParseException e) {
                     System.out.println("Invalid date and time format. Please try again.");
                 }
             }
 
             Duration duration = movie.getDuration();
+            
             if (isClash(movieTime, duration, cinema)) {
                 System.out.println("Movie time clashes with another movie time. Please try again.");
             } else {
@@ -99,12 +100,14 @@ public class MovieTimeEditView {
                     while (true) {
                         try {
                             mt = LocalDateTime.parse(sc.nextLine(), format);
+                            break;
                         } catch (DateTimeParseException e) {
                             System.out.println("Invalid date and time format. Please try again.");
                         }
                     }
 
                     Duration duration = movieTime.getMovie().getDuration();
+
                     if (isClash(mt, duration, cinema)) {
                         System.out.println("Movie time clashes with another movie time. Please try again.");
                     } else {

@@ -36,7 +36,7 @@ public class BookingHistoryControl implements MainControl {
 	@Override
 	public void begin() {
 		ListView.showStringList("Booking History", getBookingHistory(), "No bookings made by this customer");
-		NavigationController.goBack();
+		NavigateControl.popOne();
 	}
 
 	/**

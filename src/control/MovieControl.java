@@ -3,8 +3,8 @@ package control;
 import java.util.List;
 
 import boundary.ListView;
-import view.MenuView;
-import view.MovieView;
+import boundary.MenuView;
+import boundary.MovieView;
 import entity.Customer;
 import entity.DatabaseManager;
 import entity.Movie;
@@ -47,7 +47,7 @@ public class MovieControl implements MainControl {
 
 			switch (option) {
 				case 1:
-					MovieView.printMovieDetails(this.movie);
+					MovieView.getMovieView(this.movie);
 					break;
 
 				case 2:

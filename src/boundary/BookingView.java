@@ -43,7 +43,7 @@ public class BookingView {
                 selectedSeat[row][col - 1] = true;
             }
 
-            if (showTime.checkFull(selectedSeat)) {
+            if (showTime.checkAvailability(selectedSeat)) {
                 break;
 
             } else {

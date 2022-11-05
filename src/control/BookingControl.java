@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import boundary.BookingView;
-import boundary.IOController;
 import boundary.MenuView;
 import entity.AgeGroup;
 import entity.Booking;
@@ -24,7 +24,7 @@ import entity.TicketPrice;
 /**
  * This class handles the control flow of movie booking for a customer
  */
-public class BookingController implements MainControl {
+public class BookingControl implements MainControl {
 	/**
 	 * The customer who is doing the booking
 	 */
@@ -39,7 +39,7 @@ public class BookingController implements MainControl {
 	 * 
 	 * @param customer the customer who wants to do the booking
 	 */
-	public BookingController(Customer customer) {
+	public BookingControl(Customer customer) {
 		this.customer = customer;
 	}
 
@@ -51,30 +51,70 @@ public class BookingController implements MainControl {
 		this.movieTime = selectMovieTime();
 
 		if (movieTime.checkFull()) {
-			IOController.displayMessage("Sorry, this show time is fully booked");
+			System.out.println("Sorry, this show time is fully booked");
 			NavigateControl.popOne();
 			return;
 		}
 
 		BookingView.displaySeats(movieTime);
 
-		int number = IOController.readInt("How many seats would you like to book: ");
+		int number;
+
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			try{
+				System.out.println("How many seats would you like to book: ");
+				number = sc.nextInt(); 
+				break;
+			} catch (Exception e) {
+				System.out.println("Please enter a valid number");
+				continue;
+			} finally {
+				sc.close();
+			} 
+		}
+
 		boolean[][] selectedSeats = BookingView.getSeats(number, movieTime);
 		EnumMap<AgeGroup, Integer> ageGroupCount = BookingView.getAgeGroupCount(number);
 		double totalPrice = calculatePrice(ageGroupCount);
 
-		boolean confirm = IOController.readBoolean("Confirm booking (y/n): ", "y", "n");
+		boolean confirm;
 
-		// ????
+		while(true){
+			Scanner sc = new Scanner(System.in);
+			try{
+				System.out.println("Confirm booking (y/n): ");
+				String input = sc.nextLine();
+
+				if(input.equals("y")){
+					confirm = true;
+					break;
+				} else if(input.equals("n")){
+					confirm = false;
+					break;
+				} else {
+					System.out.println("Please enter a valid input");
+					continue;
+				}
+			} catch (Exception e) {
+				System.out.println("Please enter a valid input");
+				continue;
+			} finally {
+				sc.close();
+			}
+			
+		}
+
 		if (confirm) {
 			Booking booking = movieTime.createBooking(customer, selectedSeats, totalPrice);
 			BookingView.displaySeats(movieTime);
-			IOController.displayMessage("Booking successful!");
-			IOController.displayMessage("Transaction ID: " + booking.getTransactionId());
+			System.out.println("Booking successful!");
+			System.out.println("Transaction ID: " + booking.getTransactionId());
 			BookingView.printBookInfo(ageGroupCount, totalPrice);
 
 		} else {
-			IOController.displayMessage("Booking cancelled");
+			System.out.println("Booking cancelled");
+
 		}
 
 		NavigateControl.popOne();
@@ -98,17 +138,18 @@ public class BookingController implements MainControl {
 
 		// Select a movie
 		List<Movie> movieList = new ArrayList<Movie>();
-		for (Movie movie : movieTimesByMovie.keySet()) {
-			ShowStatus showStatus = movie.getShowStatus();
-			if (showStatus == showStatus.PREVIEW || showStatus == showStatus.NOW_SHOWING)
-				movieList.add(movie);
+		for (Movie m : movieTimesByMovie.keySet()) {
+			ShowStatus showStatus = m.getShowStatus();
+			if (showStatus == showStatus.PREVIEW || showStatus == showStatus.NOW_SHOWING) {
+				movieList.add(m);
+			}
 		}
 
 		Movie movie = MenuView.getItemName("Select a movie", movieList);
 
 		// Select a movie show time
 		List<MovieTime> movieShowTimeList = movieTimesByMovie.get(movie);
-		Comparator<MovieTime> dateComparator = Comparator.comparing(MovieTime::getStartDateTime);
+		Comparator<MovieTime> dateComparator = Comparator.comparing(MovieTime::getMovieDateTime);
 		movieShowTimeList.sort(dateComparator);
 		MovieTime movieTime = MenuView.getItemName("Select a Show Time", movieShowTimeList);
 

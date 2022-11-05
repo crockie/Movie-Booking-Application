@@ -1,8 +1,8 @@
 package control;
 
 import entity.Customer;
-import view.MenuView;
-import view.CustomerLoginView;
+import boundary.MenuView;
+import boundary.CustomerLoginView;
 
 /**
  * This class controls the sign up, login and main menu for Customers
@@ -36,7 +36,7 @@ public class CustomerControl implements MainControl {
 					break;
 					
 				case 3:
-					NavigationController.goBack();
+					NavigateControl.popOne();
 					return;
 			}
 		}
@@ -61,28 +61,28 @@ public class CustomerControl implements MainControl {
 		
 		switch (option) {
 			case 1:
-				NavigationController.load(new MovieTimeControl());
+				NavigateControl.load(new MovieTimeControl());
 				break;
 				
 			case 2:
-				NavigationController.load(new BookingController(customer));
+				NavigateControl.load(new BookingControl(customer));
 				break;
 				
 			case 3:
-				NavigationController.load(new MovieControl(customer));
+				NavigateControl.load(new MovieControl(customer));
 				break;
 				
 				
 			case 4:
-				NavigationController.load(new TopMoviesControl());
+				NavigateControl.load(new TopMoviesControl());
 				break;
 				
 			case 5:
-				NavigationController.load(new BookingHistoryControl(customer));
+				NavigateControl.load(new BookingHistoryControl(customer));
 				break;
 				
 			case 6:
-				NavigationController.goBack();
+				NavigateControl.popOne();
 				break;
 		}
 	}

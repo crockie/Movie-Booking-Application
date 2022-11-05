@@ -34,7 +34,7 @@ public class TicketPriceLogicControl implements MainControl {
 					break;
 					
 				case 2:
-					TicketPriceEditView.updateAdditionalPrice(ticketPrice);(ticketPrice);
+					TicketPriceEditView.updateAdditionalPrice(ticketPrice);
 					break;
 					
 				case 3:
