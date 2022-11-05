@@ -1,3 +1,5 @@
+package code;
+
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -7,6 +9,8 @@ import entity.Movie;
 import entity.MovieRating;
 import entity.MovieType;
 import entity.ShowStatus;
+
+
 
 public class MovieDB extends Database{
     
@@ -66,10 +70,13 @@ public class MovieDB extends Database{
             List movies = new ArrayList<Movie>();
             movies = movieDB.read("movies.csv");
             
-            for(int i = 0; i < movies.size(); i++){
-                for(int j = 0; j < 8; j++){
-                    System.out.println(movies.get(i));
-                }
+            for (int i = 0; i < movies.size(); i++) {
+                Movie movie = (Movie) movies.get(i);
+                System.out.println(movie.getTitle());
+                System.out.println(movie.getSynopsis());
+                System.out.println(movie.getDirector());
+                System.out.println(movie.getCast());
+                System.out.println(movie.getShowStatus());
             }
         }catch(Exception e){
             e.printStackTrace();

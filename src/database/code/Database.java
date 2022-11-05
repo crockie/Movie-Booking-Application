@@ -1,3 +1,5 @@
+package code;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Writer;
@@ -12,7 +14,7 @@ import com.opencsv.*;
  * This class is used to read and write data from and to a CSV file.
  *
  */
-abstract class Database {
+abstract class Database{
     /**
      * This method is used to read data from a CSV file.
      *
