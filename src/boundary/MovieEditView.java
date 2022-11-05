@@ -95,6 +95,7 @@ public class MovieEditView {
                 case 4:
                     System.out.println("Enter the number of casts: ");
                     String[] castNames = new String[sc.nextInt()];
+                    sc.nextLine();
                     for (int i = 0; i < castNames.length; i++) {
                         System.out.println("Enter the name of cast " + (i + 1) + ": ");
                         castNames[i] = sc.nextLine();
