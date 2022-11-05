@@ -13,7 +13,7 @@ public class MovieEditView {
     /*
      * This method is used to display the add movie view
      */
-    public static void addMovie(){
+    public static void addMovie() {
         Scanner sc = new Scanner(System.in);
         try {
             System.out.println("Enter the title of the movie: ");
@@ -23,7 +23,7 @@ public class MovieEditView {
             System.out.println("Enter the director of the movie: ");
             String director = sc.nextLine();
 
-            //change to array list?
+            // change to array list?
             System.out.println("Enter the number of casts: ");
             String[] castNames = new String[sc.nextInt()];
             for (int i = 0; i < castNames.length; i++) {
@@ -35,10 +35,10 @@ public class MovieEditView {
             int durationMovie = sc.nextInt();
             Duration duration = Duration.ofMinutes(durationMovie);
 
-            //waiting for MenuView to be done
-            MovieRating movieRating = MenuView.getLabelledItem("Release rating: ", MovieRating.values());
-            MovieType movieType = MenuView.getLabelledItem("Movie type: ", MovieType.values());
-            ShowStatus showStatus = MenuView.getLabelledItem("Show status: ", ShowStatus.values());
+            // waiting for MenuView to be done
+            MovieRating movieRating = MenuView.getItemName("Release rating: ", MovieRating.values());
+            MovieType movieType = MenuView.getItemName("Movie type: ", MovieType.values());
+            ShowStatus showStatus = MenuView.getItemName("Show status: ", ShowStatus.values());
 
             Movie movie = new Movie(title, synopsis, director, castNames, showStatus, movieRating, movieType, duration);
             DatabaseManager.getDataBase().getMovieList().add(movie);
@@ -51,18 +51,18 @@ public class MovieEditView {
     /*
      * This method is used to display the remove movie view
      */
-    public static void removeMovie(){
+    public static void removeMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
-        Movie movie = MenuView.getLabelledItem("Select a movie to remove: ", movieList);
+        Movie movie = MenuView.getItemName("Select a movie to remove: ", movieList);
         movie.setShowStatus(ShowStatus.END_OF_SHOWING);
     }
 
     /*
      * This method is used to display the update movie view
      */
-    public static void updateMovie(){
+    public static void updateMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
-        Movie movie = MenuView.getLabelledItem("Select a movie to update: ", movieList);
+        Movie movie = MenuView.getItemName("Select a movie to update: ", movieList);
 
         int option = MenuView.getMenuOption(
                 "What do you want to update?",
@@ -73,13 +73,12 @@ public class MovieEditView {
                 "Duration",
                 "Movie rating",
                 "Movie type",
-                "Show status"
-        );
-        
+                "Show status");
+
         Scanner sc = new Scanner(System.in);
 
         try {
-            switch(option){
+            switch (option) {
                 case 1:
                     System.out.println("Enter the new title: ");
                     movie.setTitle(sc.nextLine());
@@ -108,13 +107,13 @@ public class MovieEditView {
                     movie.setDuration(duration);
                     break;
                 case 6:
-                    movie.setMovieRating(MenuView.getLabelledItem("Release rating: ", MovieRating.values()));
+                    movie.setMovieRating(MenuView.getItemName("Release rating: ", MovieRating.values()));
                     break;
                 case 7:
-                    movie.setMovieType(MenuView.getLabelledItem("Movie type: ", MovieType.values()));
+                    movie.setMovieType(MenuView.getItemName("Movie type: ", MovieType.values()));
                     break;
                 case 8:
-                    movie.setShowStatus(MenuView.getLabelledItem("Show status: ", ShowStatus.values()));
+                    movie.setShowStatus(MenuView.getItemName("Show status: ", ShowStatus.values()));
                     break;
             }
 
