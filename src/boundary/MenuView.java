@@ -34,10 +34,10 @@ public class MenuView {
 		}
 		
 		int option;
-		
+		Scanner sc = new Scanner(System.in);
+
 		while (true) {
 			System.out.print("Option: ");
-			Scanner sc = new Scanner(System.in);
 			option = sc.nextInt();
 			
 			if (option >= 1 && option <= options.length)
@@ -47,7 +47,6 @@ public class MenuView {
 		}
 		
 		System.out.println("");
-		
 		return option;
 	}
 	
@@ -79,7 +78,7 @@ public class MenuView {
 		int size = itemNames.size();
 		String[] options = new String[size];
 		for (int i = 0; i < size; i ++) {
-			options[i] = itemNames.get(i+1).nameToString();
+			options[i] = itemNames.get(i).nameToString();
 		}
 	
 		/*

@@ -19,38 +19,36 @@ public class MovieTimeEditView {
     public static void addMovieTime() {
         Scanner sc = new Scanner(System.in);
 
-        try {
-            Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
-                    DatabaseManager.getDataBase().getCineplexList());
+        
+        Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
+                DatabaseManager.getDataBase().getCineplexList());
 
-            ArrayList<Cinema> cinemaList = cineplex.getCinemas();
-            Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
-            Movie movie = MenuView.getItemName("Select a movie: ", DatabaseManager.getDataBase().getMovieList());
+        ArrayList<Cinema> cinemaList = cineplex.getCinemas();
+        Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
+        Movie movie = MenuView.getItemName("Select a movie: ", DatabaseManager.getDataBase().getMovieList());
 
-            System.out.println("Enter movie start date and time (dd/MM/yyyy HH:mm): ");
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        System.out.println("Enter movie start date and time (dd/MM/yyyy HH:mm): ");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-            LocalDateTime movieTime;
-            while (true) {
-                try {
-                    movieTime = LocalDateTime.parse(sc.nextLine(), format);
-                    break;
-                } catch (DateTimeParseException e) {
-                    System.out.println("Invalid date and time format. Please try again.");
-                }
+        LocalDateTime movieTime;
+        while (true) {
+            try {
+                movieTime = LocalDateTime.parse(sc.nextLine(), format);
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date and time format. Please try again.");
             }
-
-            Duration duration = movie.getDuration();
-            
-            if (isClash(movieTime, duration, cinema)) {
-                System.out.println("Movie time clashes with another movie time. Please try again.");
-            } else {
-                cinema.addMovieTime(movieTime, movie);
-            }
-
-        } finally {
-            sc.close();
         }
+
+        Duration duration = movie.getDuration();
+        
+        if (isClash(movieTime, duration, cinema)) {
+            System.out.println("Movie time clashes with another movie time. Please try again.");
+        } else {
+            cinema.addMovieTime(movieTime, movie);
+        }
+
+        
     }
 
     /*
@@ -59,18 +57,16 @@ public class MovieTimeEditView {
     public static void removeMovieTime() {
         Scanner sc = new Scanner(System.in);
 
-        try {
-            Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
-                    DatabaseManager.getDataBase().getCineplexList());
+    
+        Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
+                DatabaseManager.getDataBase().getCineplexList());
 
-            ArrayList<Cinema> cinemaList = cineplex.getCinemas();
-            Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
-            MovieTime movieTime = MenuView.getItemName("Select a movie time to remove: ", cinema.getMovieTimes());
-            movieTime.remove();
+        ArrayList<Cinema> cinemaList = cineplex.getCinemas();
+        Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
+        MovieTime movieTime = MenuView.getItemName("Select a movie time to remove: ", cinema.getMovieTimes());
+        movieTime.remove();
 
-        } finally {
-            sc.close();
-        }
+        
     }
 
     /*
@@ -79,51 +75,48 @@ public class MovieTimeEditView {
     public static void updateMovieTime() {
         Scanner sc = new Scanner(System.in);
 
-        try {
-            Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
-                    DatabaseManager.getDataBase().getCineplexList());
+        Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
+                DatabaseManager.getDataBase().getCineplexList());
 
-            ArrayList<Cinema> cinemaList = cineplex.getCinemas();
-            Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
-            MovieTime movieTime = MenuView.getItemName("Select a movie time to update: ", cinema.getMovieTimes());
+        ArrayList<Cinema> cinemaList = cineplex.getCinemas();
+        Cinema cinema = MenuView.getItemName("Select a cinema: ", cinemaList);
+        MovieTime movieTime = MenuView.getItemName("Select a movie time to update: ", cinema.getMovieTimes());
 
-            int option = MenuView.getMenuOption(
-                    "Select an option: ",
-                    "Movie date and time",
-                    "Movie");
+        int option = MenuView.getMenuOption(
+                "Select an option: ",
+                "Movie date and time",
+                "Movie");
 
-            switch (option) {
-                case 1:
-                    System.out.println("Enter movie start date and time (dd/MM/yyyy HH:mm): ");
-                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-                    LocalDateTime mt;
-                    while (true) {
-                        try {
-                            mt = LocalDateTime.parse(sc.nextLine(), format);
-                            break;
-                        } catch (DateTimeParseException e) {
-                            System.out.println("Invalid date and time format. Please try again.");
-                        }
+        switch (option) {
+            case 1:
+                System.out.println("Enter movie start date and time (dd/MM/yyyy HH:mm): ");
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                LocalDateTime mt;
+                while (true) {
+                    try {
+                        mt = LocalDateTime.parse(sc.nextLine(), format);
+                        break;
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Invalid date and time format. Please try again.");
                     }
+                }
 
-                    Duration duration = movieTime.getMovie().getDuration();
+                Duration duration = movieTime.getMovie().getDuration();
 
-                    if (isClash(mt, duration, cinema)) {
-                        System.out.println("Movie time clashes with another movie time. Please try again.");
-                    } else {
-                        movieTime.setMovieDateTime(mt);
-                    }
-                    break;
-                case 2:
-                    Movie movie = MenuView.getItemName("Select a movie: ",
-                            DatabaseManager.getDataBase().getMovieList());
-                    movieTime.setMovie(movie);
-                    break;
-            }
-
-        } finally {
-            sc.close();
+                if (isClash(mt, duration, cinema)) {
+                    System.out.println("Movie time clashes with another movie time. Please try again.");
+                } else {
+                    movieTime.setMovieDateTime(mt);
+                }
+                break;
+            case 2:
+                Movie movie = MenuView.getItemName("Select a movie: ",
+                        DatabaseManager.getDataBase().getMovieList());
+                movieTime.setMovie(movie);
+                break;
         }
+
+        
     }
 
     /*

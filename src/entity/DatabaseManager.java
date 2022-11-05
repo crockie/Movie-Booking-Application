@@ -13,7 +13,7 @@ public class DatabaseManager {
     /**
      * Relative path of the data file
      */
-    private static String path = "";
+    private static String path = "src\\database\\data\\moblima.dat";
 
     /**
      * Constructor of the class
@@ -34,10 +34,13 @@ public class DatabaseManager {
      * Else, downcast the file to DataBase type
      */
     public static void read() {
-        DataBase database = SerializeDB.readSerializedObject(path);
+        Object object = SerializeDB.readSerializedObject(path);
 
-        if (database == null)
+        if (object == null || !(object instanceof DataBase))
             init();
+        else
+            database = (DataBase) object;
+
     }
 
     /**

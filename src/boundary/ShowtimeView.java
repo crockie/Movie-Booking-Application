@@ -45,8 +45,7 @@ public class ShowtimeView {
                     // Sort the date and time when a showtime is added
 
                     for (MovieTime showtime : showTimeList) {
-                        // Not done...Waiting for method to be created in MovieTime class
-                        System.out.println(showtime);
+                        System.out.println(showtime.nameToString());
                     }
                 }
             }

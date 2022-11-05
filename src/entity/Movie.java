@@ -11,7 +11,7 @@ public class Movie implements ItemName, Serializable {
 	/**
 	 * Serialization number
 	 */
-	private static final long serialVersionUID = 5822630624504041207L;
+	private static final long serialVersionUID = 544548948489484151L;
 	/**
 	 * Title of Movie
 	 */

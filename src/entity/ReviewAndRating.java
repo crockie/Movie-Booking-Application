@@ -9,7 +9,7 @@ public class ReviewAndRating implements Serializable, ItemName {
     /**
      * The serialisation version number <-- TO BE REVISITED
      */
-    private static final long serialVersionUID = 1725162345547776214L;
+    private static final long serialVersionUID = 165151651848484115L;
 
     /**
     * The minimum reviewer rating value

@@ -4,11 +4,18 @@ import java.util.EnumMap;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.io.Serializable;
+
 
 /**
  * Ticket price determined by other factors
  */
-public class TicketPrice {
+public class TicketPrice implements Serializable{
+    /**
+	 * The serialisation version number
+	 */
+	private static final long serialVersionUID = 6521558511554354L;
+
     /**
      * Normal Price (Price without any factor)
      */

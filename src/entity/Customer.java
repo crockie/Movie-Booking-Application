@@ -10,7 +10,7 @@ public class Customer implements Serializable{
     /**
      * The serialisation version number
      */
-    private static final long serialVersionUID = 7689870075709929042L;
+    private static final long serialVersionUID = 16456864189484841L;
     /**
      * Customer's account username
      */

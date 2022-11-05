@@ -1,8 +1,6 @@
 package control;
 
-import view.MenuView;
-import view.ShowTimeEditView;
-import view.ShowTimeView;
+import boundary.*;
 
 /**
  * This class controls the creation, change and removal of showtimes
@@ -26,19 +24,19 @@ public class MovieTimeLogicControl implements MainControl {
 			
 			switch (option) {
 				case 1:
-					ShowTimeView.displayAllShowTimes();
+					ShowtimeView.getShowtimeView();
 					break;
 					
 				case 2:
-					ShowTimeEditView.addShowTime();
+					MovieTimeEditView.addMovieTime();
 					break;
 					
 				case 3:
-					ShowTimeEditView.updateShowTime();	
+					MovieTimeEditView.updateMovieTime();
 					break;
 					
 				case 4:
-					ShowTimeEditView.removeShowTime();
+					MovieTimeEditView.removeMovieTime();
 					break;
 					
 				case 5:

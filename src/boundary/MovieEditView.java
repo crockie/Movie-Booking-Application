@@ -24,8 +24,9 @@ public class MovieEditView {
             String director = sc.nextLine();
 
             // change to array list?
-            System.out.println("Enter the number of casts: ");
+            System.out.print("Enter the number of casts: ");
             String[] castNames = new String[sc.nextInt()];
+            sc.nextLine();
             for (int i = 0; i < castNames.length; i++) {
                 System.out.println("Enter the name of cast " + (i + 1) + ": ");
                 castNames[i] = sc.nextLine();
@@ -43,8 +44,8 @@ public class MovieEditView {
             Movie movie = new Movie(title, synopsis, director, castNames, showStatus, movieRating, movieType, duration);
             DatabaseManager.getDataBase().getMovieList().add(movie);
 
-        } finally {
-            sc.close();
+        } catch (Exception e) {
+            System.out.println("Invalid input!");
         }
     }
 
@@ -117,8 +118,8 @@ public class MovieEditView {
                     break;
             }
 
-        } finally {
-            sc.close();
+        } catch (Exception e) {
+            System.out.println("Invalid input!");
         }
     }
 }

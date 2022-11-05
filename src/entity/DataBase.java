@@ -11,7 +11,7 @@ public class DataBase implements Serializable{
 	/**
 	 * The serialisation version number
 	 */
-	private static final long serialVersionUID = -9165821480078981092L;
+	private static final long serialVersionUID = 655615516844848518L;
 	
 	/**
 	 * Cinema staff list, username of the cinema staff is used as the key

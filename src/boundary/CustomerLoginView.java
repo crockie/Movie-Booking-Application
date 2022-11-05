@@ -38,10 +38,16 @@ public class CustomerLoginView {
 		Scanner sc = new Scanner(System.in);
 		String username = sc.nextLine();
 		
+
+		
+		
+		
 		if (DatabaseManager.getDataBase().checkCustomerUsername(username)) {
 			System.out.println("Error: User with that username already exists");
 			return null;
 		}
+		
+		
 		
 		System.out.print("Name: ");
 		String name = sc.nextLine();
@@ -51,6 +57,7 @@ public class CustomerLoginView {
 			try {
 				System.out.print("Mobile Number: ");
 				mobileNumber = sc.nextInt();
+				sc.nextLine();
 				break;
 
 			} catch (Exception e) {
@@ -75,11 +82,10 @@ public class CustomerLoginView {
 		
 		
 		Customer customer = new Customer(username, name, mobileNumber, emailAddress, password1);
-		
+
 		if (!DatabaseManager.getDataBase().addCustomer(customer))
 			System.out.println("Error: Unable to add customer");
 		
-		sc.close();
 		return customer;
 	}
 	
@@ -94,7 +100,6 @@ public class CustomerLoginView {
 		
 		if (!DatabaseManager.getDataBase().checkCustomerUsername(username)) {
 			System.out.println("Error: User with that that username doesn't exist");
-			sc.close();
 			return null;
 		}
 		
@@ -105,7 +110,6 @@ public class CustomerLoginView {
 		if (customer == null)
 			System.out.println("Error: Incorrect password");
 		
-		sc.close();
 		return customer;
 	}
 }

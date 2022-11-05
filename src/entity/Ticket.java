@@ -8,7 +8,7 @@ public class Ticket implements Serializable{
 	/**
 	 * The serialisation version number
 	 */
-	private static final long serialVersionUID = 6163594143675954354L; //DIDNT CHANGE NUMBER
+	private static final long serialVersionUID = 548484174789456484L; //DIDNT CHANGE NUMBER
 	/**
 	 * The column of the seat
 	 */

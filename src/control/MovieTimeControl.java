@@ -1,6 +1,6 @@
 package control;
 
-import boundary.ShowTimeView;
+import boundary.ShowtimeView;
 
 /**
  * This class controls the display of all the available movie times
@@ -12,7 +12,7 @@ public class MovieTimeControl implements MainControl {
 	 */
 	@Override
 	public void begin() {
-		ShowTimeView.displayAllShowTimes();
+		ShowtimeView.getShowtimeView();
 		NavigateControl.popOne();
 	}
 }

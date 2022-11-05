@@ -27,7 +27,7 @@ public class Cinema implements Serializable, ItemName{
     /**
 	 * The serialisation version number
 	 */
-	private static final long serialVersionUID = -3543551736448152076L; //change serialisable
+	private static final long serialVersionUID = 48485464514484848L; //change serialisable
 	
     /**
 	 * Creates a {@code Cinema} object for the given cinema name, cinema class and layout

@@ -48,12 +48,15 @@ public class MovieView {
         System.out.println("Showing status: " + movie.getShowStatus().nameToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
+        
         for (String cast : movie.getCast())
             System.out.println("Casts: " + cast);
+     
+
         System.out.println("Overall reviewer rating: " + movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
         for (ReviewAndRating review : movie.getReviewAndRating()) {
-            System.out.println("Customer " + review.getCustomer());
+            System.out.println("User " + review.getCustomer());
             System.out.println("Rating: " + review.getRating());
             System.out.println("Review: " + review.getReview());
         }
@@ -77,8 +80,8 @@ public class MovieView {
 
             movie.getReviewAndRating().add(reviewAndRating);
             System.out.println("Review and rating added!");
-        } finally {
-            sc.close();
+        } catch (Exception e) {
+            System.out.println("Invalid input!");
         }
 
     }

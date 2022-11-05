@@ -1,8 +1,8 @@
 package control;
 
 import entity.CinemaStaff;
-import view.CinemaStaffLoginView; // Need to implement
-import view.MenuView; // Need to implement
+import boundary.CinemaStaffLoginView; 
+import boundary.MenuView;
 
 /**
  * Controls the main menu and login for the cinema staff
@@ -65,7 +65,7 @@ public class CinemaStaffControl implements MainControl {
                 break;
 
             case 4:
-                NavigateControl.load(new ShowTimeEditController());
+                NavigateControl.load(new MovieTimeLogicControl());
                 break;
 
             case 5:
