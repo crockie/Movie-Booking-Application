@@ -72,6 +72,16 @@ public class TicketPrice implements Serializable{
     }
 
     /**
+     * Set the list of holiday dates
+     * 
+     * @param holiday holiday dates
+     */
+
+    public void setHoliday(ArrayList<LocalDate> holiday) {
+        this.holiday = holiday;
+    }
+
+    /**
      * Check whether the given date is a holiday
      * 
      * @param date

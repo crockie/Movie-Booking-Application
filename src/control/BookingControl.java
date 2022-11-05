@@ -65,13 +65,12 @@ public class BookingControl implements MainControl {
 			try{
 				System.out.println("How many seats would you like to book: ");
 				number = sc.nextInt(); 
+				sc.nextLine();
 				break;
 			} catch (Exception e) {
 				System.out.println("Please enter a valid number");
 				continue;
-			} finally {
-				sc.close();
-			} 
+			}
 		}
 
 		boolean[][] selectedSeats = BookingView.getSeats(number, movieTime);
@@ -166,9 +165,10 @@ public class BookingControl implements MainControl {
 	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount) {
 		TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 
+		
 		double totalPrice = 0;
 
-		// ??????????
+		
 		for (AgeGroup ageGroup : AgeGroup.values()) {
 			totalPrice += ageGroupCount.get(ageGroup) * ticketPrice.getTicketPrice(
 					movieTime.getDate(),
@@ -176,6 +176,7 @@ public class BookingControl implements MainControl {
 					ageGroup,
 					movieTime.getMovie().getMovieType());
 		}
+		
 		return totalPrice;
 	}
 }

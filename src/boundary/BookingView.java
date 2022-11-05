@@ -21,6 +21,7 @@ public class BookingView {
     public static boolean[][] getSeats(int n, BookMovie showTime) {
         boolean[][] seatLayout = showTime.getSeatLayout();
         boolean[][] selectedSeat = new boolean[seatLayout.length][];
+        Scanner sc = new Scanner(System.in);
 
         while (true) {
             // Create all 2D boolean array of false with the same dimensions as seatLayout
@@ -34,10 +35,7 @@ public class BookingView {
             System.out.println("Enter the seat no.s (e.g. A1): ");
 
             for (int i = 0; i < n; i++) {
-                System.out.print("");
-                Scanner sc = new Scanner(System.in);
                 String input = sc.nextLine();
-
                 int row = input.charAt(0) - 'A';
                 int col = Integer.parseInt(input.substring(1));
                 selectedSeat[row][col - 1] = true;
