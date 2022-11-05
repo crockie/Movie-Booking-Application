@@ -12,7 +12,7 @@ import com.opencsv.*;
  * This class is used to read and write data from and to a CSV file.
  *
  */
-abstract class database {
+abstract class db {
     /**
      * This method is used to read data from a CSV file.
      *
@@ -40,7 +40,7 @@ abstract class database {
     public static List readAllData(String file) {
         try {
             //reader
-            CSVReader csvReader = new CSVReader(new FileReader("src\\" + file));
+            CSVReader csvReader = new CSVReader(new FileReader("src\\database\\data\\" + file));
 
             List<String[]> data = csvReader.readAll();
 
@@ -63,7 +63,7 @@ abstract class database {
     public static void writeAllData(String file, List<String[]> data) {
         try {
             //writer
-            Writer writer = Files.newBufferedWriter(Paths.get("src\\" + file));
+            Writer writer = Files.newBufferedWriter(Paths.get("src\\database\\data\\" + file));
 
             // create a csv writer
             ICSVWriter csvWriter = new CSVWriterBuilder(writer)
