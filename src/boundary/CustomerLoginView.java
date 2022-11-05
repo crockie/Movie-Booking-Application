@@ -19,7 +19,9 @@ public class CustomerLoginView {
 		} 
 		else {
 			// Fallback
-			return readLine(message);
+			System.out.print(message);
+			Scanner sc = new Scanner(System.in);
+			return sc.nextLine();
 		}
 	}
 	
