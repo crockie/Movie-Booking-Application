@@ -15,25 +15,36 @@ public class MenuView {
 	 * @return the selected option
 	 */
 	public static int getMenuOption(String title, String... options) {
-		IOController.displayMessage("");
-		IOController.displayTitle(title);
+		System.out.println("");
+		
+		System.out.println(title);
+		
+		String line = "";
+		
+		for (int i = 0; i < title.length(); i++)
+			line += "-";
+		
+		System.out.println(line);
+		
 		
 		for (int i = 0; i < options.length; i++) {
-			IOController.displayMessage((i + 1) + ": " + options[i]);
+			System.out.println((i + 1) + ": " + options[i]);
 		}
 		
 		int option;
 		
 		while (true) {
-			option = IOController.readInt("Option: ");
+			System.out.print("Option: ");
+			Scanner sc = new Scanner(System.in);
+			option = sc.nextInt();
 			
 			if (option >= 1 && option <= options.length)
 				break;
 			else
-				IOController.displayMessage("Invalid option selected!");
+				System.out.println("Invalid option selected!");
 		}
 		
-		IOController.displayMessage("");
+		System.out.println("");
 		
 		return option;
 	}
