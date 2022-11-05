@@ -12,7 +12,7 @@ import com.opencsv.*;
  * This class is used to read and write data from and to a CSV file.
  *
  */
-abstract class db {
+abstract class Database {
     /**
      * This method is used to read data from a CSV file.
      *
