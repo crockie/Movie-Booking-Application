@@ -73,6 +73,6 @@ public class MovieControl implements MainControl {
 	 */
 	private Movie selectMovie() {
 		List<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
-		return MenuView.getLabelledItem("Select a Movie", movieList);
+		return MenuView.getItemName("Select a Movie", movieList);
 	}
 }

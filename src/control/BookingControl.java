@@ -89,7 +89,7 @@ public class BookingController implements MainControl {
 	private MovieTime selectMovieTime() {
 		// Select a cineplex
 		List<Cineplex> cineplexList = DatabaseManager.getDataBase().getCineplexList();
-		Cineplex cineplex = MenuView.getLabelledItem("Select a Cineplex", cineplexList);
+		Cineplex cineplex = MenuView.getItemName("Select a Cineplex", cineplexList);
 
 		// Group the timing by movie
 		List<MovieTime> movieTimeList = cineplex.getMovieTimes();
@@ -104,13 +104,13 @@ public class BookingController implements MainControl {
 				movieList.add(movie);
 		}
 
-		Movie movie = MenuView.getLabelledItem("Select a movie", movieList);
+		Movie movie = MenuView.getItemName("Select a movie", movieList);
 
 		// Select a movie show time
 		List<MovieTime> movieShowTimeList = movieTimesByMovie.get(movie);
 		Comparator<MovieTime> dateComparator = Comparator.comparing(MovieTime::getStartDateTime);
 		movieShowTimeList.sort(dateComparator);
-		MovieTime movieTime = MenuView.getLabelledItem("Select a Show Time", movieShowTimeList);
+		MovieTime movieTime = MenuView.getItemName("Select a Show Time", movieShowTimeList);
 
 		return movieTime;
 	}

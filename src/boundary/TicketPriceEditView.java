@@ -4,7 +4,6 @@ import entity.AgeGroup;
 import entity.DateGroup;
 import entity.CinemaClass;
 import entity.MovieType;
-import entity.Ticket;
 import entity.TicketPrice;
 
 import java.time.LocalDate;
@@ -66,7 +65,7 @@ public class TicketPriceEditView {
      * @param ticketPrice Ticket Price database
      */
     public static void updateCinemaAdditionalPrice(TicketPrice ticketPrice) {
-        CinemaClass cinemaClass = MenuView.getLabelledItem("Please select the cinema class to be modified:",
+        CinemaClass cinemaClass = MenuView.getItemName("Please select the cinema class to be modified:",
                 CinemaClass.values());
 
         double newCinemaClassPrice;
@@ -84,7 +83,7 @@ public class TicketPriceEditView {
      * @param ticketPrice Ticket Price database
      */
     public static void updateMovieAdditionalPrice(TicketPrice ticketPrice) {
-        MovieType movieType = MenuView.getLabelledItem("Please select the movie type to be modified:",
+        MovieType movieType = MenuView.getItemName("Please select the movie type to be modified:",
                 MovieType.values());
 
         double newMovieTypePrice;
@@ -102,7 +101,7 @@ public class TicketPriceEditView {
      * @param ticketPrice Ticket Price database
      */
     public static void updateAgeAdditionalPrice(TicketPrice ticketPrice) {
-        AgeGroup ageGroup = MenuView.getLabelledItem("Please select the cinema class to be modified:",
+        AgeGroup ageGroup = MenuView.getItemName("Please select the cinema class to be modified:",
                 AgeGroup.values());
 
         double newAgeGroupPrice;
@@ -120,8 +119,8 @@ public class TicketPriceEditView {
      * @param ticketPrice Ticket Price database
      */
     public static void updateDateAdditionalPrice(TicketPrice ticketPrice) {
-        DateGroup dateGroup = MenuView.getLabelledItem("Please select the cinema class to be modified:",
-                AgeGroup.values());
+        DateGroup dateGroup = MenuView.getItemName("Please select the cinema class to be modified:",
+                DateGroup.values());
 
         double newDateGroupPrice;
         Scanner sc = new Scanner(System.in);
