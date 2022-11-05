@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.TransferHandler.TransferSupport;
+
 import entity.Movie;
 import entity.MovieRating;
 import entity.MovieType;
@@ -19,11 +21,6 @@ public class MovieDB extends Database{
         List<String[]> data = readAllData(fileName);
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-
-        /*movie.getTitle(), movie.getSynopsis(),  movie.getDirector(), 
-        movie.getCast().toString(), movie.getShowStatus().toString(), 
-        movie.getMovieRating().toString(), movie.getMovieType().toString(), 
-        movie.getDuration().toString()};*/
         for(String[] row: data){
             String title = row[0];
             String synopsis = row[1];
@@ -35,7 +32,7 @@ public class MovieDB extends Database{
             String duration = row[7];
 
             Movie movie = new Movie(
-                title, synopsis, director, cast.split(" "), 
+                title, synopsis, director, cast.split(", "),
                 ShowStatus.valueOf(showStatus), MovieRating.valueOf(movieRating), 
                 MovieType.valueOf(movieType), Duration.ofMinutes(Integer.parseInt(duration)));
             
@@ -75,8 +72,14 @@ public class MovieDB extends Database{
                 System.out.println(movie.getTitle());
                 System.out.println(movie.getSynopsis());
                 System.out.println(movie.getDirector());
-                System.out.println(movie.getCast());
+                String[] casts = movie.getCast();
+                for (int j = 0; j < casts.length; j++) {
+                    System.out.println(casts[j]);
+                }
                 System.out.println(movie.getShowStatus());
+                System.out.println(movie.getMovieRating());
+                System.out.println(movie.getMovieType());
+                System.out.println(movie.getDuration().toMinutes());
             }
         }catch(Exception e){
             e.printStackTrace();
