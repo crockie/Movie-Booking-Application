@@ -1,6 +1,5 @@
 package control;
 
-import boundary.IOController;
 import boundary.MenuView;
 
 /**
@@ -13,7 +12,7 @@ public class UserControl implements MainControl {
      */
     @Override
     public void begin() {
-        IOController.displayMessage("Welcome to the MOvie Booking and LIsting Management Application (MOBLIMA)!");
+        System.out.println("Welcome to the MOvie Booking and LIsting Management Application (MOBLIMA)!");
         int choice = MenuView.getMenuOption(
                 "Please select a portal:",
                 "Customer",
@@ -23,7 +22,7 @@ public class UserControl implements MainControl {
 
         switch (choice) {
             case 1:
-                NavigateControl.load(new MovieGoerController()); // Name it CustomerControl (?)
+                NavigateControl.load(new CustomerControl());
                 break;
 
             case 2:
@@ -31,7 +30,7 @@ public class UserControl implements MainControl {
                 break;
 
             case 3:
-                IOController.displayMessage("Thank you for using the MOvie Booking and LIsting Management Application (MOBLIMA)!");
+                System.out.println("Thank you for using the MOvie Booking and LIsting Management Application (MOBLIMA)!");
                 NavigateControl.popOne();
                 break;
         }
