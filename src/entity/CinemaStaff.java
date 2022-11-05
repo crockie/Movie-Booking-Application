@@ -1,10 +1,15 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Serves as the login system of cinema staff
  */
-public class CinemaStaff {
-
+public class CinemaStaff implements Serializable{
+    /**
+     * The serialisation version number
+     */
+    private static final long serialVersionUID = 5484451115461161L;
     /**
      * The username of the cinema staff
      */

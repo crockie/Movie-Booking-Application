@@ -30,7 +30,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName{
     /**
 	 * The serialisation version number
 	 */
-	private static final long serialVersionUID = 55191665465118188L; //change serialisable
+	private static final long serialVersionUID = 5854487874565188L;
 
     /**
      * Creates a {@code MovieTime} object for the given cinema, date and time and movie

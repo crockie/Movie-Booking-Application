@@ -9,7 +9,7 @@ public class Booking implements Serializable {
 	/**
 	 * The serialisation version number
 	 */
-	private static final long serialVersionUID = 561848484848154187L; //HAVENT CHANGED
+	private static final long serialVersionUID = 561848484848154187L;
 	/**
 	 * The transaction id of the booking
 	 */

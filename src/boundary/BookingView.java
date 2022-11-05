@@ -59,7 +59,7 @@ public class BookingView {
      * @return the number of tickets for each age group
      */
     public static EnumMap<AgeGroup, Integer> getAgeGroupCount(int n) {
-        System.out.println("How many of each age group?");
+        System.out.println("How many of each age group? ");
 
         EnumMap<AgeGroup, Integer> ageGroupCount = new EnumMap<AgeGroup, Integer>(AgeGroup.class);
 

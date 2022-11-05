@@ -98,8 +98,6 @@ public class BookingControl implements MainControl {
 			} catch (Exception e) {
 				System.out.println("Please enter a valid input");
 				continue;
-			} finally {
-				sc.close();
 			}
 			
 		}

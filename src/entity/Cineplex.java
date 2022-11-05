@@ -19,8 +19,8 @@ public class Cineplex implements Serializable, ItemName{
     /**
 	 * Serialisation version number
 	 */
-    private static final long serialVersionUID = 6151514848117524L; //change serialisable
-
+    private static final long serialVersionUID = 6151514848117524L; 
+    
     /**
 	 * Creates a {@code Cineplex} with the given name
 	 * @param name the name of the cineplex

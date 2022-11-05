@@ -15,19 +15,23 @@ import boundary.*;
 public class CineplexControl implements MainControl{
     @Override
     public void begin() {
-        while (true) {
+        boolean end = true;
+        while (end) {
 			int option = MenuView.getMenuOption(
 					"Enter your choice: ",
-					"1. Add Cineplex",
-                    "2. Add Cinemas",
-                    "3. View Cineplex",
-                    "4. Add Movie Time",
-                    "5. Adding Ticket Price");
+					"Add Cineplex",
+                    "Add Cinemas",
+                    "View Cineplex",
+                    "Add Movie Time",
+                    "Adding Ticket Price",
+                    "Add Staff",
+                    "QUIT");
             Scanner sc = new Scanner(System.in);
             List<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
             List<Cineplex> cineplexList = DatabaseManager.getDataBase().getCineplexList();
             TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 
+            
 			switch (option) {
 				case 1:
 					System.out.println("Add Cineplex");
@@ -50,11 +54,16 @@ public class CineplexControl implements MainControl{
                     String cinemaCode = sc.nextLine();
                     System.out.println("Enter Cinema Type: ");
                     CinemaClass cinemaClass = MenuView.getItemName("Cinema Code: ", CinemaClass.values());
-                    boolean[][] seat = new boolean[10][10];
+                    boolean[][] seat = new boolean[10][21];
                     
                     for(int i = 0; i < 10; i++){
-                        for(int j = 0; j < 10; j++){
-                            seat[i][j] = true;
+                        for(int j = 0; j < 21; j++){
+                            if(j == 10) {
+                                seat[i][j] = false;
+                            }
+                            else {
+                                seat[i][j] = true;
+                            }
                         }
                     }
                     cineplex2.addCinema(cinemaCode, cinemaClass, seat);
@@ -205,11 +214,23 @@ public class CineplexControl implements MainControl{
                         }
                     }
                     break;
-                default:
+
+                case 6:
+                    System.out.println("Add Staff Details: ");
+                    System.out.println("Enter Staff Name: ");
+                    String staffName = sc.nextLine();
+                    System.out.println("Enter Staff Password: ");
+                    String staffPassword = sc.nextLine();
+
+                    CinemaStaff staff = new CinemaStaff(staffName, staffPassword);
+                    DatabaseManager.getDataBase().addCinemaStaff(staff);
+                    break;
+
+                case 7:
+                    end = false;
                     break;
 
 			}
-            break;
 		}
     }
     public static void main(String[] args) {

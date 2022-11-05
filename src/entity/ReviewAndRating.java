@@ -7,9 +7,9 @@ import java.io.Serializable;
 */
 public class ReviewAndRating implements Serializable, ItemName {
     /**
-     * The serialisation version number <-- TO BE REVISITED
+     * The serialisation version number 
      */
-    private static final long serialVersionUID = 165151651848484115L;
+    private static final long serialVersionUID = 1651611889891568L;
 
     /**
     * The minimum reviewer rating value

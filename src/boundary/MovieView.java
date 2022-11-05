@@ -73,6 +73,7 @@ public class MovieView {
         try {
             System.out.print("Rating: ");
             int rating = sc.nextInt();
+            sc.nextLine();
             System.out.print("Review: ");
             String review = sc.nextLine();
 
