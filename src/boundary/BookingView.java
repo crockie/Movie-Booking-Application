@@ -35,8 +35,8 @@ public class BookingView {
             System.out.println("Enter the seat no.s (e.g. A1): ");
 
             for (int i = 0; i < n; i++) {
-                String input = sc.nextLine();
-                int row = input.charAt(0) - 'A';
+                String input = sc.nextLine().toUpperCase();
+                int row = (input.charAt(0)) - 'A';
                 int col = Integer.parseInt(input.substring(1));
                 selectedSeat[row][col - 1] = true;
             }
