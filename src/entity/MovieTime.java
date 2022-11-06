@@ -110,7 +110,36 @@ public class MovieTime implements Serializable, BookMovie, ItemName{
 			}
 		}
 		return seatAvail;
-    }     
+    }   
+    
+    @Override
+    public SeatType[][] getSeatTypes(){
+        boolean[][] seatLayout = cinema.getSeatLayout();
+        SeatType[][] seatTypes = new SeatType[seatLayout.length][];
+
+        for(int i = 0; i < seatLayout.length; i++){
+            boolean[] row = seatLayout[i];
+            seatTypes[i] = new SeatType[row.length];
+
+            for(int j = 0; j < row.length; j++){
+                
+                if(i == seatLayout.length - 1 && (j < 2 || j > row.length - 3)){
+                    seatTypes[i][j] = SeatType.WHEELCHAIR;
+                }
+                else if(i == seatLayout.length - 1) {
+                    seatTypes[i][j] = SeatType.NORMAL;
+                }
+                else if(i > seatLayout.length/3 * 2 ){
+                    seatTypes[i][j] = SeatType.COUPLE;
+                }
+                else{
+                    seatTypes[i][j] = SeatType.NORMAL;
+                }
+                
+            }
+        }
+        return seatTypes;
+    }
 
     
     /** 

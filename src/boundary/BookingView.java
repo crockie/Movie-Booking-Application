@@ -3,6 +3,7 @@ package boundary;
 import entity.AgeGroup;
 import entity.BookMovie;
 import entity.SeatStatus;
+import entity.SeatType;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
@@ -11,7 +12,7 @@ import java.util.EnumMap;
 /**
  * This class handles the display of the booking information and the retrieval of details from the movie goer
  */
-public class BookingView {
+public class BookingView extends Colours {
     /**
      * This method gets all the seats the movie goer wants to book
      * @param n the total number of tickets to be booked
@@ -98,6 +99,7 @@ public class BookingView {
      */
     public static void displaySeats(BookMovie showTime) {
         SeatStatus[][] availSeats = showTime.getAvailableSeats();
+        SeatType[][] seatTypes = showTime.getSeatTypes();
         int textWidth = availSeats[0].length * 5 + 4;
 
         // Create Line String
@@ -127,23 +129,34 @@ public class BookingView {
         // Print rows of seats
         char row = 'A';
 
-        for (SeatStatus[] availSeatRow: availSeats) {
+        
+        for(int i = 0; i < seatTypes.length; i ++){
             String rowString = "";
             rowString += row + " ";
-
-            for (SeatStatus seatStatus: availSeatRow) {
-                switch (seatStatus) {
-                    case TAKEN:
-                        rowString += "[ x ]";
-                        break;
-
-                    case EMPTY:
-                        rowString += "[   ]";
-                        break;
-
-                    case NO_SEAT:
+            for(int j = 0; j < seatTypes[0].length; j++){
+                if(seatTypes[i][j] == SeatType.WHEELCHAIR) {
+                    if(availSeats[i][j] == SeatStatus.EMPTY)
+                        rowString += ANSI_PURPLE + "[   ]" + ANSI_RESET;
+                    else if(availSeats[i][j] == SeatStatus.TAKEN)
+                        rowString += ANSI_PURPLE + "[ x ]" + ANSI_RESET;
+                    else
                         rowString += "     ";
-                        break;
+                }
+                else if(seatTypes[i][j] == SeatType.COUPLE) {
+                    if(availSeats[i][j] == SeatStatus.EMPTY)
+                        rowString += ANSI_BLUE + "[   ]" + ANSI_RESET;
+                    else if(availSeats[i][j] == SeatStatus.TAKEN)
+                        rowString += ANSI_BLUE + "[ x ]" + ANSI_RESET;
+                    else
+                        rowString += "     ";
+                }
+                else if(seatTypes[i][j] == SeatType.NORMAL) {
+                    if(availSeats[i][j] == SeatStatus.EMPTY)
+                        rowString += ANSI_GREEN + "[   ]" + ANSI_RESET;
+                    else if(availSeats[i][j] == SeatStatus.TAKEN)
+                        rowString += ANSI_GREEN + "[ x ]" + ANSI_RESET;
+                    else
+                        rowString += "     ";
                 }
             }
             rowString += " " + row;
@@ -160,6 +173,11 @@ public class BookingView {
             margin2 += " ";
         System.out.println(margin2 + "ENTRANCE");
 
+        System.out.println("Legend: ");
+        System.out.println(ANSI_GREEN + "[   ]" + ANSI_RESET + " Normal Seat");
+        System.out.println(ANSI_BLUE + "[   ]" + ANSI_RESET + " Couple Seat");
+        System.out.println(ANSI_PURPLE + "[   ]" + ANSI_RESET + " Wheelchair Seat");
+        
         System.out.println("Press enter to continue...");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
@@ -187,5 +205,6 @@ public class BookingView {
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
+
 }
 

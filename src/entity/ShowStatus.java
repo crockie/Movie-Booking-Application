@@ -32,7 +32,7 @@ public enum ShowStatus implements ItemName {
 
     /**
     * Creates a {@code ShowingStatus} object with the given label
-    * @param label
+    * @param name
     */ 
     private ShowStatus(String name) {
         this.name = name;

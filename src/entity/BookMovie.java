@@ -24,7 +24,14 @@ public interface BookMovie {
     public boolean[][] getSeatLayout();
     
     /**
+    * Gets all seat types for the showtime
+    * @return 2D array of SeatType
+    */
+    public SeatType[][] getSeatTypes();
+
+    /**
      * @return true if the movie is fully booked, otherwise false
      */
     public boolean checkFull();
+
 }
