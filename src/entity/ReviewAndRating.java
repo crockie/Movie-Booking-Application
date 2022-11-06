@@ -90,6 +90,6 @@ public class ReviewAndRating implements Serializable, ItemName {
     */
     @Override
     public String nameToString() {
-        return review + " (" + rating + "/5) —— " + customer.getName();
+        return review + " (" + rating + "/5) - " + customer.getName();
     }
 }

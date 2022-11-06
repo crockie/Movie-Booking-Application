@@ -30,7 +30,7 @@ public class MovieView {
             System.out.println("Overall reviewer rating: " + movie.getAverageRating());
             System.out.println("Past reviews and reviewers' ratings: ");
             for (ReviewAndRating review : movie.getReviewAndRating()) {
-                // System.out.println("User " + review.getUser());
+                System.out.println("Reviewer " + review.getCustomer().getName());
                 System.out.println("Rating: " + review.getRating());
                 System.out.println("Review: " + review.getReview());
             }
@@ -56,7 +56,7 @@ public class MovieView {
         System.out.println("Overall reviewer rating: " + movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
         for (ReviewAndRating review : movie.getReviewAndRating()) {
-            System.out.println("User " + review.getCustomer());
+            System.out.println("Reviewer " + review.getCustomer().getName());
             System.out.println("Rating: " + review.getRating());
             System.out.println("Review: " + review.getReview());
         }
