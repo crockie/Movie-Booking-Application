@@ -37,8 +37,8 @@ public class TicketPriceEditView {
         System.out.println("Select the type to modify the additional price: ");
         System.out.println("1) Movie Type");
         System.out.println("2) Cinema class");
-        System.out.println("1) Age of movie goer");
-        System.out.println("1) Date Group");
+        System.out.println("3) Age of movie goer");
+        System.out.println("4) Date Group");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
