@@ -1,15 +1,9 @@
 package entity;
 
-import java.io.Serializable;
-
 /**
  * Serves as the login system of cinema staff
  */
-public class CinemaStaff implements Serializable{
-    /**
-     * The serialisation version number
-     */
-    private static final long serialVersionUID = 5484451115461161L;
+public class CinemaStaff extends User{
     /**
      * The username of the cinema staff
      */
@@ -27,8 +21,9 @@ public class CinemaStaff implements Serializable{
      * @param pwd Password of the cinema staff
      */
     public CinemaStaff(String us, String pwd) {
-        username = us;
-        password = pwd;
+        super(us, pwd);
+        this.username = us;
+        this.password = super.getPasswordHashString();
     }
 
     /**
@@ -37,7 +32,7 @@ public class CinemaStaff implements Serializable{
      * @param pwd New password of the cinema staff
      */
     public void setPassword(String pwd) {
-        password = pwd;
+        password = super.toHash(pwd, username);
     }
 
     /**
@@ -48,7 +43,7 @@ public class CinemaStaff implements Serializable{
      *         Else, return false to deny access
      */
     public boolean login(String pwd) {
-        if (password.equals(pwd))
+        if (password.equals(super.toHash(pwd, this.username)))
             return true;
         else
             return false;

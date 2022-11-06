@@ -1,16 +1,9 @@
 package entity;
 
-import java.io.Serializable;
-
 /** 
  * This class contains the information of the Customer
  */
-public class Customer implements Serializable{
-    
-    /**
-     * The serialisation version number
-     */
-    private static final long serialVersionUID = 16456864189484841L;
+public class Customer extends User{
     /**
      * Customer's account username
      */
@@ -40,12 +33,14 @@ public class Customer implements Serializable{
      * @param emailAddress the email address of the Customer
      * @param password the password of the Customer's account
      */
+    
     public Customer(String username, String name, Integer mobileNumber, String emailAddress, String password) {
+        super(username, password);
         this.username = username;
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.password = super.getPasswordHashString();
     }
     /**
      * Function to check if correct password was entered
@@ -53,7 +48,7 @@ public class Customer implements Serializable{
      * @return true if password matches, false if passwords do not match
      */
     public boolean login(String password) {
-        return password.equals(this.password);
+        return this.password.equals(toHash(password, this.username));
     }
     /**
      * Getter for Customer's username
@@ -109,6 +104,6 @@ public class Customer implements Serializable{
      * @param new password for the Customer's account
      */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = toHash(password, this.username);
     }
 }
