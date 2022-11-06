@@ -94,7 +94,7 @@ public class TopMoviesControl implements MainControl {
 
 		List<String> movieTitles = new ArrayList<String>();
 
-		for (int i = 1; i <= 5 && i < moviesWithRatings.size(); i++) {
+		for (int i = 1; i <= 5 && i <= moviesWithRatings.size(); i++) {
 			Movie movie = moviesWithRatings.get(i - 1);
 			movieTitles.add(i + ". " + movie.getTitle() + " (Average Ratings: "
 					+ String.format("%.2f", movie.getAverageRating()) + ")");

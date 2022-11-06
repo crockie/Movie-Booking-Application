@@ -100,7 +100,7 @@ public class Movie implements ItemName, Serializable {
 		double totalRating;
 		int reviewCount = reviewAndRating.size();
 		
-		if (reviewCount < 1)
+		if (reviewCount <= 1)
 			return null;
 		
 		for (ReviewAndRating reviewAndRating: reviewAndRating)
