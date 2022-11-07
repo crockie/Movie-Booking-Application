@@ -8,6 +8,7 @@ import entity.DatabaseManager;
 public class MainFunc {
     /**
      * Application is launched through this main function
+     * 
      * @param args unused
      */
     public static void main(String[] args) {

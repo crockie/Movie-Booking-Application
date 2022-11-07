@@ -1,6 +1,6 @@
 package entity;
 
-public enum SeatType implements ItemName{
+public enum SeatType implements ItemName {
     /**
      * The seat type is normal
      */
@@ -21,6 +21,7 @@ public enum SeatType implements ItemName{
 
     /**
      * Creates a {@code SeatType} object with the given label
+     * 
      * @param name
      */
     private SeatType(String name) {

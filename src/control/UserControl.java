@@ -1,5 +1,7 @@
 package control;
 
+import javax.xml.crypto.Data;
+
 import boundary.MenuView;
 import entity.DatabaseManager;
 
@@ -18,8 +20,7 @@ public class UserControl implements MainControl {
                 "Please select a portal:",
                 "Customer",
                 "Cinema Staff",
-                "Exit"
-        );
+                "Exit");
 
         switch (choice) {
             case 1:
@@ -31,7 +32,8 @@ public class UserControl implements MainControl {
                 break;
 
             case 3:
-                System.out.println("Thank you for using the MOvie Booking and LIsting Management Application (MOBLIMA)!");
+                System.out
+                        .println("Thank you for using the MOvie Booking and LIsting Management Application (MOBLIMA)!");
                 NavigateControl.popOne();
                 break;
         }
@@ -39,10 +41,10 @@ public class UserControl implements MainControl {
 
     public static void main(String[] args) {
         DatabaseManager.read();
-		
-		UserControl controller = new UserControl();
-		controller.begin();
-		
-		DatabaseManager.write();
+
+        UserControl controller = new UserControl();
+        controller.begin();
+
+        DatabaseManager.write();
     }
 }

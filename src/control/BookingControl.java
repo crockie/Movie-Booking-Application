@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 import boundary.BookingView;
 import boundary.MenuView;
+import boundary.TicketPriceEditView;
+import boundary.TicketPriceView;
 import entity.AgeGroup;
 import entity.Booking;
 import entity.Cineplex;
@@ -18,7 +20,9 @@ import entity.Customer;
 import entity.DatabaseManager;
 import entity.Movie;
 import entity.MovieTime;
+import entity.SeatType;
 import entity.ShowStatus;
+import entity.Ticket;
 import entity.TicketPrice;
 
 /**
@@ -49,6 +53,7 @@ public class BookingControl implements MainControl {
 	@Override
 	public void begin() {
 		this.movieTime = selectMovieTime();
+		TicketPriceView.displayTicketPriceToCustomer(movieTime);
 
 		if (movieTime.checkFull()) {
 			System.out.println("Sorry, this show time is fully booked");
@@ -56,15 +61,15 @@ public class BookingControl implements MainControl {
 			return;
 		}
 
-		BookingView.displaySeats(movieTime);
+		BookingView.displaySeats(movieTime, null);
 
 		int number;
 
-		while(true) {
+		while (true) {
 			Scanner sc = new Scanner(System.in);
-			try{
+			try {
 				System.out.println("How many seats would you like to book: ");
-				number = sc.nextInt(); 
+				number = sc.nextInt();
 				sc.nextLine();
 				break;
 			} catch (Exception e) {
@@ -74,21 +79,38 @@ public class BookingControl implements MainControl {
 		}
 
 		boolean[][] selectedSeats = BookingView.getSeats(number, movieTime);
-		EnumMap<AgeGroup, Integer> ageGroupCount = BookingView.getAgeGroupCount(number);
-		double totalPrice = calculatePrice(ageGroupCount);
+
+		SeatType[][] seatTypes = movieTime.getSeatTypes();
+		int noOfCoupleSeats = 0;
+		for (int i = 0; i < selectedSeats.length; i++) {
+			for (int j = 0; j < selectedSeats[i].length; j++)
+				if (selectedSeats[i][j] == true && seatTypes[i][j] == SeatType.COUPLE) {
+					noOfCoupleSeats++;
+					j++;
+				}
+		}
+
+		EnumMap<AgeGroup, Integer> ageGroupCount = BookingView.getAgeGroupCount(number + noOfCoupleSeats);
+		double totalPrice = calculatePrice(ageGroupCount, noOfCoupleSeats);
 
 		boolean confirm;
 
-		while(true){
+		BookingView.displaySeats(movieTime, selectedSeats);
+		BookingView.displayPrice(movieTime);
+
+		System.out.println("");
+		System.out.println("Total Price: $" + String.format("%.2f", totalPrice));
+
+		while (true) {
 			Scanner sc = new Scanner(System.in);
-			try{
+			try {
 				System.out.println("Confirm booking (y/n): ");
 				String input = sc.nextLine();
 
-				if(input.equals("y")){
+				if (input.equals("y")) {
 					confirm = true;
 					break;
-				} else if(input.equals("n")){
+				} else if (input.equals("n")) {
 					confirm = false;
 					break;
 				} else {
@@ -99,15 +121,15 @@ public class BookingControl implements MainControl {
 				System.out.println("Please enter a valid input");
 				continue;
 			}
-			
+
 		}
 
 		if (confirm) {
 			Booking booking = movieTime.createBooking(customer, selectedSeats, totalPrice);
-			BookingView.displaySeats(movieTime);
+			BookingView.displaySeats(movieTime, null);
 			System.out.println("Booking successful!");
 			System.out.println("Transaction ID: " + booking.getTransactionId());
-			BookingView.printBookInfo(ageGroupCount, totalPrice);
+			BookingView.printBookInfo(movieTime, ageGroupCount, totalPrice);
 
 		} else {
 			System.out.println("Booking cancelled");
@@ -160,13 +182,11 @@ public class BookingControl implements MainControl {
 	 *                      each age group
 	 * @return the total cost of the tickets
 	 */
-	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount) {
+	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount, int noOfCoupleSeats) {
 		TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 
-		
 		double totalPrice = 0;
 
-		
 		for (AgeGroup ageGroup : AgeGroup.values()) {
 			totalPrice += ageGroupCount.get(ageGroup) * ticketPrice.getTicketPrice(
 					movieTime.getDate(),
@@ -174,7 +194,10 @@ public class BookingControl implements MainControl {
 					ageGroup,
 					movieTime.getMovie().getMovieType());
 		}
-		
+		if (noOfCoupleSeats > 0) {
+			totalPrice += noOfCoupleSeats * ticketPrice.getCoupleSeatPrice();
+		}
+
 		return totalPrice;
 	}
 }

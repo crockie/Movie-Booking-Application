@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import entity.DataBase;
 import entity.DatabaseManager;
 import entity.Movie;
 import boundary.ListView;
@@ -16,34 +17,74 @@ import boundary.MenuView;
  */
 public class TopMoviesControl implements MainControl {
 
+	private boolean isCustomer;
+
+	public TopMoviesControl(boolean isCustomer) {
+		this.isCustomer = isCustomer;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void begin() {
+		List<String> movieStrings;
 		while (true) {
-			int choice = MenuView.getMenuOption(
-					"Top 5 movies by: ",
-					"Total ticket sales",
-					"Overall reviewer's rating",
-					"Exit");
+			if (isCustomer) {
+				int config = DatabaseManager.getDataBase().getConfig();
 
-			List<String> movieStrings;
+				switch (config) {
+					case 0:
+						movieStrings = getTopMoviesByTicketSales();
+						ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
+						NavigateControl.popOne();
+						return;
 
-			switch (choice) {
-				case 1:
-					movieStrings = getTopMoviesByTicketSales();
-					ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
-					break;
-				case 2:
-					movieStrings = getTopMoviesByOverallRating();
-					ListView.showStringList("Top 5 Movies By Overall Rating", movieStrings, "No available data");
-					break;
-				case 3:
-					NavigateControl.popOne();
-					return;
+					case 1:
+						movieStrings = getTopMoviesByOverallRating();
+						ListView.showStringList("Top 5 Movies By Overall Rating", movieStrings,
+								"No available data");
+						NavigateControl.popOne();
+						return;
+				}
+			}
+
+			else {
+				int choice = MenuView.getMenuOption(
+						"Top 5 movies by: ",
+						"Total ticket sales",
+						"Overall reviewer's rating",
+						"Exit");
+
+				switch (choice) {
+					case 1:
+						movieStrings = getTopMoviesByTicketSales();
+						ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings,
+								"No available data");
+						break;
+					case 2:
+						movieStrings = getTopMoviesByOverallRating();
+						ListView.showStringList("Top 5 Movies By Overall Rating", movieStrings,
+								"No available data");
+						break;
+					case 3:
+						NavigateControl.popOne();
+						return;
+				}
 			}
 		}
+	}
+
+	public void listMoviesByTicketSales() {
+		List<String> movieStrings;
+		movieStrings = getTopMoviesByTicketSales();
+		ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
+	}
+
+	public void listMoviesByRating() {
+		List<String> movieStrings;
+		movieStrings = getTopMoviesByOverallRating();
+		ListView.showStringList("Top 5 Movies By Overall Rating", movieStrings, "No available data");
 	}
 
 	/**

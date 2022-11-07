@@ -2,26 +2,36 @@ package boundary;
 
 import entity.AgeGroup;
 import entity.BookMovie;
+import entity.CinemaClass;
+import entity.DatabaseManager;
+import entity.MovieTime;
+import entity.MovieType;
 import entity.SeatStatus;
 import entity.SeatType;
+import entity.TicketPrice;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.time.LocalDate;
 import java.util.EnumMap;
 
 /**
- * This class handles the display of the booking information and the retrieval of details from the movie goer
+ * This class handles the display of the booking information and the retrieval
+ * of details from the movie goer
  */
 public class BookingView extends Colours {
     /**
      * This method gets all the seats the movie goer wants to book
-     * @param n the total number of tickets to be booked
+     * 
+     * @param n        the total number of tickets to be booked
      * @param showTime the selected show time
-     * @return a 2D boolean array representing the selected seats. If the seat is selected, the value is true, otherwise it's false.
+     * @return a 2D boolean array representing the selected seats. If the seat is
+     *         selected, the value is true, otherwise it's false.
      */
     public static boolean[][] getSeats(int n, BookMovie showTime) {
         boolean[][] seatLayout = showTime.getSeatLayout();
         boolean[][] selectedSeat = new boolean[seatLayout.length][];
+        SeatType[][] seatTypes = showTime.getSeatTypes();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -39,7 +49,17 @@ public class BookingView extends Colours {
                 String input = sc.nextLine().toUpperCase();
                 int row = (input.charAt(0)) - 'A';
                 int col = Integer.parseInt(input.substring(1));
-                selectedSeat[row][col - 1] = true;
+                if (seatTypes[row][col - 1] == SeatType.COUPLE || seatTypes[row][col - 1] == SeatType.WHEELCHAIR) {
+                    if (((col < 11 && (col - 1) % 2 == 0)) || (col > 11 && (col - 1) % 2 == 1)) {
+                        selectedSeat[row][col - 1] = true;
+                        selectedSeat[row][col] = true;
+                    } else {
+                        selectedSeat[row][col - 1] = true;
+                        selectedSeat[row][col - 2] = true;
+                    }
+                } else {
+                    selectedSeat[row][col - 1] = true;
+                }
             }
 
             if (showTime.checkAvailability(selectedSeat)) {
@@ -56,6 +76,7 @@ public class BookingView extends Colours {
 
     /**
      * This method gets the number of tickets for each age group
+     * 
      * @param n the total number of tickets to be booked
      * @return the number of tickets for each age group
      */
@@ -67,7 +88,7 @@ public class BookingView extends Colours {
         while (true) {
             int totalCount = 0;
 
-            for (AgeGroup ageGroup: AgeGroup.values()) {
+            for (AgeGroup ageGroup : AgeGroup.values()) {
 
                 while (true) {
                     try {
@@ -95,16 +116,17 @@ public class BookingView extends Colours {
 
     /**
      * This method displays the seating plan for the selected show time
+     * 
      * @param showTime the selected show time to display the seats of
      */
-    public static void displaySeats(BookMovie showTime) {
+    public static void displaySeats(BookMovie showTime, boolean[][] selectedSeat) {
         SeatStatus[][] availSeats = showTime.getAvailableSeats();
         SeatType[][] seatTypes = showTime.getSeatTypes();
         int textWidth = availSeats[0].length * 5 + 4;
 
         // Create Line String
         String line = "";
-        for (int i =0; i< textWidth; i++)
+        for (int i = 0; i < textWidth; i++)
             line += "-";
 
         // Create column headers
@@ -115,6 +137,10 @@ public class BookingView extends Colours {
                 columnHeaders += "  " + (i + 1) + "  ";
             else
                 columnHeaders += " " + (i + 1) + "  ";
+        }
+
+        if (selectedSeat != null) {
+            System.out.println("Preview:");
         }
 
         String margin = "";
@@ -129,31 +155,43 @@ public class BookingView extends Colours {
         // Print rows of seats
         char row = 'A';
 
-        
-        for(int i = 0; i < seatTypes.length; i ++){
+        for (int i = 0; i < seatTypes.length; i++) {
             String rowString = "";
             rowString += row + " ";
-            for(int j = 0; j < seatTypes[0].length; j++){
-                if(seatTypes[i][j] == SeatType.WHEELCHAIR) {
-                    if(availSeats[i][j] == SeatStatus.EMPTY)
-                        rowString += ANSI_PURPLE + "[   ]" + ANSI_RESET;
-                    else if(availSeats[i][j] == SeatStatus.TAKEN)
-                        rowString += ANSI_PURPLE + "[ x ]" + ANSI_RESET;
-                    else
+            for (int j = 0; j < seatTypes[0].length; j++) {
+                if (seatTypes[i][j] == SeatType.WHEELCHAIR) {
+                    if (availSeats[i][j] == SeatStatus.EMPTY) {
+                        String color = ANSI_PURPLE;
+                        if (selectedSeat != null)
+                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_PURPLE;
+                        rowString += color + "[        ]" + ANSI_RESET;
+                        j++;
+                    } else if (availSeats[i][j] == SeatStatus.TAKEN) {
+                        rowString += ANSI_PURPLE + "[   x    ]" + ANSI_RESET;
+                        j++;
+                    } else {
                         rowString += "     ";
-                }
-                else if(seatTypes[i][j] == SeatType.COUPLE) {
-                    if(availSeats[i][j] == SeatStatus.EMPTY)
-                        rowString += ANSI_BLUE + "[   ]" + ANSI_RESET;
-                    else if(availSeats[i][j] == SeatStatus.TAKEN)
-                        rowString += ANSI_BLUE + "[ x ]" + ANSI_RESET;
-                    else
+                    }
+                } else if (seatTypes[i][j] == SeatType.COUPLE) {
+                    if (availSeats[i][j] == SeatStatus.EMPTY) {
+                        String color = ANSI_BLUE;
+                        if (selectedSeat != null)
+                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_BLUE;
+                        rowString += color + "[        ]" + ANSI_RESET;
+                        j++;
+                    } else if (availSeats[i][j] == SeatStatus.TAKEN) {
+                        rowString += ANSI_BLUE + "[   x    ]" + ANSI_RESET;
+                        j++;
+                    } else {
                         rowString += "     ";
-                }
-                else if(seatTypes[i][j] == SeatType.NORMAL) {
-                    if(availSeats[i][j] == SeatStatus.EMPTY)
-                        rowString += ANSI_GREEN + "[   ]" + ANSI_RESET;
-                    else if(availSeats[i][j] == SeatStatus.TAKEN)
+                    }
+                } else if (seatTypes[i][j] == SeatType.NORMAL) {
+                    if (availSeats[i][j] == SeatStatus.EMPTY) {
+                        String color = ANSI_GREEN;
+                        if (selectedSeat != null)
+                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_GREEN;
+                        rowString += color + "[   ]" + ANSI_RESET;
+                    } else if (availSeats[i][j] == SeatStatus.TAKEN)
                         rowString += ANSI_GREEN + "[ x ]" + ANSI_RESET;
                     else
                         rowString += "     ";
@@ -177,25 +215,52 @@ public class BookingView extends Colours {
         System.out.println(ANSI_GREEN + "[   ]" + ANSI_RESET + " Normal Seat");
         System.out.println(ANSI_BLUE + "[   ]" + ANSI_RESET + " Couple Seat");
         System.out.println(ANSI_PURPLE + "[   ]" + ANSI_RESET + " Wheelchair Seat");
-        
+        if (selectedSeat != null)
+            System.out.println(ANSI_YELLOW + "[   ]" + ANSI_RESET + " Selected Seat");
+
         System.out.println("Press enter to continue...");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
 
+    public static void displayPrice(MovieTime movieTime) {
+        System.out.println("Ticket Price:");
+        TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
+
+        double price;
+        CinemaClass cinemaClass = movieTime.getCinema().getCinemaClass();
+        LocalDate date = movieTime.getDate();
+        MovieType movieType = movieTime.getMovie().getMovieType();
+
+        if (ticketPrice.isHoliday(date)) {
+            System.out.println(date + " is holiday");
+        }
+
+        for (AgeGroup ageGroup : AgeGroup.values()) {
+            price = ticketPrice.getTicketPrice(date, cinemaClass, ageGroup, movieType);
+            System.out.println(ageGroup.nameToString() + ": SGD"
+                    + price + " per pax");
+        }
+        System.out.println("Couple: Additional SGD5.0 per seat");
+    }
+
     /**
      * This method displays the booking information
+     * 
      * @param ageGroupCount the number of tickets for each age group
-     * @param totalPrice the total price of the booking
+     * @param totalPrice    the total price of the booking
      */
-    public static void printBookInfo(EnumMap<AgeGroup, Integer> ageGroupCount, double totalPrice) {
+    public static void printBookInfo(MovieTime movieTime, EnumMap<AgeGroup, Integer> ageGroupCount, double totalPrice) {
         System.out.println("Booking Information");
         String line = "";
         for (int i = 0; i < "Booking Information".length(); i++)
             line += "-";
         System.out.println(line);
 
-        for (AgeGroup ageGroup: AgeGroup.values())
+        System.out.println("Cinema: " + movieTime.getCinema().nameToString());
+        System.out.println("Movie & Showtime: " + movieTime.nameToString());
+
+        for (AgeGroup ageGroup : AgeGroup.values())
             System.out.println(ageGroup.nameToString() + ": " + ageGroupCount.get(ageGroup));
 
         System.out.println("");
@@ -207,4 +272,3 @@ public class BookingView extends Colours {
     }
 
 }
-
