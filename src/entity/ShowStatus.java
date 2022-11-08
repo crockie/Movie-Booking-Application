@@ -28,7 +28,7 @@ public enum ShowStatus implements ItemName {
     /**
     * The name of the showing status
     */  
-    String name;
+    private String name;
 
     /**
     * Creates a {@code ShowingStatus} object with the given label
