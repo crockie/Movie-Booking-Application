@@ -5,20 +5,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import entity.DataBase;
 import entity.DatabaseManager;
 import entity.Movie;
 import boundary.ListView;
 import boundary.MenuView;
 
 /**
- * This class controls the display of the top 5 movies by overall ticket sales
- * or reviewer's rating
+ * This class controls the display of the top 5 movies by:
+ * 1) Overall ticket sales 
+ * 2) Reviewer's rating
+ * 3) Default (both)
  */
 public class TopMoviesControl implements MainControl {
-
+	/**
+	 * Check if user is a customer or staff
+	 */
 	private boolean isCustomer;
 
+	/**
+	 * Creates a new {@code TopMoviesControl} object for the customer or staff
+	 * 
+	 * @param isCustomer is a boolean to check if user is a customer or staff
+	 */
 	public TopMoviesControl(boolean isCustomer) {
 		this.isCustomer = isCustomer;
 	}
@@ -30,17 +38,17 @@ public class TopMoviesControl implements MainControl {
 	public void begin() {
 		List<String> movieStrings;
 		while (true) {
-			if (isCustomer) {
-				int config = DatabaseManager.getDataBase().getConfig();
+			int config = DatabaseManager.getDataBase().getConfig();
+			if (isCustomer && config != 3) {
 
 				switch (config) {
-					case 0:
+					case 1:
 						movieStrings = getTopMoviesByTicketSales();
 						ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
 						NavigateControl.popOne();
 						return;
 
-					case 1:
+					case 2:
 						movieStrings = getTopMoviesByOverallRating();
 						ListView.showStringList("Top 5 Movies By Overall Rating", movieStrings,
 								"No available data");
@@ -100,8 +108,8 @@ public class TopMoviesControl implements MainControl {
 		List<Movie> movieList2 = new ArrayList<Movie>();
 		movieList2.addAll(movieList);
 
-		Comparator<Movie> salesComparator = Collections.reverseOrder(Comparator.comparing(Movie::getTotalSales));
-		movieList2.sort(salesComparator);
+		Comparator<Movie> comparator = Collections.reverseOrder(Comparator.comparing(Movie::getTotalSales));
+		movieList2.sort(comparator);
 
 		List<String> movieTitles = new ArrayList<String>();
 
@@ -130,8 +138,8 @@ public class TopMoviesControl implements MainControl {
 			}
 		}
 
-		Comparator<Movie> ratingComparator = Collections.reverseOrder(Comparator.comparing(Movie::getAverageRating));
-		moviesWithRatings.sort(ratingComparator);
+		Comparator<Movie> comparator = Collections.reverseOrder(Comparator.comparing(Movie::getAverageRating));
+		moviesWithRatings.sort(comparator);
 
 		List<String> movieTitles = new ArrayList<String>();
 

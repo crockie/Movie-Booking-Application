@@ -3,7 +3,6 @@ package control;
 import entity.CinemaStaff;
 import boundary.CinemaStaffLoginView;
 import boundary.MenuView;
-import boundary.TicketPriceView;
 
 /**
  * Controls the main menu and login for the cinema staff
@@ -53,7 +52,7 @@ public class CinemaStaffControl implements MainControl {
                 "View All Movies",
                 "View Cinema Showtimes",
                 "View Holidays",
-                "Configure system settings",
+                "Configure Top 5 View",
 
                 "Exit");
 
@@ -79,7 +78,7 @@ public class CinemaStaffControl implements MainControl {
                 break;
 
             case 6:
-                NavigateControl.load(new MoviesControl(false));
+                NavigateControl.load(new DisplayMovieControl(false));
                 break;
 
             case 7:

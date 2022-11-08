@@ -11,19 +11,9 @@ import java.util.stream.Collectors;
 
 import boundary.BookingView;
 import boundary.MenuView;
-import boundary.TicketPriceEditView;
 import boundary.TicketPriceView;
-import entity.AgeGroup;
-import entity.Booking;
-import entity.Cineplex;
-import entity.Customer;
-import entity.DatabaseManager;
-import entity.Movie;
-import entity.MovieTime;
-import entity.SeatType;
-import entity.ShowStatus;
-import entity.Ticket;
-import entity.TicketPrice;
+
+import entity.*;
 
 /**
  * This class handles the control flow of movie booking for a customer
@@ -128,7 +118,7 @@ public class BookingControl implements MainControl {
 			Booking booking = movieTime.createBooking(customer, selectedSeats, totalPrice);
 			BookingView.displaySeats(movieTime, null);
 			System.out.println("Booking successful!");
-			System.out.println("Transaction ID: " + booking.getTransactionId());
+			System.out.println("Transaction ID: " + booking.getTransactionID());
 			BookingView.printBookInfo(movieTime, ageGroupCount, totalPrice);
 
 		} else {
@@ -159,7 +149,7 @@ public class BookingControl implements MainControl {
 		List<Movie> movieList = new ArrayList<Movie>();
 		for (Movie m : movieTimesByMovie.keySet()) {
 			ShowStatus showStatus = m.getShowStatus();
-			if (showStatus == showStatus.PREVIEW || showStatus == showStatus.NOW_SHOWING) {
+			if (showStatus == ShowStatus.PREVIEW || showStatus == ShowStatus.NOW_SHOWING) {
 				movieList.add(m);
 			}
 		}

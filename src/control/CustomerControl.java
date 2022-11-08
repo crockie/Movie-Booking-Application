@@ -60,7 +60,7 @@ public class CustomerControl implements MainControl {
 
 		switch (option) {
 			case 1:
-				NavigateControl.load(new MoviesControl(true));
+				NavigateControl.load(new DisplayMovieControl(true));
 				break;
 
 			case 2:

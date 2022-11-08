@@ -8,11 +8,14 @@ import entity.MovieTime;
 import entity.MovieType;
 import entity.TicketPrice;
 
-import java.sql.Date;
-
 import control.NavigateControl;
-
+/**
+ * This class is the boundary class to display the ticket price
+ */
 public class TicketPriceView {
+    /**
+     * This method displays all the ticket prices
+     */
     public static void displayAllTicketPrice() {
         TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
         double price;
@@ -54,7 +57,10 @@ public class TicketPriceView {
 
         NavigateControl.popOne();
     }
-
+    /**
+     * This method displays the ticket price for a particular showtime
+     * @param movieTime The showtime
+     */
     public static void displayTicketPriceToCustomer(MovieTime movieTime) {
         TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
         double price = ticketPrice.getNormalPrice();

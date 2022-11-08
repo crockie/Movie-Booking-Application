@@ -2,10 +2,10 @@ package control;
 
 import boundary.MovieView;
 
-public class MoviesControl implements MainControl {
+public class DisplayMovieControl implements MainControl {
     private boolean isCustomer;
 
-    public MoviesControl(boolean isCustomer) {
+    public DisplayMovieControl(boolean isCustomer) {
         this.isCustomer = isCustomer;
     }
 

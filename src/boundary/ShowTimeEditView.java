@@ -12,7 +12,7 @@ import entity.*;
 /*
  * This class is the boundary class for the show time edit view
  */
-public class MovieTimeEditView {
+public class ShowTimeEditView {
     /*
      * This method is used to display the add show time view
      */
@@ -55,9 +55,6 @@ public class MovieTimeEditView {
      * This method is used to display the remove show time view
      */
     public static void removeMovieTime() {
-        Scanner sc = new Scanner(System.in);
-
-    
         Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
                 DatabaseManager.getDataBase().getCineplexList());
 
@@ -119,9 +116,9 @@ public class MovieTimeEditView {
         
     }
 
-    /*
-     * This method is used to check if the movie time clashes with another movie
-     * time
+    /**
+     * This method is used to check if the movie time clashes with another movie time
+     * @return true if the movie time clashes with another movie time, else it is false
      */
     public static boolean isClash(LocalDateTime movieTime, Duration duration, Cinema cinema) {
         ArrayList<MovieTime> movieTimeList = cinema.getMovieTimes();

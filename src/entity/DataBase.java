@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
 
-import java.util.Map;
-
-import boundary.MenuView;
-
 /**
  * This class contains all the data for MOBLIMA
  */
@@ -41,7 +37,9 @@ public class DataBase implements Serializable {
 	 * List of Movies
 	 */
 	private ArrayList<Movie> movieList = new ArrayList<Movie>();
-
+	/**
+	 * Configuration of the order to view the Top 5 movies
+	 */
 	private int config;
 
 	/**

@@ -13,7 +13,7 @@ public class Booking implements Serializable {
 	/**
 	 * The transaction id of the booking
 	 */
-	private String transactionId; 
+	private String transactionID; 
 	/**
 	 * The customer who made the booking
 	 */
@@ -28,14 +28,14 @@ public class Booking implements Serializable {
 	private double price;
 	
 	/**
-	 * Creates a {@code Booking} object with a give transaction id, customer, selected seats and price
-	 * @param transactionId the transaction id of the booking
+	 * Creates a {@code Booking} object with the given transaction id, customer, selected seats and price
+	 * @param transactionID the transaction id of the booking
 	 * @param customer the customer who made the booking
 	 * @param selectedSeats the selected seats of the booking
 	 * @param price the price of the booking
 	 */
-	public Booking(String transactionId, Customer customer, boolean[][] selectedSeats, double price) {
-		this.transactionId = transactionId;
+	public Booking(String transactionID, Customer customer, boolean[][] selectedSeats, double price) {
+		this.transactionID = transactionID;
 		this.customer = customer;
 		this.price = price;
 		this.tickets = new ArrayList<Ticket>();
@@ -53,8 +53,8 @@ public class Booking implements Serializable {
 	 * Get the transaction id of the booking
 	 * @return the transaction id of the booking
 	 */
-	public String getTransactionId() {
-		return transactionId;
+	public String getTransactionID() {
+		return transactionID;
 	}
 	
 	/**

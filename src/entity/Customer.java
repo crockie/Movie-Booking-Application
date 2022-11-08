@@ -28,23 +28,23 @@ public class Customer extends User{
      * Constructor for Customer's account
      * Creates a {@code Customer} object with the given username, name, mobile/handphone number, email address and password
      * @param username the username of the Customer's account
+     * @param password the password of the Customer's account
      * @param name the name of the Customer
      * @param mobileNumber the mobile/handphone number of the Customer
      * @param emailAddress the email address of the Customer
-     * @param password the password of the Customer's account
      */
     
-    public Customer(String username, String name, Integer mobileNumber, String emailAddress, String password) {
+    public Customer(String username, String password, String name, Integer mobileNumber, String emailAddress) {
         super(username, password);
+        this.password = super.getPasswordHashString();
         this.username = username;
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
-        this.password = super.getPasswordHashString();
     }
     /**
      * Function to check if correct password was entered
-     * @param password the password entered which will be checked against the Customer's account password
+     * @param password the password entered which will be checked against the Customer's account hashed password
      * @return true if password matches, false if passwords do not match
      */
     public boolean login(String password) {

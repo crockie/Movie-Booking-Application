@@ -1,7 +1,5 @@
 package control;
 
-import javax.xml.crypto.Data;
-
 import boundary.MenuView;
 import entity.DatabaseManager;
 
@@ -17,7 +15,7 @@ public class UserControl implements MainControl {
     public void begin() {
         System.out.println("Welcome to the MOvie Booking and LIsting Management Application (MOBLIMA)!");
         int choice = MenuView.getMenuOption(
-                "Please select a portal:",
+                "Log in as:",
                 "Customer",
                 "Cinema Staff",
                 "Exit");

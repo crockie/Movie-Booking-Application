@@ -19,16 +19,16 @@ import java.util.EnumMap;
  * This class handles the display of the booking information and the retrieval
  * of details from the movie goer
  */
-public class BookingView extends Colours {
+public class BookingView {
+
     /**
      * This method gets all the seats the movie goer wants to book
      * 
-     * @param n        the total number of tickets to be booked
+     * @param num the total number of tickets to be booked
      * @param showTime the selected show time
-     * @return a 2D boolean array representing the selected seats. If the seat is
-     *         selected, the value is true, otherwise it's false.
+     * @return a 2D boolean array representing the selected seats. The value of the selected seat is true, else it's false.
      */
-    public static boolean[][] getSeats(int n, BookMovie showTime) {
+    public static boolean[][] getSeats(int num, BookMovie showTime) {
         boolean[][] seatLayout = showTime.getSeatLayout();
         boolean[][] selectedSeat = new boolean[seatLayout.length][];
         SeatType[][] seatTypes = showTime.getSeatTypes();
@@ -43,9 +43,9 @@ public class BookingView extends Colours {
                     selectedSeat[i][j] = false;
             }
 
-            System.out.println("Enter the seat no.s (e.g. A1): ");
+            System.out.println("Please enter the seat numbers (eg. G6): ");
 
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < num; i++) {
                 String input = sc.nextLine().toUpperCase();
                 int row = (input.charAt(0)) - 'A';
                 int col = Integer.parseInt(input.substring(1));
@@ -66,8 +66,8 @@ public class BookingView extends Colours {
                 break;
 
             } else {
-                System.out.println("Unavailable seats selected");
-                System.out.println("Select seats again");
+                System.out.println("Seats selected are unavailable.");
+                System.out.println("Please choose another seat.");
             }
         }
 
@@ -77,11 +77,11 @@ public class BookingView extends Colours {
     /**
      * This method gets the number of tickets for each age group
      * 
-     * @param n the total number of tickets to be booked
+     * @param num the total number of tickets to be booked
      * @return the number of tickets for each age group
      */
-    public static EnumMap<AgeGroup, Integer> getAgeGroupCount(int n) {
-        System.out.println("How many of each age group? ");
+    public static EnumMap<AgeGroup, Integer> getAgeGroupCount(int num) {
+        System.out.println("How many tickets for each age group?");
 
         EnumMap<AgeGroup, Integer> ageGroupCount = new EnumMap<AgeGroup, Integer>(AgeGroup.class);
 
@@ -105,10 +105,10 @@ public class BookingView extends Colours {
                 }
             }
 
-            if (totalCount == n)
+            if (totalCount == num)
                 break;
             else
-                System.out.println("Error! Total doesn't add up to " + n);
+                System.out.println("Error! Total doesn't add up to " + num);
         }
 
         return ageGroupCount;
@@ -122,11 +122,11 @@ public class BookingView extends Colours {
     public static void displaySeats(BookMovie showTime, boolean[][] selectedSeat) {
         SeatStatus[][] availSeats = showTime.getAvailableSeats();
         SeatType[][] seatTypes = showTime.getSeatTypes();
-        int textWidth = availSeats[0].length * 5 + 4;
+        int desiredWidth = availSeats[0].length * 5 + 4;
 
         // Create Line String
         String line = "";
-        for (int i = 0; i < textWidth; i++)
+        for (int i = 0; i < desiredWidth; i++)
             line += "-";
 
         // Create column headers
@@ -144,7 +144,7 @@ public class BookingView extends Colours {
         }
 
         String margin = "";
-        for (int i = 0; i < (textWidth - "SCREEN".length()) / 2; i++)
+        for (int i = 0; i < (desiredWidth - "SCREEN".length()) / 2; i++)
             margin += " ";
         System.out.println(margin + "SCREEN");
 
@@ -161,38 +161,38 @@ public class BookingView extends Colours {
             for (int j = 0; j < seatTypes[0].length; j++) {
                 if (seatTypes[i][j] == SeatType.WHEELCHAIR) {
                     if (availSeats[i][j] == SeatStatus.EMPTY) {
-                        String color = ANSI_PURPLE;
+                        String color = Colours.ANSI_PURPLE;
                         if (selectedSeat != null)
-                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_PURPLE;
-                        rowString += color + "[        ]" + ANSI_RESET;
+                            color = selectedSeat[i][j] ? Colours.ANSI_YELLOW : Colours.ANSI_PURPLE;
+                        rowString += color + "[        ]" + Colours.ANSI_RESET;
                         j++;
                     } else if (availSeats[i][j] == SeatStatus.TAKEN) {
-                        rowString += ANSI_PURPLE + "[   x    ]" + ANSI_RESET;
+                        rowString += Colours.ANSI_PURPLE + "[   x    ]" + Colours.ANSI_RESET;
                         j++;
                     } else {
                         rowString += "     ";
                     }
                 } else if (seatTypes[i][j] == SeatType.COUPLE) {
                     if (availSeats[i][j] == SeatStatus.EMPTY) {
-                        String color = ANSI_BLUE;
+                        String color = Colours.ANSI_BLUE;
                         if (selectedSeat != null)
-                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_BLUE;
-                        rowString += color + "[        ]" + ANSI_RESET;
+                            color = selectedSeat[i][j] ? Colours.ANSI_YELLOW : Colours.ANSI_BLUE;
+                        rowString += color + "[        ]" + Colours.ANSI_RESET;
                         j++;
                     } else if (availSeats[i][j] == SeatStatus.TAKEN) {
-                        rowString += ANSI_BLUE + "[   x    ]" + ANSI_RESET;
+                        rowString += Colours.ANSI_BLUE + "[   x    ]" + Colours.ANSI_RESET;
                         j++;
                     } else {
                         rowString += "     ";
                     }
                 } else if (seatTypes[i][j] == SeatType.NORMAL) {
                     if (availSeats[i][j] == SeatStatus.EMPTY) {
-                        String color = ANSI_GREEN;
+                        String color = Colours.ANSI_GREEN;
                         if (selectedSeat != null)
-                            color = selectedSeat[i][j] ? ANSI_YELLOW : ANSI_GREEN;
-                        rowString += color + "[   ]" + ANSI_RESET;
+                            color = selectedSeat[i][j] ? Colours.ANSI_YELLOW : Colours.ANSI_GREEN;
+                        rowString += color + "[   ]" + Colours.ANSI_RESET;
                     } else if (availSeats[i][j] == SeatStatus.TAKEN)
-                        rowString += ANSI_GREEN + "[ x ]" + ANSI_RESET;
+                        rowString += Colours.ANSI_GREEN + "[ x ]" + Colours.ANSI_RESET;
                     else
                         rowString += "     ";
                 }
@@ -207,18 +207,18 @@ public class BookingView extends Colours {
         System.out.println(line);
 
         String margin2 = "";
-        for (int i = 0; i < (textWidth - "ENTRANCE".length()) / 2; i++)
+        for (int i = 0; i < (desiredWidth - "ENTRANCE".length()) / 2; i++)
             margin2 += " ";
         System.out.println(margin2 + "ENTRANCE");
 
         System.out.println("Legend: ");
-        System.out.println(ANSI_GREEN + "[   ]" + ANSI_RESET + " Normal Seat");
-        System.out.println(ANSI_BLUE + "[   ]" + ANSI_RESET + " Couple Seat");
-        System.out.println(ANSI_PURPLE + "[   ]" + ANSI_RESET + " Wheelchair Seat");
+        System.out.println(Colours.ANSI_GREEN + "[   ]" + Colours.ANSI_RESET + " Normal Seat");
+        System.out.println(Colours.ANSI_BLUE + "[   ]" + Colours.ANSI_RESET + " Couple Seat");
+        System.out.println(Colours.ANSI_PURPLE + "[   ]" + Colours.ANSI_RESET + " Wheelchair Seat");
         if (selectedSeat != null)
-            System.out.println(ANSI_YELLOW + "[   ]" + ANSI_RESET + " Selected Seat");
+            System.out.println(Colours.ANSI_YELLOW + "[   ]" + Colours.ANSI_RESET + " Selected Seat");
 
-        System.out.println("Press enter to continue...");
+        System.out.println("To continue, please press enter.");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
@@ -241,7 +241,7 @@ public class BookingView extends Colours {
             System.out.println(ageGroup.nameToString() + ": SGD"
                     + price + " per pax");
         }
-        System.out.println("Couple: Additional SGD5.0 per seat");
+        System.out.println("Couple: Additional SGD" + ticketPrice.getCoupleSeatPrice() + " per seat");
     }
 
     /**
@@ -266,7 +266,7 @@ public class BookingView extends Colours {
         System.out.println("");
         System.out.println("Total Price: $" + String.format("%.2f", totalPrice));
 
-        System.out.println("Press enter to continue...");
+        System.out.println("To continue, please press enter.");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }

@@ -57,7 +57,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
      * @return the newly created {@code Booking} object
      */
     public Booking createBooking(Customer customer, boolean[][] bookedSeats, double price) {
-        Booking newBooking = new Booking(createTransactionId(), customer, bookedSeats, price);
+        Booking newBooking = new Booking(createtransactionID(), customer, bookedSeats, price);
         this.bookings.add(newBooking);
         return newBooking;
     }
@@ -65,7 +65,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     /**
      * @return String the transaction id of the booking
      */
-    public String createTransactionId() {
+    public String createtransactionID() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
         String transaction = cinema.getCinemaCode() + LocalDateTime.now().format(format);
         return transaction;
@@ -97,7 +97,11 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
             seatAvail[i] = new SeatStatus[row.length];
 
             for (int j = 0; j < row.length; j++) {
-                seatAvail[i][j] = row[j] == true ? SeatStatus.EMPTY : SeatStatus.NO_SEAT;
+                if(row[j] == true) {
+                    seatAvail[i][j] = SeatStatus.EMPTY;
+                } else {
+                    seatAvail[i][j] = SeatStatus.NO_SEAT;
+                }
             }
         }
 
@@ -148,7 +152,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
             for (int j = 0; j < availableSeat[i].length; j++) {
                 SeatStatus seatStatus = availableSeat[i][j];
 
-                if (selectedSeat[i][j] == true && (seatStatus == SeatStatus.TAKEN || seatStatus == SeatStatus.NO_SEAT))
+                if (selectedSeat[i][j] == true && (seatStatus == SeatStatus.NO_SEAT || seatStatus == SeatStatus.TAKEN))
                     return false;
             }
         }

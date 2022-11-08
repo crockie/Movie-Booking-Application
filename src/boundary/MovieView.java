@@ -51,9 +51,11 @@ public class MovieView {
         System.out.println("Showing status: " + movie.getShowStatus().nameToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
-
-        for (String cast : movie.getCast())
-            System.out.println("Casts: " + cast);
+        int i = 1;
+        for (String cast : movie.getCast()){
+            System.out.println("Cast " + i + ": "+ cast);
+            i++;
+        }
 
         System.out.println("Overall reviewer rating: " + movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
@@ -68,7 +70,7 @@ public class MovieView {
      * For user to add review and rating
      * 
      * @param movie The movie that user wants to review
-     * @param user  The user
+     * @param customer The customer
      */
     public static void addMovieReview(Movie movie, Customer customer) {
         Scanner sc = new Scanner(System.in);
