@@ -1,5 +1,6 @@
 package control;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import boundary.ListView;
@@ -8,6 +9,7 @@ import boundary.MovieView;
 import entity.Customer;
 import entity.DatabaseManager;
 import entity.Movie;
+import entity.ShowStatus;
 
 /**
  * This class controls the display of the movies and their details and reviews.
@@ -73,6 +75,12 @@ public class MovieControl implements MainControl {
 	 */
 	private Movie selectMovie() {
 		List<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
-		return MenuView.getItemName("Select a Movie", movieList);
+		List<Movie> availableMovieList = new ArrayList<Movie>();
+
+		for (Movie movie : movieList) {
+			if (movie.getShowStatus() != ShowStatus.END_OF_SHOWING)
+				availableMovieList.add(movie);
+		}
+		return MenuView.getItemName("Select a Movie", availableMovieList);
 	}
 }

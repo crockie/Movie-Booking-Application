@@ -60,7 +60,8 @@ public class BookingHistoryControl implements MainControl {
 											"Price: $" + String.format("%.2f", booking.getPrice()) + "\n" +
 											"Movie: " + movieTime.getMovie().getTitle() + "\n" +
 											"Movie time: " + movieTime.nameToString() + "\n" +
-											"Cineplex: " + cineplex.getName() + "\n");
+											"Cineplex: " + cineplex.getName() + "\n" +
+											"Cinema: " + cinema.getCinemaCode());
 						}
 					}
 				}

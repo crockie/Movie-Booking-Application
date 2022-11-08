@@ -13,7 +13,7 @@ public class DatabaseManager {
     /**
      * Relative path of the data file
      */
-    private static String path = "src\\database\\data\\moblima.dat";
+    private static String path = "src/database/data/moblima.dat";
 
     /**
      * Constructor of the class

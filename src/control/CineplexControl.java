@@ -12,112 +12,116 @@ import java.util.Scanner;
 
 import boundary.*;
 
-public class CineplexControl implements MainControl{
+public class CineplexControl implements MainControl {
     @Override
     public void begin() {
         boolean end = true;
         while (end) {
-			int option = MenuView.getMenuOption(
-					"Enter your choice: ",
-					"Add Cineplex",
+            int option = MenuView.getMenuOption(
+                    "Enter your choice: ",
+                    "Add Cineplex",
                     "Add Cinemas",
                     "View Cineplex",
                     "Add Movie Time",
-                    "Adding Ticket Price",
+                    "Add Ticket Price",
                     "Add Staff",
+                    "Delete Cineplex",
+                    "Delete Cinemas",
+                    "Delete Staff",
+                    "Delete Customer",
+                    "View Staff",
+                    "View Customer",
                     "QUIT");
             Scanner sc = new Scanner(System.in);
             List<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
             List<Cineplex> cineplexList = DatabaseManager.getDataBase().getCineplexList();
             TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
 
-            
-			switch (option) {
-				case 1:
-					System.out.println("Add Cineplex");
+            switch (option) {
+                case 1:
+                    System.out.println("Add Cineplex");
                     System.out.println("Enter Cineplex Name: ");
                     String name = sc.nextLine();
                     Cineplex cineplex = new Cineplex(name);
                     DatabaseManager.getDataBase().getCineplexList().add(cineplex);
-					break;
+                    break;
 
-				case 2:
+                case 2:
                     System.out.println("Select Cineplex:");
                     for (int i = 0; i < cineplexList.size(); i++) {
-                        System.out.println((i+1) + ". " + cineplexList.get(i).getName());
+                        System.out.println((i + 1) + ". " + cineplexList.get(i).getName());
                     }
                     int cineplexIndex = sc.nextInt();
                     sc.nextLine();
-                    Cineplex cineplex2 = cineplexList.get(cineplexIndex-1);
-					System.out.println("Add Cinema");
+                    Cineplex cineplex2 = cineplexList.get(cineplexIndex - 1);
+                    System.out.println("Add Cinema");
                     System.out.println("Enter Cinema Code: ");
                     String cinemaCode = sc.nextLine();
                     System.out.println("Enter Cinema Type: ");
                     CinemaClass cinemaClass = MenuView.getItemName("Cinema Code: ", CinemaClass.values());
                     boolean[][] seat = new boolean[10][21];
-                    
-                    for(int i = 0; i < 10; i++){
-                        for(int j = 0; j < 21; j++){
-                            if(j == 10) {
+
+                    for (int i = 0; i < 10; i++) {
+                        for (int j = 0; j < 21; j++) {
+                            if (j == 10) {
                                 seat[i][j] = false;
-                            }
-                            else {
+                            } else {
                                 seat[i][j] = true;
                             }
                         }
                     }
                     cineplex2.addCinema(cinemaCode, cinemaClass, seat);
-					break;
+                    break;
 
-				case 3:
+                case 3:
                     System.out.println("View Cineplex");
                     for (int i = 0; i < cineplexList.size(); i++) {
-                        System.out.println((i+1) + ". " + cineplexList.get(i).getName());
+                        System.out.println((i + 1) + ". " + cineplexList.get(i).getName());
                     }
                     int cineplexIndex2 = sc.nextInt();
                     sc.nextLine();
-                    Cineplex cineplex3 = cineplexList.get(cineplexIndex2-1);
-                    ArrayList <Cinema> cinemaList = cineplex3.getCinemas();
-                    for(int i = 0; i < cinemaList.size(); i++){
-                        System.out.println((i+1) + ". " + cinemaList.get(i).getCinemaCode());
+                    Cineplex cineplex3 = cineplexList.get(cineplexIndex2 - 1);
+                    ArrayList<Cinema> cinemaList = cineplex3.getCinemas();
+                    for (int i = 0; i < cinemaList.size(); i++) {
+                        System.out.println((i + 1) + ". " + cinemaList.get(i).getCinemaCode());
                         boolean[][] seatLayouts = cinemaList.get(i).getSeatLayout();
-                        for(int j = 0; j < 10; j++){
-                            for(int k = 0; k < 10; k++){
-                                if(seatLayouts[j][k] == true){
+                        for (int j = 0; j < 10; j++) {
+                            for (int k = 0; k < 10; k++) {
+                                if (seatLayouts[j][k] == true) {
                                     System.out.print("O ");
-                                }
-                                else{
+                                } else {
                                     System.out.print("X ");
                                 }
                             }
                             System.out.println();
                         }
                     }
-					break;
+                    break;
 
-				case 4:
-					System.out.println("Add Movie Time");
-                    
+                case 4:
+                    System.out.println("Add Movie Time");
+
                     for (int i = 0; i < cineplexList.size(); i++) {
-                        System.out.println((i+1) + ". " + cineplexList.get(i).getName());
+                        System.out.println((i + 1) + ". " + cineplexList.get(i).getName());
                     }
                     int cineplexIndex3 = sc.nextInt();
                     sc.nextLine();
-                    ArrayList<Cinema> cinemaList2 = cineplexList.get(cineplexIndex3-1).getCinemas();
+                    ArrayList<Cinema> cinemaList2 = cineplexList.get(cineplexIndex3 - 1).getCinemas();
                     int cinemaIndex = 0;
                     System.out.println("Select Cinema:");
-                    for(int i = 0; i < cinemaList2.size(); i++){
-                        System.out.println((i+1) + ". " + cinemaList2.get(i).getCinemaCode());
+                    for (int i = 0; i < cinemaList2.size(); i++) {
+                        System.out.println((i + 1) + ". " + cinemaList2.get(i).getCinemaCode());
                     }
                     cinemaIndex = sc.nextInt();
                     sc.nextLine();
-                    
+
                     System.out.println("Enter Movie Title: ");
                     Movie movie = MenuView.getItemName("Choose a movie", movieList);
-					MovieView.getMovieView(movie);
+                    MovieView.getMovieView(movie);
 
                     System.out.println("Enter Movie Date and Time as dd/MM/yyyy HH:mm: ");
-                    //LocalDateTime movieDateTime = LocalDateTime.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+                    // LocalDateTime movieDateTime = LocalDateTime.parse(sc.nextLine(),
+                    // DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
                     System.out.println("Enter movie start date and time (dd/MM/yyyy HH:mm): ");
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -131,18 +135,18 @@ public class CineplexControl implements MainControl{
                             System.out.println("Invalid date and time format. Please try again.");
                         }
                     }
-                    Cinema cinema = cinemaList2.get(cinemaIndex-1);
-                    
+                    Cinema cinema = cinemaList2.get(cinemaIndex - 1);
+
                     cinema.addMovieTime(movieTime, movie);
                     break;
 
-				case 5:
-					System.out.println("Adding Ticket Price");
+                case 5:
+                    System.out.println("Adding Ticket Price");
                     System.out.println("Enter price of normal ticket: ");
                     double normalTicketPrice = sc.nextDouble();
                     sc.nextLine();
                     ticketPrice.setNormalPrice(normalTicketPrice);
-                    
+
                     System.out.println("Enter price of Standard ticket: ");
                     double cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
@@ -162,12 +166,12 @@ public class CineplexControl implements MainControl{
                     cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
                     ticketPrice.setAgePrice(AgeGroup.ADULT, cinemaClassTicketPrice);
-                    
+
                     System.out.println("Enter price of CHILD ticket: ");
                     cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
                     ticketPrice.setAgePrice(AgeGroup.CHILD, cinemaClassTicketPrice);
-                    
+
                     System.out.println("Enter price of 3D ticket: ");
                     cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
@@ -177,7 +181,7 @@ public class CineplexControl implements MainControl{
                     cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
                     ticketPrice.setMovieTypePrice(MovieType.BLOCKBUSTER, cinemaClassTicketPrice);
-                    
+
                     System.out.println("Enter price of Regular ticket: ");
                     cinemaClassTicketPrice = sc.nextDouble();
                     sc.nextLine();
@@ -227,15 +231,135 @@ public class CineplexControl implements MainControl{
                     break;
 
                 case 7:
+                    System.out.println("Delete Cineplex ");
+                    System.out.println("Enter Cineplex Name: ");
+                    String cineplexName = sc.nextLine();
+                    boolean confirm = false;
+                    try {
+                        System.out.println("Confirm booking (y/n): ");
+                        String input = sc.nextLine();
+
+                        if (input.equals("y")) {
+                            confirm = true;
+                        } else if (input.equals("n")) {
+                            confirm = false;
+                        } else {
+                            System.out.println("Please enter a valid input");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Please enter a valid input");
+                    }
+
+                    if (confirm == true)
+                        DatabaseManager.getDataBase().deleteCineplex(cineplexName);
+                    break;
+
+                case 8:
+                    System.out.println("Delete Cinema ");
+                    System.out.println("Enter CinemaName: ");
+                    String cinemaName = sc.nextLine();
+                    confirm = false;
+                    try {
+                        System.out.println("Confirm booking (y/n): ");
+                        String input = sc.nextLine();
+
+                        if (input.equals("y")) {
+                            confirm = true;
+                        } else if (input.equals("n")) {
+                            confirm = false;
+                        } else {
+                            System.out.println("Please enter a valid input");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Please enter a valid input");
+                    }
+
+                    if (confirm == true)
+                        DatabaseManager.getDataBase().deleteCinema(cinemaName);
+                    break;
+
+                case 9:
+                    System.out.println("Delete Staff ");
+                    System.out.println("Enter Staff Name: ");
+                    String staffNameToBeDeleted = sc.nextLine();
+                    confirm = false;
+                    try {
+                        System.out.println("Confirm booking (y/n): ");
+                        String input = sc.nextLine();
+
+                        if (input.equals("y")) {
+                            confirm = true;
+                        } else if (input.equals("n")) {
+                            confirm = false;
+                        } else {
+                            System.out.println("Please enter a valid input");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Please enter a valid input");
+                    }
+
+                    if (confirm == true)
+                        DatabaseManager.getDataBase().deleteStaff(staffNameToBeDeleted);
+                    break;
+
+                case 10:
+                    System.out.println("Delete Staff ");
+                    System.out.println("Enter Staff Name: ");
+                    String customerNameToBeDeleted = sc.nextLine();
+                    confirm = false;
+                    try {
+                        System.out.println("Confirm booking (y/n): ");
+                        String input = sc.nextLine();
+
+                        if (input.equals("y")) {
+                            confirm = true;
+                        } else if (input.equals("n")) {
+                            confirm = false;
+                        } else {
+                            System.out.println("Please enter a valid input");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Please enter a valid input");
+                    }
+
+                    if (confirm == true) {
+                        try {
+                            DatabaseManager.getDataBase().deleteCustomer(customerNameToBeDeleted);
+                        } catch (Exception e) {
+                            System.out.println("Please enter the correct staff name");
+                        }
+                    }
+                    break;
+
+                case 11:
+                    ArrayList<String> staffList = DatabaseManager.getDataBase().getCinemaStaffs();
+                    int i = 1;
+                    for (String username : staffList) {
+                        System.out.println("Staff #" + i + ": " + username);
+                        i++;
+                    }
+                    break;
+
+                case 12:
+                    ArrayList<String> customerList = DatabaseManager.getDataBase().getCustomers();
+                    i = 1;
+                    for (String username : customerList) {
+                        System.out.println("Customer #" + i + ": " + username);
+                        i++;
+                    }
+                    break;
+
+                case 13:
                     end = false;
                     break;
 
-			}
-		}
+            }
+        }
     }
+
     public static void main(String[] args) {
         DatabaseManager.read();
-        
+
         CineplexControl controller = new CineplexControl();
         controller.begin();
 

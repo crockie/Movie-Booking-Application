@@ -3,7 +3,7 @@ package entity;
 /**
  * Serves as the login system of cinema staff
  */
-public class CinemaStaff extends User{
+public class CinemaStaff extends User {
     /**
      * The username of the cinema staff
      */
