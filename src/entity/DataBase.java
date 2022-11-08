@@ -189,7 +189,7 @@ public class DataBase implements Serializable {
 	public void deleteCinema(String cinemaName) {
 		for (Cineplex cineplex : cineplexList) {
 			for (Cinema cinema : cineplex.getCinemas())
-				if (cinema.nameToString() == cinemaName) {
+				if (cinemaName.equals(cinema.nameToString())) {
 					cineplex.getCinemas().remove(cinema);
 				}
 		}

@@ -62,17 +62,18 @@ public class DatFileEditor implements MainControl {
                     System.out.println("Enter Cinema Code: ");
                     String cinemaCode = sc.nextLine();
                     System.out.println("Enter Cinema Type: ");
+                    boolean[][] seat;
                     CinemaClass cinemaClass = MenuView.getItemName("Cinema Code: ", CinemaClass.values());
-                    boolean[][] seat = new boolean[10][21];
-
                     if(cinemaClass == CinemaClass.PLAT_MOVIE_SUITES){
+                        seat = new boolean[10][10];
                         for(int i = 0; i < 10; i++){
-                            for(int j = 0; j < 11; j++){
+                            for(int j = 0; j < 10; j++){
                                 seat[i][j] = true;
                             }
                         }
                     }
                     else {
+                        seat = new boolean[10][21];
                         for (int i = 0; i < 10; i++) {
                             for (int j = 0; j < 21; j++) {
                                 if (j == 10) {
