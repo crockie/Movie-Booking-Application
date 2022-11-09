@@ -24,9 +24,10 @@ public class BookingView {
     /**
      * This method gets all the seats the movie goer wants to book
      * 
-     * @param num the total number of tickets to be booked
+     * @param num      the total number of tickets to be booked
      * @param showTime the selected show time
-     * @return a 2D boolean array representing the selected seats. The value of the selected seat is true, else it's false.
+     * @return a 2D boolean array representing the selected seats. The value of the
+     *         selected seat is true, else it's false.
      */
     public static boolean[][] getSeats(int num, BookMovie showTime) {
         boolean[][] seatLayout = showTime.getSeatLayout();
@@ -43,22 +44,32 @@ public class BookingView {
                     selectedSeat[i][j] = false;
             }
 
-            System.out.println("Please enter the seat numbers (eg. G6): ");
+            int a = 1;
 
             for (int i = 0; i < num; i++) {
-                String input = sc.nextLine().toUpperCase();
-                int row = (input.charAt(0)) - 'A';
-                int col = Integer.parseInt(input.substring(1));
-                if (seatTypes[row][col - 1] == SeatType.COUPLE || seatTypes[row][col - 1] == SeatType.WHEELCHAIR) {
-                    if (((col < 11 && (col - 1) % 2 == 0)) || (col > 11 && (col - 1) % 2 == 1)) {
-                        selectedSeat[row][col - 1] = true;
-                        selectedSeat[row][col] = true;
-                    } else {
-                        selectedSeat[row][col - 1] = true;
-                        selectedSeat[row][col - 2] = true;
+                while (true) {
+                    try {
+                        System.out.printf("Please enter the #%d seat number (eg. G6): ", a);
+                        String input = sc.nextLine().toUpperCase();
+                        int row = (input.charAt(0)) - 'A';
+                        int col = Integer.parseInt(input.substring(1));
+                        if (seatTypes[row][col - 1] == SeatType.COUPLE
+                                || seatTypes[row][col - 1] == SeatType.WHEELCHAIR) {
+                            if (((col < 11 && (col - 1) % 2 == 0)) || (col > 11 && (col - 1) % 2 == 1)) {
+                                selectedSeat[row][col - 1] = true;
+                                selectedSeat[row][col] = true;
+                            } else {
+                                selectedSeat[row][col - 1] = true;
+                                selectedSeat[row][col - 2] = true;
+                            }
+                        } else {
+                            selectedSeat[row][col - 1] = true;
+                        }
+                        a++;
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Please enter the correct seat number!");
                     }
-                } else {
-                    selectedSeat[row][col - 1] = true;
                 }
             }
 
