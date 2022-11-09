@@ -18,6 +18,13 @@ public class MovieEditView {
         try {
             System.out.println("Enter the title of the movie: ");
             String title = sc.nextLine();
+            for (Movie movie : DatabaseManager.getDataBase().getMovieList()) {
+                String movieTitle = movie.getTitle();
+                if (title.equals(movieTitle)) {
+                    System.out.println("The movie is already existed!");
+                    return;
+                }
+            }
             System.out.println("Enter the synopsis of the movie: ");
             String synopsis = sc.nextLine();
             System.out.println("Enter the director of the movie: ");
