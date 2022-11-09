@@ -56,12 +56,4 @@ public class MovieLogicControl implements MainControl {
 		}
 		
 	}
-	public static void main(String[] args) {
-		DatabaseManager.read();
-		
-		MovieLogicControl controller = new MovieLogicControl();
-		controller.begin();
-		
-		DatabaseManager.write();
-	}
 }

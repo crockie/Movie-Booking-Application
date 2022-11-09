@@ -3,7 +3,13 @@ package control;
 import java.util.Scanner;
 
 import entity.DatabaseManager;
-
+/**
+ * This class controls the display of the top 5 movies by:
+ * 1) Overall ticket sales 
+ * 2) Reviewer's rating
+ * 3) Default (both)
+ */
+@SuppressWarnings("resource")
 public class ConfigureSystemControl implements MainControl {
     @Override
     public void begin() {

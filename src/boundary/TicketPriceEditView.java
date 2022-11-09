@@ -16,6 +16,7 @@ import java.util.InputMismatchException;
 /**
  * To edit the ticket price (Normal Price and Additional Price)
  */
+@SuppressWarnings("resource")
 public class TicketPriceEditView {
     /**
      * Edit the normal price of the ticket

@@ -18,6 +18,7 @@ import entity.*;
 /**
  * This class handles the control flow of movie booking for a customer
  */
+@SuppressWarnings("resource")
 public class BookingControl implements MainControl {
 	/**
 	 * The customer who is doing the booking
