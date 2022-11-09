@@ -235,6 +235,11 @@ public class BookingView {
         sc.nextLine();
     }
 
+    /**
+     * Display price once customer selects the seat
+     * 
+     * @param movieTime Movie details
+     */
     public static void displayPrice(MovieTime movieTime) {
         System.out.println("Ticket Price:");
         TicketPrice ticketPrice = DatabaseManager.getDataBase().getTicketPrice();
