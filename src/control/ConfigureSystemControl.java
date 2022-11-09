@@ -11,13 +11,21 @@ public class ConfigureSystemControl implements MainControl {
         System.out.println("1: Ticket Sales");
         System.out.println("2: Overall Ratings");
         System.out.println("3: Default (Ticket Sales and Overall Ratings)");
-        System.out.print("Option: ");
 
         Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        if(choice < 1 || choice > 3){
-            System.out.println("Invalid input. Please try again.");
-            return;
+        int choice;
+        while (true) {
+            try {
+                System.out.print("Option: ");
+                choice = sc.nextInt();
+                if (choice >= 1 && choice <= 3)
+                    break;
+                else
+                    System.out.println("Please enter a valid option");
+            } catch (Exception e) {
+                System.out.println("Please enter a valid option");
+                sc.nextLine();
+            }
         }
 
         DatabaseManager.getDataBase().setConfig(choice);
