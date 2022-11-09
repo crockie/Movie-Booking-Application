@@ -8,6 +8,7 @@ import entity.ItemName;
 /**
  * This class handles the menu display and input
  */
+@SuppressWarnings("resource")
 public class MenuView {
 	
 	/**

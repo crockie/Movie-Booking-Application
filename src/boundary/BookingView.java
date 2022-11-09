@@ -19,6 +19,7 @@ import java.util.EnumMap;
  * This class handles the display of the booking information and the retrieval
  * of details from the movie goer
  */
+@SuppressWarnings("resource")
 public class BookingView {
 
     /**

@@ -12,6 +12,7 @@ import entity.*;
 /*
  * This class is the boundary class for the show time edit view
  */
+@SuppressWarnings("resource")
 public class ShowTimeEditView {
     /*
      * This method is used to display the add show time view

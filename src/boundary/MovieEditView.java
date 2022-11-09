@@ -9,6 +9,7 @@ import entity.*;
 /*
  * This class is the boundary class for the movie edit view
  */
+@SuppressWarnings("resource")
 public class MovieEditView {
     /*
      * This method is used to display the add movie view

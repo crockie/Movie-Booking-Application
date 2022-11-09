@@ -8,6 +8,7 @@ import entity.*;
 /**
  * This class displays the login and signup view for a customer
  */
+@SuppressWarnings("resource")
 public class CustomerLoginView {
 	/**
 	 * This method displays the signup view for the customer

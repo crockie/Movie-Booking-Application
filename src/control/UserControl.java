@@ -1,7 +1,6 @@
 package control;
 
 import boundary.MenuView;
-import entity.DatabaseManager;
 
 /**
  * Controls the selection of the respective user portal
@@ -35,14 +34,5 @@ public class UserControl implements MainControl {
                 NavigateControl.popOne();
                 break;
         }
-    }
-
-    public static void main(String[] args) {
-        DatabaseManager.read();
-
-        UserControl controller = new UserControl();
-        controller.begin();
-
-        DatabaseManager.write();
     }
 }

@@ -9,6 +9,7 @@ import entity.DatabaseManager;
 /**
  * This class displays the login view for a cinema staff
  */
+@SuppressWarnings("resource")
 public class CinemaStaffLoginView {
 
 	/**

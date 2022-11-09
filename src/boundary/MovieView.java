@@ -13,6 +13,7 @@ import entity.ShowStatus;
 /**
  * Display movie details to user
  */
+@SuppressWarnings("resource")
 public class MovieView {
     /**
      * Display all movies with details in database
