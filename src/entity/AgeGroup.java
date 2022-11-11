@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * The different age groups available for ticket pricing
+ * The enumeration of the different age groups available for ticket pricing
  */
 public enum AgeGroup implements ItemName{
 	/**
@@ -22,7 +22,7 @@ public enum AgeGroup implements ItemName{
 	private String ageGroup;
 	
 	/**
-	 * This creates a {@code AgeGroup} object with the input
+	 * This method creates a {@code AgeGroup} object with the age group specified
 	 * @param ageGroup
 	 */
 	private AgeGroup (String ageGroup) {
