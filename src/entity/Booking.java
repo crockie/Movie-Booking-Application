@@ -50,7 +50,7 @@ public class Booking implements Serializable {
 	}
 	
 	/**
-	 * Get the transaction id of the booking
+	 * This method gets the transaction id of the booking
 	 * @return the transaction id of the booking
 	 */
 	public String getTransactionID() {
@@ -58,7 +58,7 @@ public class Booking implements Serializable {
 	}
 	
 	/**
-	 * Get the customer who made the booking
+	 * This method gets the customer who made the booking
 	 * @return the customer who made the booking
 	 */
 	public Customer getCustomer() {
@@ -66,7 +66,7 @@ public class Booking implements Serializable {
 	}
 	
 	/**
-	 * Get the tickets booked in the booking
+	 * This method gets the tickets booked in the booking
 	 * @return the tickets booked in the booking
 	 */
 	public ArrayList<Ticket> getTickets() {
@@ -74,7 +74,7 @@ public class Booking implements Serializable {
 	}
 
 	/**
-	 * Get the price of the booking
+	 * This method gets the price of the booking
 	 * @return the price of the booking
 	 */
 	public double getPrice() {
