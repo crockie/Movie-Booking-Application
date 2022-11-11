@@ -52,7 +52,7 @@ public class Cinema implements Serializable, ItemName{
     
     /** 
     * This method gets the name of the cinema
-    * @return String the name of the cinema
+    * @return the name of the cinema
     */
     public String getCinemaCode(){
         return this.cinemaCode;
@@ -60,7 +60,7 @@ public class Cinema implements Serializable, ItemName{
     
     /** 
     * This method gets the cinema class of the cinema 
-    * @return CinemaClass the cinema class of the cinema
+    * @return the cinema class of the cinema
     */
     public CinemaClass getCinemaClass(){
         return this.cinemaClass;
@@ -68,7 +68,7 @@ public class Cinema implements Serializable, ItemName{
     
     /** 
     * This method gets the seating layout of the cinema
-    * @return boolean[][] the seating layout of the cinema
+    * @return the seating layout of the cinema
     */
     public boolean[][] getSeatLayout(){
         return this.seatLayout;
@@ -76,7 +76,7 @@ public class Cinema implements Serializable, ItemName{
     
     /**  
     * This method gets the showtimes in the cinema
-    * @return ArrayList<MovieTime> the showtimes in the cinema
+    * @return the showtimes in the cinema
     */
     public ArrayList<MovieTime> getMovieTimes(){
         return this.movieTimes;
