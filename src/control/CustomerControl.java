@@ -9,7 +9,7 @@ import boundary.CustomerLoginView;
  */
 public class CustomerControl implements MainControl {
 	/**
-	 * The Customer that is currently logged in
+	 * The customer that is currently logged in
 	 */
 	private Customer customer;
 
@@ -44,7 +44,7 @@ public class CustomerControl implements MainControl {
 	}
 
 	/**
-	 * This function controls the display of the main menu for Customers
+	 * This method controls the display of the main menu for Customers
 	 * Customers can perform various functions at this page
 	 */
 	private void displayMenu() {

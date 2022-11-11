@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import boundary.*;
-
 public class DatFileEditor implements MainControl {
     @Override
     public void begin() {

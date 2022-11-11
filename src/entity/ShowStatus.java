@@ -1,46 +1,45 @@
 package entity;
 
 /**
-* Show the movie statuses
-*/
+ * This is an enumeration of the movie show statuses
+ */
 public enum ShowStatus implements ItemName {
-
     /**
-    * Coming soon
-    */
+     * Coming soon
+     */
     COMING_SOON("Coming Soon"),
 
     /**
-    * Preview
-    */    
+     * Preview
+     */    
     PREVIEW("Preview"),
 
     /**
-    * Now showing
-    */    
+     * Now showing
+     */    
     NOW_SHOWING("Now Showing"),
 
     /**
-    * End of showing
-    */    
+     * End of showing
+     */    
     END_OF_SHOWING("End of Showing");
 
     /**
-    * The name of the showing status
-    */  
+     * The name of the showing status
+     */  
     private String name;
 
     /**
-    * Creates a {@code ShowingStatus} object with the given label
-    * @param name
-    */ 
+     * This constructor creates a {@code ShowStatus} object with the given label
+     * @param name the show status
+     */ 
     private ShowStatus(String name) {
         this.name = name;
     }
-
+    
     /**
-    * {@inheritDoc}
-    */
+     * {@inheritDoc}
+     */
     @Override
     public String nameToString() {
         return this.name;

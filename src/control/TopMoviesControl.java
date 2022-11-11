@@ -18,12 +18,12 @@ import boundary.MenuView;
  */
 public class TopMoviesControl implements MainControl {
 	/**
-	 * Check if user is a customer or staff
+	 * Shows if user is a customer or staff
 	 */
 	private boolean isCustomer;
 
 	/**
-	 * Creates a new {@code TopMoviesControl} object for the customer or staff
+	 * This constructor creates a new {@code TopMoviesControl} object for the customer or staff
 	 * 
 	 * @param isCustomer is a boolean to check if user is a customer or staff
 	 */
@@ -82,13 +82,17 @@ public class TopMoviesControl implements MainControl {
 			}
 		}
 	}
-
+	/**
+	 * This method lists the movies by Ticket Sales
+	 */
 	public void listMoviesByTicketSales() {
 		List<String> movieStrings;
 		movieStrings = getTopMoviesByTicketSales();
 		ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
 	}
-
+	/**
+	 * This method lists the movies by their ratings
+	 */
 	public void listMoviesByRating() {
 		List<String> movieStrings;
 		movieStrings = getTopMoviesByOverallRating();

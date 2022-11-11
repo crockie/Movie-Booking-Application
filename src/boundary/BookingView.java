@@ -63,9 +63,9 @@ public class BookingView {
                                 selectedSeat[row][col - 1] = true;
                                 selectedSeat[row][col - 2] = true;
                             }
-                        } else if (selectedSeat[row][col - 1] == true) {
-                            System.out.println("Seat " + input.toUpperCase()
-                                    + " has already been selected, choose a different seat.");
+
+                        } else if (selectedSeat[row][col - 1] == true){
+                            System.out.println("Seat " + input.toUpperCase() + " has already been selected, choose a different seat.");
                             continue;
                         } else {
                             selectedSeat[row][col - 1] = true;

@@ -9,7 +9,7 @@ import boundary.MenuView;
  */
 public class CinemaStaffControl implements MainControl {
     /**
-     * Cinema staff that is currently logged in
+     * The cinema staff that is currently logged in
      */
     private CinemaStaff cinemaStaff;
 
@@ -39,7 +39,7 @@ public class CinemaStaffControl implements MainControl {
     }
 
     /**
-     * This method controls main menu display for the cinema staff
+     * This method shows the menu options for Cinema Staff
      */
     private void showMenu() {
         int choice = MenuView.getMenuOption(

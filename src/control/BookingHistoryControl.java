@@ -16,12 +16,12 @@ import boundary.ListView;
  */
 public class BookingHistoryControl implements MainControl {
 	/**
-	 * The Customer that the booking history is being displayed for
+	 * The customer that the booking history is being displayed for
 	 */
 	private Customer customer;
 
 	/**
-	 * Creates a new {@code BookingHistoryControl} object for the current Customer
+	 * This constructor creates a new {@code BookingHistoryControl} object for the current Customer
 	 * 
 	 * @param customer the Customer that the booking history is being displayed for
 	 */
@@ -31,7 +31,6 @@ public class BookingHistoryControl implements MainControl {
 
 	/**
 	 * {@inheritDoc}
-	 * Displaying of Booking History for Customer
 	 */
 	@Override
 	public void begin() {
@@ -40,7 +39,7 @@ public class BookingHistoryControl implements MainControl {
 	}
 
 	/**
-	 * This function goes through all the cineplexes, cinemas, movie times and
+	 * This method goes through all the cineplexes, cinemas, movie times and
 	 * bookings to find the Customer's bookings
 	 * The information of the bookings is returned as a string
 	 * 

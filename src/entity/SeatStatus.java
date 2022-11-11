@@ -1,7 +1,7 @@
 package entity;
 
 /**
-* Seat statuses for a show time seat
+* This enumeration shows the seat statuses for a show time seat
 */
 public enum SeatStatus {
     /**
