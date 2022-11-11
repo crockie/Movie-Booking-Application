@@ -11,7 +11,6 @@ public class Cinema implements Serializable, ItemName{
      * Cinema code of the cinema
      */
     private String cinemaCode;
-
     /**
      * The cinema class of the cinema
      */
@@ -25,23 +24,21 @@ public class Cinema implements Serializable, ItemName{
      */
     private ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
     /**
-	 * The serialisation version number
-	 */
-	private static final long serialVersionUID = 48485464514484848L; 
-	
+    * The serialisation version number
+    */
+    private static final long serialVersionUID = 48485464514484848L; 	
     /**
-	 * Creates a {@code Cinema} object for the given cinema name, cinema class and layout
-	 * @param cinemaCode the code of the cinema
-	 * @param cinemaClass the cinema class of the cinema
-     * @param seatLayout the seating layout of the cinema
-	 */
+    * This constuctor creates a {@code Cinema} object for the given cinema name, cinema class and layout
+    * @param cinemaCode the code of the cinema
+    * @param cinemaClass the cinema class of the cinema
+    * @param seatLayout the seating layout of the cinema
+    */
     public Cinema(String cinemaCode, CinemaClass cinemaClass, boolean[][] seatLayout){
         this.cinemaCode = cinemaCode;
         this.cinemaClass = cinemaClass;
         this.seatLayout = seatLayout;
     }
 
-    
     /** 
      * Create {@code MovieTime} object and add it to the list of movieTimes
      * @param movieDateTime the date and time of the movie
