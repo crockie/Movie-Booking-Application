@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * This class show the movie statuses
+ * This is an enumeration of the movie show statuses
  */
 public enum ShowStatus implements ItemName {
     /**
