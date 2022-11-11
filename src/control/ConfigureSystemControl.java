@@ -12,8 +12,8 @@ import entity.DatabaseManager;
 @SuppressWarnings("resource")
 public class ConfigureSystemControl implements MainControl {
     /**
-	 * {@inheritDoc}
-	 */
+     * {@inheritDoc}
+     */
     @Override
     public void begin() {
         System.out.println("Select the criteria you want users to list the movies by:");
