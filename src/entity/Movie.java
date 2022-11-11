@@ -8,42 +8,52 @@ import java.io.Serializable;
  * This class contains the information for the Movie
  */
 public class Movie implements ItemName, Serializable {
+	
 	/**
 	 * Serialization number
 	 */
 	private static final long serialVersionUID = 544548948489484151L;
+	
 	/**
 	 * Title of Movie
 	 */
 	private String title;
+	
 	/**
 	 * Synopsis of Movie
 	 */
 	private String synopsis;
+	
 	/**
 	 * Director of Movie
 	 */
 	private String director;
+	
 	/**
 	 * Casts of Movie
 	 */
 	private String[] cast;
+	
 	/**
 	 * Different Status for Movies: Coming Soon, Preview, Now Showing (End Of Showing)
 	 */ 
 	private ShowStatus showStatus;
+	
 	/**
 	 * Different Movie Ratings: G, PG, PG13, NC16, M18, R21
 	 */
 	private MovieRating movieRating;
+	
 	/**
 	 * Different Movie Types: Regular, Blockbuster, 3D
 	 */
 	private MovieType movieType;
+	
 	/**
 	 * ArrayList of ReviewAndRating
 	 */
 	private ArrayList<ReviewAndRating> reviewAndRating = new ArrayList<ReviewAndRating>();
+	
 	/**
 	 * ArrayList of MovieTime
 	 */
@@ -53,9 +63,9 @@ public class Movie implements ItemName, Serializable {
 	 * Movie screening duration
 	 */
 	private Duration duration;
+	
 	/**
-	 * Constructor for Movie
-	 * Creates a {@code Movie} object with the given title, synopsis, director, cast, show status, movie rating, movie type
+	 * This constructor creates a {@code Movie} object with the given title, synopsis, director, cast, show status, movie rating, movie type
 	 * @param title the title of the Movie
 	 * @param synopsis the synopsis of the Movie
 	 * @param director the director of the Movie
@@ -77,22 +87,25 @@ public class Movie implements ItemName, Serializable {
 		this.movieType = movieType;
 		this.duration = duration;
 	}
+	
 	/**
-	 * Add new movieTime into ArrayList movieTimes
+	 * This method adds a new movieTime into ArrayList movieTimes
 	 * @param movieTime the new Movie Time to be added
 	 */
 	protected void addMovieTime(MovieTime movieTime) {
 		this.movieTimes.add(movieTime);
 	}
+	
 	/**
-	 * Getter for MovieTime
+	 * This method gets the lists of times for the Movie
 	 * @return the list of times for the Movie
 	 */
 	public ArrayList<MovieTime> getMovieTimes() {
 		return movieTimes;
 	}
+	
 	/**
-	 * Calculates the average rating of the Movie
+	 * This method calculates the average rating of the Movie
 	 * @return the average rating of the Movie
 	 */
 	public Double getAverageRating() {
@@ -109,8 +122,9 @@ public class Movie implements ItemName, Serializable {
 		totalRating = sum / reviewCount;
 		return totalRating;
 	}
+	
 	/**
-	 * Calculates the Total Sales of the Movie
+	 * This method calculates the Total Sales of the Movie
 	 * @return the total sales of the Movie
 	 */
 	public double getTotalSales() {
@@ -121,6 +135,7 @@ public class Movie implements ItemName, Serializable {
 		
 		return totalSales;
 	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -128,121 +143,138 @@ public class Movie implements ItemName, Serializable {
 	public String nameToString() {
 		return title;
 	}
+	
 	/**
-	 * Getter for Movie title
+	 * This method gets the Movie title of the Movie
 	 * @return title of the Movie
 	 */
 	public String getTitle() {
 		return title;
 	}
+	
 	/**
-	 * Getter for Movie synopsis 
+	 * This methid gets the Movie synopsis of the Movie
 	 * @return synopsis of the Movie
 	 */
 	public String getSynopsis() {
 		return synopsis;
 	}
+	
 	/**
-	 * Getter for Movie director
+	 * This methid gets the Movie director of the Movie
 	 * @return director of the Movie
 	 */
 	public String getDirector() {
 		return director;
 	}
+	
 	/**
-	 * Getter for Movie cast
+	 * This methid gets the Movie cast of the movie
 	 * @return casts of the Movie
 	 */
 	public String[] getCast() {
 		return cast;
 	}
+	
 	/**
-	 * Getter for MovieRating
+	 * This method gets the Movie Rating of the movie
 	 * @return rating of the Movie
 	 */
 	public MovieRating getMovieRating() {
 		return movieRating;
 	}
+	
 	/**
-	 * Getter for MovieType
+	 * This method gets the for Movie Type
 	 * @return type of Movie
 	 */
 	public MovieType getMovieType() {
 		return movieType;
 	}
+	
 	/**
-	 * Getter for ArrayList ReviewAndRating
+	 * This method gets the ArrayList of ReviewAndRating of the Movie
 	 * @return reviews and ratings of the Movie
 	 */
 	public ArrayList<ReviewAndRating> getReviewAndRating() {
 		return reviewAndRating;
 	}
+	
 	/**
-	 * Getter for Movie showStatus
+	 * This metod gets the Movie showStatus
 	 * @return show status of the Movie
 	 */
 	public ShowStatus getShowStatus() {
 		return showStatus;
 	}
+	
 	/**
-	 * Getter for Movie duration
+	 * This method gets the Movie duration
 	 * @return duration of the Movie
 	 */
 	public Duration getDuration() {
 		return duration;
 	}
+	
 	/**
-	 * Setter for Movie title
+	 * This method sets the Movie title
 	 * @param title new title of the Movie
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	/**
-	 * Setter for Movie synopsis
+	 * This method sets the Movie synopsis
 	 * @param synopsis new synopsis for the Movie
 	 */
 	public void setSynopsis(String synopsis) {  
 		this.synopsis = synopsis;
 	}
+	
 	/**
-	 * Setter for Movie director
+	 * This method sets the Movie director of the Movie
 	 * @param director new director of the Movie
 	 */
 	public void setDirector(String director) {  
 		this.director = director;
 		
 	}
+	
 	/**
-	 * Setter for Movie cast
+	 * This method sets the Movie cast of the Movie
 	 * @param cast new casts for the Movie
 	 */
 	public void setCast(String[] cast) {
 		this.cast = cast;
 	}
+	
 	/**
-	 * Setter for movieRating
+	 * This method sets the movieRating for the Movie
 	 * @param movieRating new Movie Rating for the Movie
 	 */
 	public void setMovieRating(MovieRating movieRating) {
 		this.movieRating = movieRating;	
 	}
+	
 	/**
-	 * Setter for movieType
+	 * This method sets the movieType for the Movie
 	 * @param movieType new type for the Movie
 	 */
 	public void setMovieType(MovieType movieType) {
 		this.movieType = movieType;
 	}
+	
 	/**
-	 * Setter for Movie duration
+	 * This method sets the Movie duration of the Movie
 	 * @param duration new duration for the Movie
 	 */
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
+	
 	/**
-	 * Setter for Movie showStatus
+	 * This method sets the Movie's showStatus
 	 * @param showStatus new show status for the Movie
 	 */
 	public void setShowStatus(ShowStatus showStatus) {
