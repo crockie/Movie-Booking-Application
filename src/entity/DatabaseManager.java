@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * Manages data stored in database
+ * This class manages the data stored in database
  */
 public class DatabaseManager {
 
