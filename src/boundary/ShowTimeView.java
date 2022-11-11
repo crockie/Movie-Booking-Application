@@ -14,15 +14,14 @@ import entity.ShowStatus;
 /**
  * This class shows all showtimes
  */
-public class ShowtimeView {
+public class ShowTimeView {
 
     /**
      * This method displays all showtimes for all 'PREVIEW' and 'NOW SHOWING' movie
      * in all cineplexes
      */
-    public static void getShowtimeView() {
+    public static void getShowTimeView() {
         DataBase database = DatabaseManager.getDataBase();
-        // Access database to get cineplex
         List<Cineplex> cineplexList = database.getCineplexList();
 
         for (Cineplex cineplex : cineplexList) {
@@ -43,11 +42,11 @@ public class ShowtimeView {
                     System.out.println("The name of the movie is: " + movie.getTitle());
 
                     // Sort the date and time when a showtime is added
-
                     for (MovieTime showtime : showTimeList) {
                         System.out.println(showtime.nameToString());
                     }
                 }
+                System.out.println();
             }
         }
     }

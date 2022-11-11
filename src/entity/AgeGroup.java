@@ -16,6 +16,9 @@ public enum AgeGroup implements ItemName{
 	 * Child
 	 */
 	CHILD("Child");
+	/**
+	 * The name of the age group
+	 */
 	private String ageGroup;
 	
 	/**

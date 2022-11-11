@@ -5,7 +5,7 @@ import entity.DatabaseManager;
 /**
  * The application's main class.
  */
-public class MainFunc {
+public class MainFunction {
     /**
      * Application is launched through this main function
      * 

@@ -44,7 +44,7 @@ public class CustomerControl implements MainControl {
 	}
 
 	/**
-	 * This function controls the display of the main menu for Customers
+	 * This method controls the display of the main menu for Customers
 	 * Customers can perform various functions at this page
 	 */
 	private void displayMenu() {
@@ -60,7 +60,7 @@ public class CustomerControl implements MainControl {
 
 		switch (option) {
 			case 1:
-				NavigateControl.load(new MoviesControl(true));
+				NavigateControl.load(new DisplayMovieControl(true));
 				break;
 
 			case 2:

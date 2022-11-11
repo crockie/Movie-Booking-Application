@@ -2,10 +2,13 @@ package control;
 
 import java.util.List;
 
+import boundary.MovieEditView;
+import boundary.MovieView;
+import boundary.MenuView;
 import entity.DatabaseManager;
 import entity.Movie;
 
-import boundary.*;
+
 
 /**
  * This class controls the creation, change and removal of movies
@@ -22,7 +25,7 @@ public class MovieLogicControl implements MainControl {
 		while (true) {
 			int option = MenuView.getMenuOption(
 					"Enter your choice: ",
-					"View movie details",
+					"Display movie details",
 					"Add movie",
 					"Update movie",
 					"Remove movie",
@@ -52,13 +55,5 @@ public class MovieLogicControl implements MainControl {
 			}
 		}
 		
-	}
-	public static void main(String[] args) {
-		DatabaseManager.read();
-		
-		MovieLogicControl controller = new MovieLogicControl();
-		controller.begin();
-		
-		DatabaseManager.write();
 	}
 }

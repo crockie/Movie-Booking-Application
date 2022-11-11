@@ -31,16 +31,15 @@ public class BookingHistoryControl implements MainControl {
 
 	/**
 	 * {@inheritDoc}
-	 * Displaying of Booking History for Customer
 	 */
 	@Override
 	public void begin() {
-		ListView.showStringList("Booking History", getBookingHistory(), "No bookings made by this customer");
+		ListView.showStringList("Booking History: ", getBookingHistory(), "No bookings made by this customer");
 		NavigateControl.popOne();
 	}
 
 	/**
-	 * This function goes through all the cineplexes, cinemas, movie times and
+	 * This method goes through all the cineplexes, cinemas, movie times and
 	 * bookings to find the Customer's bookings
 	 * The information of the bookings is returned as a string
 	 * 
@@ -56,12 +55,12 @@ public class BookingHistoryControl implements MainControl {
 					for (Booking booking : movieTime.getBookings()) {
 						if (booking.getCustomer() == customer) {
 							customerBookingHistory.add(
-									"Transaction ID: " + booking.getTransactionId() + "\n" +
+									"Transaction ID: " + booking.getTransactionID() + "\n" +
 											"Price: $" + String.format("%.2f", booking.getPrice()) + "\n" +
 											"Movie: " + movieTime.getMovie().getTitle() + "\n" +
 											"Movie time: " + movieTime.nameToString() + "\n" +
 											"Cineplex: " + cineplex.getName() + "\n" +
-											"Cinema: " + cinema.getCinemaCode());
+											"Cinema: " + cinema.getCinemaCode() + "\n");
 						}
 					}
 				}

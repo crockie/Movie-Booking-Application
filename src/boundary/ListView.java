@@ -6,11 +6,11 @@ import java.util.List;
 import entity.ItemName;
 
 /**
- * Displays a list of object
+ * This class displays a list of object
  */
 public class ListView {
     /**
-     * Display a list of strings
+     * This method displays a list of strings
      * 
      * @param name       The name of the list
      * @param stringList The list of strings
@@ -29,7 +29,7 @@ public class ListView {
     }
 
     /**
-     * Displays a list of {@code ItemName} objects
+     * This method displays a list of {@code ItemName} objects
      * 
      * @param <T>        The class that implements {@code ItemName} interface
      * @param name       The name of the list

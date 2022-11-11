@@ -11,11 +11,12 @@ import entity.ReviewAndRating;
 import entity.ShowStatus;
 
 /**
- * Display movie details to user
+ * This class displays movie details to user
  */
+@SuppressWarnings("resource")
 public class MovieView {
     /**
-     * Display all movies with details in database
+     * This method displays all movies with details in database
      */
     public static void getAllMoviesView(boolean isCustomer) {
         DataBase database = DatabaseManager.getDataBase();
@@ -42,7 +43,8 @@ public class MovieView {
     }
 
     /**
-     * Take user's query for movie and display the specific movie details
+     * This method takes user's query for movie and display the specific movie
+     * details
      * 
      * @param movie The movie that user query
      */
@@ -51,9 +53,11 @@ public class MovieView {
         System.out.println("Showing status: " + movie.getShowStatus().nameToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
-
-        for (String cast : movie.getCast())
-            System.out.println("Casts: " + cast);
+        int i = 1;
+        for (String cast : movie.getCast()) {
+            System.out.println("Cast " + i + ": " + cast);
+            i++;
+        }
 
         System.out.println("Overall reviewer rating: " + movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
@@ -65,10 +69,10 @@ public class MovieView {
     }
 
     /**
-     * For user to add review and rating
+     * This method adds review and rating to a movie
      * 
-     * @param movie The movie that user wants to review
-     * @param user  The user
+     * @param movie    The movie that user wants to review
+     * @param customer The customer
      */
     public static void addMovieReview(Movie movie, Customer customer) {
         Scanner sc = new Scanner(System.in);

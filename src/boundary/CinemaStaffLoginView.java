@@ -7,23 +7,32 @@ import entity.CinemaStaff;
 import entity.DatabaseManager;
 
 /**
- * This class displays the login form for the cinema staff
+ * This class displays the login view for a cinema staff
  */
+@SuppressWarnings("resource")
 public class CinemaStaffLoginView {
 
 	/**
-	 * This method displays the login form for the cinema staff
+	 * This method displays the login view for a cinema staff
 	 * 
-	 * @return the logged in cinema staff
+	 * @return the cinema staff that logged in
 	 */
 	public static CinemaStaff loginCinemaStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Cinema Staff Login");
-		System.out.print("Username: ");
-		String username = sc.nextLine();
+		String username = null;
+		
+		try{
+			System.out.print("Username: ");
+			username = sc.nextLine();
+		} catch (Exception e) {
+			System.out.println("Please enter a valid username");
+		}
+		
+		
 
 		if (!DatabaseManager.getDataBase().checkStaffUsername(username)) {
-			System.out.println("Error: User with that that username doesn't exist");
+			System.out.println("Error: Cinema Staff username does not exist");
 			return null;
 		}
 
@@ -35,7 +44,12 @@ public class CinemaStaffLoginView {
 			System.out.println("Error: Incorrect password");
 		return cinemaStaff;
 	}
-
+	/**
+	 * This method is used to input the password
+	 * 
+	 * @param message the message to display to the user
+	 * @return the password
+	 */
 	public static String inputPassword(String message) {
 		Console console = System.console();
 		if (console != null) {

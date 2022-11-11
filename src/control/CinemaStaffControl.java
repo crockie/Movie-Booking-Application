@@ -3,10 +3,9 @@ package control;
 import entity.CinemaStaff;
 import boundary.CinemaStaffLoginView;
 import boundary.MenuView;
-import boundary.TicketPriceView;
 
 /**
- * Controls the main menu and login for the cinema staff
+ * This class controls the main menu and login for the cinema staff
  */
 public class CinemaStaffControl implements MainControl {
     /**
@@ -40,7 +39,7 @@ public class CinemaStaffControl implements MainControl {
     }
 
     /**
-     * Controls main menu display for the cinema staff
+     * This method controls main menu display for the cinema staff
      */
     private void showMenu() {
         int choice = MenuView.getMenuOption(
@@ -53,7 +52,7 @@ public class CinemaStaffControl implements MainControl {
                 "View All Movies",
                 "View Cinema Showtimes",
                 "View Holidays",
-                "Configure system settings",
+                "Configure Top 5 View",
 
                 "Exit");
 
@@ -79,7 +78,7 @@ public class CinemaStaffControl implements MainControl {
                 break;
 
             case 6:
-                NavigateControl.load(new MoviesControl(false));
+                NavigateControl.load(new DisplayMovieControl(false));
                 break;
 
             case 7:

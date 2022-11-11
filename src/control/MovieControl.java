@@ -42,9 +42,9 @@ public class MovieControl implements MainControl {
 		while (true) {
 			int option = MenuView.getMenuOption(
 					this.movie.getTitle(),
-					"View movie details",
+					"Display movie details",
 					"View past reviews & ratings",
-					"Add a review",
+					"Input a review",
 					"Exit");
 
 			switch (option) {

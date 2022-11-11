@@ -7,17 +7,25 @@ import java.util.Scanner;
 import entity.*;
 
 /*
- * This class is the boundary class for the movie edit view
+ * This class edits the movie listings
  */
+@SuppressWarnings("resource")
 public class MovieEditView {
     /*
-     * This method is used to display the add movie view
+     * This method displays the add movie view
      */
     public static void addMovie() {
         Scanner sc = new Scanner(System.in);
         try {
             System.out.println("Enter the title of the movie: ");
             String title = sc.nextLine();
+            for (Movie movie : DatabaseManager.getDataBase().getMovieList()) {
+                String movieTitle = movie.getTitle();
+                if (title.equals(movieTitle)) {
+                    System.out.println("The movie is already existed!");
+                    return;
+                }
+            }
             System.out.println("Enter the synopsis of the movie: ");
             String synopsis = sc.nextLine();
             System.out.println("Enter the director of the movie: ");
@@ -50,7 +58,7 @@ public class MovieEditView {
     }
 
     /*
-     * This method is used to display the remove movie view
+     * This method displays the remove movie view
      */
     public static void removeMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
@@ -59,7 +67,7 @@ public class MovieEditView {
     }
 
     /*
-     * This method is used to display the update movie view
+     * This method displays the update movie view
      */
     public static void updateMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();

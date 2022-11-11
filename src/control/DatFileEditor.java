@@ -11,8 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import boundary.*;
-
-public class CineplexControl implements MainControl {
+/**
+ * This class manages the display of the booking history for the Customer
+ */
+public class DatFileEditor implements MainControl {
+    /**
+	 * {@inheritDoc}
+	 */
     @Override
     public void begin() {
         boolean end = true;
@@ -41,9 +46,13 @@ public class CineplexControl implements MainControl {
                 case 1:
                     System.out.println("Add Cineplex");
                     System.out.println("Enter Cineplex Name: ");
-                    String name = sc.nextLine();
-                    Cineplex cineplex = new Cineplex(name);
-                    DatabaseManager.getDataBase().getCineplexList().add(cineplex);
+                    try{
+                        String name = sc.nextLine();
+                        Cineplex cineplex = new Cineplex(name);
+                        DatabaseManager.getDataBase().getCineplexList().add(cineplex);
+                    } catch(Exception e){
+                        System.out.println("Invalid input. Please try again.");
+                    }
                     break;
 
                 case 2:
@@ -58,18 +67,29 @@ public class CineplexControl implements MainControl {
                     System.out.println("Enter Cinema Code: ");
                     String cinemaCode = sc.nextLine();
                     System.out.println("Enter Cinema Type: ");
+                    boolean[][] seat;
                     CinemaClass cinemaClass = MenuView.getItemName("Cinema Code: ", CinemaClass.values());
-                    boolean[][] seat = new boolean[10][21];
-
-                    for (int i = 0; i < 10; i++) {
-                        for (int j = 0; j < 21; j++) {
-                            if (j == 10) {
-                                seat[i][j] = false;
-                            } else {
+                    if(cinemaClass == CinemaClass.PLAT_MOVIE_SUITES){
+                        seat = new boolean[10][10];
+                        for(int i = 0; i < 10; i++){
+                            for(int j = 0; j < 10; j++){
                                 seat[i][j] = true;
                             }
                         }
                     }
+                    else {
+                        seat = new boolean[10][21];
+                        for (int i = 0; i < 10; i++) {
+                            for (int j = 0; j < 21; j++) {
+                                if (j == 10) {
+                                    seat[i][j] = false;
+                                } else {
+                                    seat[i][j] = true;
+                                }
+                            }
+                        }
+                    }
+                    
                     cineplex2.addCinema(cinemaCode, cinemaClass, seat);
                     break;
 
@@ -256,7 +276,16 @@ public class CineplexControl implements MainControl {
 
                 case 8:
                     System.out.println("Delete Cinema ");
-                    System.out.println("Enter CinemaName: ");
+                    for(int i = 0; i < cineplexList.size(); i++){
+                        System.out.println((i+1) + ". " + cineplexList.get(i).getName());
+                    }
+                    cineplexIndex = sc.nextInt();
+                    sc.nextLine();
+                    Cineplex cineplex = cineplexList.get(cineplexIndex - 1);
+                    System.out.println("Enter Cinema Name: ");
+                    for(int i = 0; i < cineplex.getCinemas().size(); i++){
+                        System.out.println((i+1) + ". " + cineplex.getCinemas().get(i).getCinemaCode());
+                    }
                     String cinemaName = sc.nextLine();
                     confirm = false;
                     try {
@@ -360,7 +389,7 @@ public class CineplexControl implements MainControl {
     public static void main(String[] args) {
         DatabaseManager.read();
 
-        CineplexControl controller = new CineplexControl();
+        DatFileEditor controller = new DatFileEditor();
         controller.begin();
 
         DatabaseManager.write();
