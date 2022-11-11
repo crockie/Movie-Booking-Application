@@ -9,8 +9,9 @@ import entity.MovieType;
 import entity.TicketPrice;
 
 import control.NavigateControl;
+
 /**
- * This class is the boundary class to display the ticket price
+ * This class displays the ticket price
  */
 public class TicketPriceView {
     /**
@@ -57,8 +58,10 @@ public class TicketPriceView {
 
         NavigateControl.popOne();
     }
+
     /**
      * This method displays the ticket price for a particular showtime
+     * 
      * @param movieTime The showtime
      */
     public static void displayTicketPriceToCustomer(MovieTime movieTime) {
