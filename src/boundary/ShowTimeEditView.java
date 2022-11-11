@@ -42,7 +42,7 @@ public class ShowTimeEditView {
 
         Duration duration = movie.getDuration();
 
-        if (isClash(movieTime, duration, cinema)) {
+        if (isClash(movieTime, duration, cinema, null)) {
             System.out.println("Movie time clashes with another movie time. Please try again.");
         } else {
             cinema.addMovieTime(movieTime, movie);
@@ -98,7 +98,7 @@ public class ShowTimeEditView {
 
                 Duration duration = movieTime.getMovie().getDuration();
 
-                if (isClash(mt, duration, cinema)) {
+                if (isClash(mt, duration, cinema, movieTime)) {
                     System.out.println("Movie time clashes with another movie time. Please try again.");
                 } else {
                     movieTime.setMovieDateTime(mt);
@@ -118,18 +118,25 @@ public class ShowTimeEditView {
      * @param movieTime The movie time to check
      * @param duration The duration of the movie
      * @param cinema The cinema to check
+     * @param currentMovieTime The current movie time
      * @return true if the movie time clashes with another movie time, else it is
      *         false
      */
-    public static boolean isClash(LocalDateTime movieTime, Duration duration, Cinema cinema) {
-        ArrayList<MovieTime> movieTimeList = cinema.getMovieTimes();
-
-        // need to check logic again
-        for (MovieTime mt : movieTimeList) {
-            if (movieTime.isBefore(mt.getMovieDateTime()) && movieTime.isAfter(mt.getMovieDateTime().plus(duration))) {
-                return true;
-            }
-        }
+    public static boolean isClash(LocalDateTime movieTime, Duration duration, Cinema cinema, MovieTime currentMovieTime) {
+        for (MovieTime movieStartTime: cinema.getMovieTimes()) {
+			LocalDateTime movieEndTime = movieTime.plus(duration);
+			LocalDateTime oldStartMovieDateTime = movieStartTime.getMovieDateTime();
+			LocalDateTime oldEndMovieDateTime = oldStartMovieDateTime.plus(movieStartTime.getMovie().getDuration());
+			
+			boolean isClash = (
+				(oldStartMovieDateTime.isBefore(movieEndTime) && !oldStartMovieDateTime.isEqual(movieEndTime)) &&
+				(movieTime.isBefore(oldEndMovieDateTime) && !movieTime.isEqual(oldEndMovieDateTime)) &&
+				movieStartTime != currentMovieTime
+			);
+			
+			if (isClash)
+				return true;
+		}
         return false;
     }
 }
