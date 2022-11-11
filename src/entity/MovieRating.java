@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * The movie ratings 
+ * This is an enumeration of the movie ratings 
  */
 public enum MovieRating implements ItemName {
 
@@ -41,7 +41,7 @@ public enum MovieRating implements ItemName {
     private final String name;
 
     /**
-    * Creates a {@code MovieRating} object with the given name
+    * This constuctor creates a {@code MovieRating} object with the given name
     * @param name
     */
     private MovieRating(String name) {
