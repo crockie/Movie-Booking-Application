@@ -117,6 +117,28 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
         return seatAvail;
     }
 
+    /**
+     * This method counts the number of available seats in the movie time
+     * @return int the number of available seats for the movie time
+     */
+    @Override
+    public int countAvailableSeats(){
+        int availableSeats = 0;
+        SeatStatus[][] seatAvail = this.getAvailableSeats();
+        for (int i = 0; i < seatAvail.length; i++) {
+            for (int j = 0; j < seatAvail[i].length; j++) {
+                if (seatAvail[i][j] == SeatStatus.EMPTY) {
+                    availableSeats++;
+                }
+            }
+        }
+        return availableSeats;
+    }
+
+    /**
+     * This method returns the seat types of the movie time
+     */
+
     @Override
     public SeatType[][] getSeatTypes() {
         boolean[][] seatLayout = cinema.getSeatLayout();

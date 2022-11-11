@@ -71,11 +71,10 @@ public class TicketPriceView {
         MovieType movieType = movieTime.getMovie().getMovieType();
 
         System.out.println(cinemaClass + " class");
-        System.out.println(movieType + " type");
+        System.out.println(movieType + " type\n");
         price += ticketPrice.getCinemaClassPrice(cinemaClass) + ticketPrice.getMovieTypePrice(movieType);
 
         int i = 0;
-
         System.out.println("Ticket Type" + "\t" + "Price");
         System.out.println("---------------------------------------");
         for (AgeGroup ageGroup : AgeGroup.values()) {

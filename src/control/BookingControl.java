@@ -61,12 +61,18 @@ public class BookingControl implements MainControl {
 			try {
 				System.out.println("How many seats would you like to book: ");
 				number = sc.nextInt();
+				sc.nextLine();
 				if (number <= 0) {
 					NavigateControl.popOne();
 				}
-				sc.nextLine();
-				break;
-			} catch (Exception e) {
+				else if (number > movieTime.countAvailableSeats()) {
+					System.out.println("Sorry, there are only " + movieTime.countAvailableSeats() + " seats available");
+				} 
+				else {
+					break;
+				}
+			}
+			catch (Exception e) {
 				System.out.println("Please enter a valid number");
 				continue;
 			}

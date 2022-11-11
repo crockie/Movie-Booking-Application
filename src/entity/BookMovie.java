@@ -9,7 +9,14 @@ public interface BookMovie {
     * @return 2D array of SeatStatus
     */
     public SeatStatus[][] getAvailableSeats();
-    
+
+    /**
+     * This method counts the number of available seats
+     * @param selectedSeat
+     * @return the number of available seats
+     */
+    public int countAvailableSeats();
+
     /**
     * This method checks the availability of the seats selected by customer
     * @param selectedSeat a 2D boolean array indicating selected seats
