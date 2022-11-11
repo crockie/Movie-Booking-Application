@@ -11,10 +11,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 /**
  * To edit the ticket price (Normal Price and Additional Price)
  */
+@SuppressWarnings("resource")
 public class TicketPriceEditView {
     /**
      * Edit the normal price of the ticket
@@ -23,9 +25,15 @@ public class TicketPriceEditView {
      */
     public static void updateNormalPrice(TicketPrice ticketPrice) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Current normal price is: " + ticketPrice.getNormalPrice());
-        double newNormalPrice = sc.nextDouble();
-        ticketPrice.setNormalPrice(newNormalPrice);
+        try{
+            System.out.println("Current normal price is: " + ticketPrice.getNormalPrice());
+            System.out.println("Input the new price: ");
+            double newNormalPrice = sc.nextDouble();
+            ticketPrice.setNormalPrice(newNormalPrice);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+        }
+        
     }
 
     /**
@@ -35,14 +43,19 @@ public class TicketPriceEditView {
      */
     public static void updateAdditionalPrice(TicketPrice ticketPrice) {
         System.out.println("Select the type to modify the additional price: ");
-        System.out.println("1) Movie Type");
-        System.out.println("2) Cinema class");
-        System.out.println("3) Age of movie goer");
-        System.out.println("4) Date Group");
+        System.out.println("1: Movie Type");
+        System.out.println("2: Cinema class");
+        System.out.println("3: Age of movie goer");
+        System.out.println("4: Date Group");
+        System.out.println("5: Couple Seat");
+        System.out.print("Option: ");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-
+        if(choice < 1 || choice > 5){
+            System.out.println("Invalid input. Please try again.");
+            return;
+        }
         switch (choice) {
             case 1:
                 updateMovieAdditionalPrice(ticketPrice);
@@ -55,6 +68,9 @@ public class TicketPriceEditView {
                 break;
             case 4:
                 updateDateAdditionalPrice(ticketPrice);
+                break;
+            case 5:
+                updateCoupleSeatAdditionalPrice(ticketPrice);
                 break;
         }
     }
@@ -70,11 +86,15 @@ public class TicketPriceEditView {
 
         double newCinemaClassPrice;
         Scanner sc = new Scanner(System.in);
+        try{
+            System.out.print("Input the new price:");
+            newCinemaClassPrice = sc.nextDouble();
 
-        System.out.print("Input the new price:");
-        newCinemaClassPrice = sc.nextDouble();
-
-        ticketPrice.setCinemaClassPrice(cinemaClass, newCinemaClassPrice);
+            ticketPrice.setCinemaClassPrice(cinemaClass, newCinemaClassPrice);
+        }catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+        }
+        
     }
 
     /**
@@ -89,10 +109,14 @@ public class TicketPriceEditView {
         double newMovieTypePrice;
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input the new price:");
-        newMovieTypePrice = sc.nextDouble();
+        try{
+            System.out.print("Input the new price:");
+            newMovieTypePrice = sc.nextDouble();
 
-        ticketPrice.setMovieTypePrice(movieType, newMovieTypePrice);
+            ticketPrice.setMovieTypePrice(movieType, newMovieTypePrice);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+        }
     }
 
     /**
@@ -106,11 +130,14 @@ public class TicketPriceEditView {
 
         double newAgeGroupPrice;
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Input the new price:");
-        newAgeGroupPrice = sc.nextDouble();
-
-        ticketPrice.setAgePrice(ageGroup, newAgeGroupPrice);
+        try {
+            System.out.print("Input the new price:");
+            newAgeGroupPrice = sc.nextDouble();
+    
+            ticketPrice.setAgePrice(ageGroup, newAgeGroupPrice); 
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+        }
     }
 
     /**
@@ -125,10 +152,15 @@ public class TicketPriceEditView {
         double newDateGroupPrice;
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input the new price:");
-        newDateGroupPrice = sc.nextDouble();
+        try{
+            System.out.print("Input the new price:");
+            newDateGroupPrice = sc.nextDouble();
 
-        ticketPrice.setDatePrice(dateGroup, newDateGroupPrice);
+            ticketPrice.setDatePrice(dateGroup, newDateGroupPrice);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+        }
+        
     }
 
     /**
@@ -138,6 +170,7 @@ public class TicketPriceEditView {
      */
     public static void addHoliday(TicketPrice ticketPrice) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Please enter a new holiday date dd/mm/yyyy: ");
         Scanner sc = new Scanner(System.in);
         LocalDate holidayDate;
         String date;
@@ -153,6 +186,10 @@ public class TicketPriceEditView {
         }
 
         ticketPrice.getHoliday().add(holidayDate);
+
+        for (LocalDate holiday : ticketPrice.getHoliday()) {
+            System.out.println(holiday);
+        }
     }
 
     /**
@@ -175,5 +212,26 @@ public class TicketPriceEditView {
         LocalDate dateSelected = holidayDates.get(option - 1);
 
         ticketPrice.getHoliday().remove(dateSelected);
+    }
+
+    /**
+     * Edit the additional price according to age group
+     * 
+     * @param ticketPrice Ticket Price database
+     */
+    public static void updateCoupleSeatAdditionalPrice(TicketPrice ticketPrice) {
+        System.out.println("Please enter the additional price for couple seats: ");
+
+        double newCoupleSeatPrice;
+        Scanner sc = new Scanner(System.in);
+        try{
+            System.out.print("Input the new price:");
+            newCoupleSeatPrice = sc.nextDouble();
+            ticketPrice.setCoupleSeatPrice(newCoupleSeatPrice);
+        } catch(InputMismatchException e){
+            System.out.println("Please enter a valid price");
+        }
+
+        
     }
 }

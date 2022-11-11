@@ -7,44 +7,56 @@ import entity.CinemaStaff;
 import entity.DatabaseManager;
 
 /**
- * This class displays the login form for the cinema staff
+ * This class displays the login view for a cinema staff
  */
+@SuppressWarnings("resource")
 public class CinemaStaffLoginView {
-	
+
 	/**
-	 * This method displays the login form for the cinema staff
-	 * @return the logged in cinema staff
+	 * This method displays the login view for a cinema staff
+	 * 
+	 * @return the cinema staff that logged in
 	 */
 	public static CinemaStaff loginCinemaStaff() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Cinema Staff Login");
-		System.out.println("Please enter your username: ");
-		String username = sc.nextLine();
+		String username = null;
 		
-		if (!DatabaseManager.getDataBase().checkStaffUsername(username)) {
-			System.out.println("Error: User with that that username doesn't exist");
-			return null;
+		try{
+			System.out.print("Username: ");
+			username = sc.nextLine();
+		} catch (Exception e) {
+			System.out.println("Please enter a valid username");
 		}
 		
-		System.out.println("Please enter your password: ");
+		
+
+		if (!DatabaseManager.getDataBase().checkStaffUsername(username)) {
+			System.out.println("Error: Cinema Staff username does not exist");
+			return null;
+		}
 
 		String password = inputPassword("Password: ");
-		
+
 		CinemaStaff cinemaStaff = DatabaseManager.getDataBase().getCinemaStaff(username, password);
-		
+
 		if (cinemaStaff == null)
 			System.out.println("Error: Incorrect password");
 		return cinemaStaff;
 	}
-
+	/**
+	 * This method is used to input the password
+	 * 
+	 * @param message the message to display to the user
+	 * @return the password
+	 */
 	public static String inputPassword(String message) {
 		Console console = System.console();
 		if (console != null) {
 			char[] passwordArray = console.readPassword(message);
-		    return new String(passwordArray);
+			return new String(passwordArray);
 
-		} 
-		else {
+		} else {
 			// Fallback
 			System.out.print(message);
 			Scanner sc = new Scanner(System.in);

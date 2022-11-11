@@ -1,20 +1,20 @@
 package entity;
 
 import java.util.EnumMap;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-
 /**
  * Ticket price determined by other factors
  */
-public class TicketPrice implements Serializable{
+public class TicketPrice implements Serializable {
     /**
-	 * The serialisation version number
-	 */
-	private static final long serialVersionUID = 6521558511554354L;
+     * The serialisation version number
+     */
+    private static final long serialVersionUID = 6521558511554354L;
 
     /**
      * Normal Price (Price without any factor)
@@ -47,6 +47,11 @@ public class TicketPrice implements Serializable{
     private EnumMap<DateGroup, Double> dateGroupPrice = new EnumMap<>(DateGroup.class);
 
     /**
+     * The additional price of couple seats
+     */
+    private double coupleSeatPrice;
+
+    /**
      * Get the final ticket price with all factors considered
      * 
      * @param date        Date of the movie
@@ -56,8 +61,8 @@ public class TicketPrice implements Serializable{
      * @return the total ticket price
      */
     public double getTicketPrice(LocalDate date, CinemaClass cinemaClass, AgeGroup age, MovieType movieType) {
-        // Check null
-        double totalPrice = getCinemaClassPrice(cinemaClass) + getAgePrice(age) + getMovieTypePrice(movieType)
+        double totalPrice = getNormalPrice() + getCinemaClassPrice(cinemaClass) + getAgePrice(age)
+                + getMovieTypePrice(movieType)
                 + getDatePrice(date);
         return totalPrice;
     }
@@ -216,5 +221,23 @@ public class TicketPrice implements Serializable{
      */
     public void setDatePrice(DateGroup dateGroup, double price) {
         dateGroupPrice.put(dateGroup, price);
+    }
+
+    /**
+     * Get the additional price for couple seats
+     * 
+     * @return
+     */
+    public double getCoupleSeatPrice() {
+        return coupleSeatPrice;
+    }
+
+    /**
+     * Update the additional price for couple seats
+     * 
+     * @param price The updated price of couple seats
+     */
+    public void setCoupleSeatPrice(double price) {
+        coupleSeatPrice = price;
     }
 }

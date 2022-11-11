@@ -8,33 +8,37 @@ import entity.DataBase;
 import entity.DatabaseManager;
 import entity.Movie;
 import entity.ReviewAndRating;
+import entity.ShowStatus;
 
 /**
  * Display movie details to user
  */
+@SuppressWarnings("resource")
 public class MovieView {
     /**
      * Display all movies with details in database
      */
-    public static void getAllMoviesView() {
+    public static void getAllMoviesView(boolean isCustomer) {
         DataBase database = DatabaseManager.getDataBase();
         ArrayList<Movie> movieList = database.getMovieList();
+        int i = 1;
 
-        for (Movie movie : movieList) {
-            System.out.println("Title: " + movie.getTitle());
-            System.out.println("Showing status: " + movie.getShowStatus().nameToString());
-            System.out.println("Synopsis: " + movie.getSynopsis());
-            System.out.println("Director: " + movie.getDirector());
-            for (String cast : movie.getCast())
-                System.out.println("Casts: " + cast);
-            System.out.println("Overall reviewer rating: " + movie.getAverageRating());
-            System.out.println("Past reviews and reviewers' ratings: ");
-            for (ReviewAndRating review : movie.getReviewAndRating()) {
-                System.out.println("Reviewer " + review.getCustomer().getName());
-                System.out.println("Rating: " + review.getRating());
-                System.out.println("Review: " + review.getReview());
+        if (isCustomer) {
+            for (Movie movie : movieList) {
+                if (movie.getShowStatus() != ShowStatus.END_OF_SHOWING) {
+                    System.out.println("Movie #" + i++);
+                    System.out.println("Title: " + movie.getTitle());
+                    System.out.println("Showing status: " + movie.getShowStatus().nameToString());
+                    System.out.println();
+                }
             }
-
+        } else {
+            for (Movie movie : movieList) {
+                System.out.println("Movie #" + i++);
+                System.out.println("Title: " + movie.getTitle());
+                System.out.println("Showing status: " + movie.getShowStatus().nameToString());
+                System.out.println();
+            }
         }
     }
 
@@ -48,10 +52,11 @@ public class MovieView {
         System.out.println("Showing status: " + movie.getShowStatus().nameToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
-        
-        for (String cast : movie.getCast())
-            System.out.println("Casts: " + cast);
-     
+        int i = 1;
+        for (String cast : movie.getCast()){
+            System.out.println("Cast " + i + ": "+ cast);
+            i++;
+        }
 
         System.out.println("Overall reviewer rating: " + movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
@@ -66,7 +71,7 @@ public class MovieView {
      * For user to add review and rating
      * 
      * @param movie The movie that user wants to review
-     * @param user  The user
+     * @param customer The customer
      */
     public static void addMovieReview(Movie movie, Customer customer) {
         Scanner sc = new Scanner(System.in);

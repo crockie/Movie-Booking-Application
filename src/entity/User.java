@@ -13,7 +13,7 @@ import org.apache.commons.codec.binary.Hex;
 /**
  * This class contains the login details of the User
  */
-public class User implements Serializable{
+public class User implements Serializable {
     /**
      * The serialisation version number
      */
@@ -52,20 +52,21 @@ public class User implements Serializable{
     /**
      * Method to hash passwords
      * 
-     * @param password the password to be hashed
-     * @param salt the salt to be used
+     * @param password   the password to be hashed
+     * @param salt       the salt to be used
      * @param iterations the number of iterations to be used
-     * @param keyLength the length of the key to be used
+     * @param keyLength  the length of the key to be used
      */
-    public static byte[] hashPassword( final char[] password, final byte[] salt, final int iterations, final int keyLength ) {
+    public static byte[] hashPassword(final char[] password, final byte[] salt, final int iterations,
+            final int keyLength) {
         try {
-            SecretKeyFactory skf = SecretKeyFactory.getInstance( "PBKDF2WithHmacSHA512" );
-            PBEKeySpec spec = new PBEKeySpec( password, salt, iterations, keyLength );
-            SecretKey key = skf.generateSecret( spec );
-            byte[] res = key.getEncoded( );
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+            PBEKeySpec spec = new PBEKeySpec(password, salt, iterations, keyLength);
+            SecretKey key = skf.generateSecret(spec);
+            byte[] res = key.getEncoded();
             return res;
-        } catch ( NoSuchAlgorithmException | InvalidKeySpecException e ) {
-            throw new RuntimeException( e );
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -74,7 +75,7 @@ public class User implements Serializable{
      * 
      * @return the username of the User
      */
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
     }
 
@@ -83,7 +84,7 @@ public class User implements Serializable{
      * 
      * @return the hashed password of the User
      */
-    public String getPasswordHashString(){
+    public String getPasswordHashString() {
         return this.passwordHashString;
     }
 
@@ -92,7 +93,7 @@ public class User implements Serializable{
      * 
      * @param pwd New password of the User
      */
-    public void setPasswordHashString(String password){
+    public void setPasswordHashString(String password) {
         this.passwordHashString = toHash(password, this.username);
     }
 
