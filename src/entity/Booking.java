@@ -29,7 +29,7 @@ public class Booking implements Serializable {
 	
 	/**
 	 * This constuctor creates a {@code Booking} object with the given transaction id, customer, selected seats and price
-	 * @param transactionID the transaction id of the booking
+	 * @param transactionID the transaction ID of the booking
 	 * @param customer the customer who made the booking
 	 * @param selectedSeats the selected seats of the booking
 	 * @param price the price of the booking

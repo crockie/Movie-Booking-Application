@@ -12,7 +12,7 @@ import entity.MovieTime;
 import boundary.ListView;
 
 /**
- * This class manages the display of the booking history for the Customer
+ * This class controls the display of the booking history for the Customer
  */
 public class BookingHistoryControl implements MainControl {
 	/**
