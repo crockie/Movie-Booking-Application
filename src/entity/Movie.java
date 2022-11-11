@@ -66,14 +66,14 @@ public class Movie implements ItemName, Serializable {
 	
 	/**
 	 * This constructor creates a {@code Movie} object with the given title, synopsis, director, cast, show status, movie rating, movie type
-	 * @param title the title of the Movie
-	 * @param synopsis the synopsis of the Movie
-	 * @param director the director of the Movie
-	 * @param cast the casts of the Movie
-	 * @param showStatus the show status of the Movie
+	 * @param title       the title of the Movie
+	 * @param synopsis    the synopsis of the Movie
+	 * @param director    the director of the Movie
+	 * @param cast        the casts of the Movie
+	 * @param showStatus  the show status of the Movie
 	 * @param movieRating the rating of the Movie
-	 * @param movieType the type of Movie
-	 * @param duration the time that the Movie runs for
+	 * @param movieType   the type of Movie
+	 * @param duration    the time that the Movie runs for
 	 */
 	public Movie(String title, String synopsis, String director, String[] cast, ShowStatus showStatus, MovieRating movieRating,
 			MovieType movieType, Duration duration) 
@@ -153,7 +153,7 @@ public class Movie implements ItemName, Serializable {
 	}
 	
 	/**
-	 * This methid gets the Movie synopsis of the Movie
+	 * This method gets the Movie synopsis of the Movie
 	 * @return synopsis of the Movie
 	 */
 	public String getSynopsis() {
@@ -169,7 +169,7 @@ public class Movie implements ItemName, Serializable {
 	}
 	
 	/**
-	 * This methid gets the Movie cast of the movie
+	 * This method gets the Movie cast of the movie
 	 * @return casts of the Movie
 	 */
 	public String[] getCast() {
