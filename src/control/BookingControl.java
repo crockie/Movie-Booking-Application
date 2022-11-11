@@ -15,7 +15,7 @@ import boundary.TicketPriceView;
 import entity.*;
 
 /**
- * This class handles the control flow of movie booking for a customer
+ * This class controls the flow of movie booking for a customer
  */
 @SuppressWarnings("resource")
 public class BookingControl implements MainControl {
