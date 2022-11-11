@@ -31,7 +31,6 @@ public class BookingHistoryControl implements MainControl {
 
 	/**
 	 * {@inheritDoc}
-	 * Displaying of Booking History for Customer
 	 */
 	@Override
 	public void begin() {
