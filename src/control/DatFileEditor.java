@@ -11,13 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import boundary.*;
-/**
- * This class manages the display of the booking history for the Customer
- */
 public class DatFileEditor implements MainControl {
-    /**
-	 * {@inheritDoc}
-	 */
     @Override
     public void begin() {
         boolean end = true;
