@@ -40,7 +40,7 @@ public class Cinema implements Serializable, ItemName{
     }
 
     /** 
-     * Create {@code MovieTime} object and add it to the list of movieTimes
+     * This method creates a {@code MovieTime} object and add it to the list of movieTimes
      * @param movieDateTime the date and time of the movie
      * @param movie the movie to be shown
      */
@@ -51,29 +51,33 @@ public class Cinema implements Serializable, ItemName{
 
     
     /** 
-     * @return String the name of the cinema
-     */
+    * This method gets the name of the cinema
+    * @return String the name of the cinema
+    */
     public String getCinemaCode(){
         return this.cinemaCode;
     }
     
     /** 
-     * @return CinemaClass the cinema class of the cinema
-     */
+    * This method gets the cinema class of the cinema 
+    * @return CinemaClass the cinema class of the cinema
+    */
     public CinemaClass getCinemaClass(){
         return this.cinemaClass;
     }
     
     /** 
-     * @return boolean[][] the seating layout of the cinema
-     */
+    * This method gets the seating layout of the cinema
+    * @return boolean[][] the seating layout of the cinema
+    */
     public boolean[][] getSeatLayout(){
         return this.seatLayout;
     }
     
     /**  
-     * @return ArrayList<MovieTime> the showtimes in the cinema
-     */
+    * This method gets the showtimes in the cinema
+    * @return ArrayList<MovieTime> the showtimes in the cinema
+    */
     public ArrayList<MovieTime> getMovieTimes(){
         return this.movieTimes;
     }
