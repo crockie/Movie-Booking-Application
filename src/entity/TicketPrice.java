@@ -90,7 +90,7 @@ public class TicketPrice implements Serializable {
      * This method checks whether the given date is a holiday
      * 
      * @param date the date being booked
-     * @return
+     * @return boolean to check if holiday
      */
     public boolean isHoliday(LocalDate date) {
         if (holiday.contains(date))
