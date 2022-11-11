@@ -15,7 +15,7 @@ public class MovieTimeLogicControl implements MainControl {
 		while (true) {
 			int option = MenuView.getMenuOption(
 				"Enter your choice: ",
-				"Display movie times",
+				"Display Movie times",
 				"Add a Movie Time",
 				"Update a Movie Time",
 				"Remove a Movie Time",
