@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Cinema implements Serializable, ItemName{
     /**
-     * Cinema code of the cinema
+     * The cinema code of the cinema
      */
     private String cinemaCode;
     /**
