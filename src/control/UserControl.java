@@ -3,7 +3,7 @@ package control;
 import boundary.MenuView;
 
 /**
- * Controls the selection of the respective user portal
+ * This class controls the selection of the respective user portal
  */
 public class UserControl implements MainControl {
 
