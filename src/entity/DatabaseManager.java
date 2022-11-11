@@ -16,20 +16,20 @@ public class DatabaseManager {
     private static String path = "src/database/data/moblima.dat";
 
     /**
-     * Constructor of the class
+     * The constructor of the class
      */
     public DatabaseManager() {
     }
 
     /**
-     * Initialize a new DataBase object
+     * This method initialises a new DataBase object
      */
     public static void init() {
         database = new DataBase();
     }
 
     /**
-     * Read the file
+     * This methood reads the file
      * If the file is not existed or the file is not a DataBase object, call init()
      * Else, downcast the file to DataBase type
      */
@@ -44,16 +44,16 @@ public class DatabaseManager {
     }
 
     /**
-     * Write to the file
+     * This method writes to the file
      */
     public static void write() {
         SerializeDB.writeSerializedObject(path, database);
     }
 
     /**
-     * Return the database
-     * 
-     * @return the database
+     * This method gets the Database
+     *
+     * @return the Database
      */
     public static DataBase getDataBase() {
         return database;
