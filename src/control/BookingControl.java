@@ -1,4 +1,3 @@
-//HAVENT CHANGED COMMENTS AND VARIABLES YET
 package control;
 
 import java.util.List;
