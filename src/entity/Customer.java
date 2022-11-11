@@ -100,7 +100,7 @@ public class Customer extends User{
     }
     /**
      * This method sets the Customer's password
-     * @param new password for the Customer's account
+     * @param password new password for the Customer's account
      */
     public void setPassword(String password) {
         this.password = toHash(password, this.username);
