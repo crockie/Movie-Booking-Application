@@ -162,16 +162,18 @@ public class DataBase implements Serializable {
 	}
 	
 	/**
-	 * This method gets the Config for sorting of Top 5 Movies by Rating or Ticket Price
+	 * This method gets the Config for sorting of Top 5 Movies by Rating or Ticket Sales
 	 * 
-	 * @return config setting for sorting of Top 5 Movies by Rating or Ticket Price
+	 * @return config setting for sorting of Top 5 Movies by Rating or Ticket Sales
 	 */ 
 	public int getConfig() {
 		return config;
 	}
 	
 	/**
-	 * This method sets the Config for sorting of Top 5 Movies by Rating or Ticket Price
+	 * This method sets the Configurtion choice for sorting of Top 5 Movies by Rating or Ticket Sales
+	 *
+	 * @param choice Configuration choice for sorting of Top 5 Movies by Rating or Ticket Sales
 	 */
 	public void setConfig(int choice) {
 		config = choice;
