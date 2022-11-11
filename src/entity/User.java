@@ -43,7 +43,7 @@ public class User implements Serializable {
      * 
      * @param password the password to be hashed
      * @param username the username of the User
-     * @return the hashed password 
+     * @return the hashed password converted from Bytes to String
      */
     public static String toHash(String password, String username) {
         byte[] saltBytes = hashPassword(password.toCharArray(), username.getBytes(), 10000, 512);
@@ -57,7 +57,7 @@ public class User implements Serializable {
      * @param salt       the salt to be used
      * @param iterations the number of iterations to be used
      * @param keyLength  the length of the key to be used
-     * @return the hashed password
+     * @return the hashed password in bytes
      */
     public static byte[] hashPassword(final char[] password, final byte[] salt, final int iterations,
             final int keyLength) {
