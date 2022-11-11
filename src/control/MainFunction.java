@@ -3,11 +3,11 @@ package control;
 import entity.DatabaseManager;
 
 /**
- * The application's main class.
+ * This class is the application's main class.
  */
 public class MainFunction {
     /**
-     * Application is launched through this main function
+     * This method launches the application through this main function
      * 
      * @param args unused
      */
