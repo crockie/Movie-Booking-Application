@@ -8,7 +8,7 @@ import boundary.MovieView;
 public class DisplayMovieControl implements MainControl {
     private boolean isCustomer;
     /**
-     * Creates a new {@code MovieControl} object for the customer or staff
+     * This constructor creates a new {@code MovieControl} object for the customer or staff
      * 
      * @param isCustomer the customer or staff that wants to view the movie details
      */
