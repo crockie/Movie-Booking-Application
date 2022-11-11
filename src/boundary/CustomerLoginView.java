@@ -39,8 +39,7 @@ public class CustomerLoginView {
 				if (mobileNumber < 10000000 || mobileNumber > 99999999) {
 					System.out.println("Error: Mobile number must be 8 digits");
 					continue;
-				}
-				else if (mobileNumber < 80000000) {
+				} else if (mobileNumber < 80000000) {
 					System.out.println("Error: Mobile number must start with 8 or 9");
 					continue;
 				}
@@ -54,7 +53,7 @@ public class CustomerLoginView {
 
 		System.out.print("Email Address: ");
 		String emailAddress = sc.nextLine();
-		while(true) {
+		while (true) {
 			if (emailAddress.contains("@") && emailAddress.contains(".com")) {
 				break;
 			}
@@ -107,9 +106,11 @@ public class CustomerLoginView {
 
 		return customer;
 	}
+
 	/**
 	 * This method reads in an entered password
 	 * 
+	 * @param message The message to prompt customer to type password
 	 * @return the String password
 	 */
 	public static String inputPassword(String message) {

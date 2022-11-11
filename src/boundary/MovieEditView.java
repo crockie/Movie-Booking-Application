@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 import entity.*;
 
-/*
+/**
  * This class edits the movie listings
  */
 @SuppressWarnings("resource")
 public class MovieEditView {
-    /*
+    /**
      * This method displays the add movie view
      */
     public static void addMovie() {
@@ -57,7 +57,7 @@ public class MovieEditView {
         }
     }
 
-    /*
+    /**
      * This method displays the remove movie view
      */
     public static void removeMovie() {
@@ -66,7 +66,7 @@ public class MovieEditView {
         movie.setShowStatus(ShowStatus.END_OF_SHOWING);
     }
 
-    /*
+    /**
      * This method displays the update movie view
      */
     public static void updateMovie() {
