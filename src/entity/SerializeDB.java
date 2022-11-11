@@ -12,7 +12,7 @@ import java.io.EOFException;
  */
 public class SerializeDB {
     /**
-     * Read the database
+     * This method reads the database
      * 
      * @param pathName The path of the database
      * @return the database
@@ -40,7 +40,7 @@ public class SerializeDB {
     }
 
     /**
-     * Write to the database
+     * This method writes to the database
      * 
      * @param path     The path of the database
      * @param database The database to be written
