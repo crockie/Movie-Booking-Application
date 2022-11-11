@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
- * Ticket price determined by other factors
+ * This class determines the ticket price according to different factors
  */
 public class TicketPrice implements Serializable {
     /**
@@ -32,7 +32,7 @@ public class TicketPrice implements Serializable {
     private EnumMap<CinemaClass, Double> cinemaClassPrice = new EnumMap<>(CinemaClass.class);
 
     /**
-     * EnumMap that maps Age of Movie Goer with additional price
+     * EnumMap that maps Age of Customer with additional price
      */
     private EnumMap<AgeGroup, Double> agePrice = new EnumMap<>(AgeGroup.class);
 
@@ -52,11 +52,11 @@ public class TicketPrice implements Serializable {
     private double coupleSeatPrice;
 
     /**
-     * Get the final ticket price with all factors considered
+     * This method gets the final ticket price with all factors considered
      * 
      * @param date        Date of the movie
      * @param cinemaClass Class of the cinema
-     * @param age         Age of the movie goer
+     * @param age         Age of the customer
      * @param movieType   Type of the movie
      * @return the total ticket price
      */
@@ -68,7 +68,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the list of holiday dates
+     * This method gets the list of holiday dates
      * 
      * @return holiday dates
      */
@@ -77,7 +77,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Set the list of holiday dates
+     * This method sets the list of holiday dates
      * 
      * @param holiday holiday dates
      */
@@ -87,10 +87,10 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Check whether the given date is a holiday
+     * This method checks whether the given date is a holiday
      * 
-     * @param date
-     * @return
+     * @param date the date being booked
+     * @return boolean to check if holiday
      */
     public boolean isHoliday(LocalDate date) {
         if (holiday.contains(date))
@@ -99,7 +99,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the normal price (price without any factor)
+     * This method gets the normal price (price without any factor)
      * 
      * @return normal price
      */
@@ -107,10 +107,8 @@ public class TicketPrice implements Serializable {
         return normalPrice;
     }
 
-    // For all setter, need to add a condition to check whether the price for the
-    // particular object is existed
     /**
-     * Update/Set the normal price of the ticket
+     * This method updates/sets the normal price of the ticket
      * 
      * @param price The price to be updated
      */
@@ -119,7 +117,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price according to the class of cinema
+     * This method gets the additional price according to the class of cinema
      * 
      * @param cinemaClass The class of cinema
      * @return the additional price
@@ -129,7 +127,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Update the additional price according to the class of cinema
+     * This method updates the additional price according to the class of cinema
      * 
      * @param cinemaClass The class of cinema
      * @param price       The price to be updated
@@ -139,9 +137,9 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price according to the age of movie goer
+     * This method gets the additional price according to the age of customer
      * 
-     * @param age The age of the movie goer
+     * @param age The age of the customer
      * @return the additional price
      */
     public double getAgePrice(AgeGroup age) {
@@ -149,9 +147,9 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Update the additional price according to the age of movie goer
+     * This method updates the additional price according to the age of customer
      * 
-     * @param age   The age of the movie goer
+     * @param age   The age of the customer
      * @param price The additional price to be updated
      */
     public void setAgePrice(AgeGroup age, double price) {
@@ -159,7 +157,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price according to the type of movie
+     * This method gets the additional price according to the type of movie
      * 
      * @param movieType The type of movie
      * @return the additional price
@@ -169,7 +167,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Update the addtional price according to the type of movie
+     * This method updates the addtional price according to the type of movie
      * 
      * @param movieType The type of movie
      * @param price     The additional price to be updated
@@ -179,7 +177,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the date group of which the given date belongs to
+     * This method gets the date group of which the given date belongs to
      * 
      * @param date The date of the movie
      * @return the date group
@@ -194,7 +192,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price according to the date of the movie
+     * This method gets the additional price according to the date of the movie
      * 
      * @param date The date of the movie
      * @return the additional price
@@ -204,7 +202,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price according to the date group
+     * This method gets the additional price according to the date group
      * 
      * @param dateGroup The date group of the date of movie
      * @return the additional price
@@ -214,7 +212,7 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Update the additional price according to the date group
+     * This method updates the additional price according to the date group
      * 
      * @param dateGroup The date group of the date of the movie
      * @param price     The additional price
@@ -224,16 +222,16 @@ public class TicketPrice implements Serializable {
     }
 
     /**
-     * Get the additional price for couple seats
+     * This method gets the additional price for couple seats
      * 
-     * @return
+     * @return the additional price
      */
     public double getCoupleSeatPrice() {
         return coupleSeatPrice;
     }
 
     /**
-     * Update the additional price for couple seats
+     * This method updates the additional price for couple seats
      * 
      * @param price The updated price of couple seats
      */

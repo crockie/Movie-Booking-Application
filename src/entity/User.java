@@ -28,10 +28,10 @@ public class User implements Serializable {
     private String passwordHashString;
 
     /**
-     * Create a User object with username and password provided
+     * This constructor creates a {@code User} object with username and password provided
      * 
-     * @param us  Username of the User
-     * @param pwd Password of the User
+     * @param username the username of the User
+     * @param password the password of the User
      */
     public User(String username, String password) {
         this.username = username;
@@ -39,10 +39,11 @@ public class User implements Serializable {
     }
 
     /**
-     * Method to hash passwords using PBKDF2 algorithm
+     * This method hashes passwords using PBKDF2 algorithm
      * 
      * @param password the password to be hashed
      * @param username the username of the User
+     * @return the hashed password converted from Bytes to String
      */
     public static String toHash(String password, String username) {
         byte[] saltBytes = hashPassword(password.toCharArray(), username.getBytes(), 10000, 512);
@@ -50,12 +51,13 @@ public class User implements Serializable {
     }
 
     /**
-     * Method to hash passwords
+     * This method hashes passwords
      * 
      * @param password   the password to be hashed
      * @param salt       the salt to be used
      * @param iterations the number of iterations to be used
      * @param keyLength  the length of the key to be used
+     * @return the hashed password in bytes
      */
     public static byte[] hashPassword(final char[] password, final byte[] salt, final int iterations,
             final int keyLength) {
@@ -71,7 +73,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Get the username of the User
+     * This method gets the username of the User
      * 
      * @return the username of the User
      */
@@ -80,7 +82,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Get the hashed password of the User
+     * This method gets the hashed password of the User
      * 
      * @return the hashed password of the User
      */
@@ -89,9 +91,9 @@ public class User implements Serializable {
     }
 
     /**
-     * For User to change password
+     * This method is for the user to change password
      * 
-     * @param pwd New password of the User
+     * @param password the new password of the User
      */
     public void setPasswordHashString(String password) {
         this.passwordHashString = toHash(password, this.username);

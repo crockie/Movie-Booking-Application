@@ -1,4 +1,3 @@
-//HAVENT CHANGED COMMENTS AND VARIABLES YET
 package control;
 
 import java.util.List;
@@ -61,12 +60,18 @@ public class BookingControl implements MainControl {
 			try {
 				System.out.println("How many seats would you like to book: ");
 				number = sc.nextInt();
+				sc.nextLine();
 				if (number <= 0) {
 					NavigateControl.popOne();
 				}
-				sc.nextLine();
-				break;
-			} catch (Exception e) {
+				else if (number > movieTime.countAvailableSeats()) {
+					System.out.println("Sorry, there are only " + movieTime.countAvailableSeats() + " seats available");
+				} 
+				else {
+					break;
+				}
+			}
+			catch (Exception e) {
 				System.out.println("Please enter a valid number");
 				continue;
 			}
@@ -174,6 +179,7 @@ public class BookingControl implements MainControl {
 	 * 
 	 * @param ageGroupCount an {@code EnumMap} containing the number of tickets in
 	 *                      each age group
+	 * @param noOfCoupleSeats number of couple seats 
 	 * @return the total cost of the tickets
 	 */
 	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount, int noOfCoupleSeats) {

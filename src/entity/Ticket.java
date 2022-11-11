@@ -19,8 +19,8 @@ public class Ticket implements Serializable{
 	private int row;
 	
 	/**
-	 * Creates a {@code Ticket} object of seat booked for a given row and column
-	 * @param row row of the booked seat
+	 * This constructor creates a {@code Ticket} object of seat booked for a given row and column
+	 * @param row    row of the booked seat
 	 * @param column column of the booked seat
 	 */
 	public Ticket(int row, int column) {
@@ -29,6 +29,7 @@ public class Ticket implements Serializable{
 	}
 	
 	/**
+	 * This method gets the column of the booked seat
 	 * @return the column of the booked seat
 	 */
 	public int getColumn() {
@@ -36,6 +37,7 @@ public class Ticket implements Serializable{
 	}
 
 	/**
+	 * This method gets the row of the booked seat
 	 * @return the row of the booked seat
 	 */
 	public int getRow() {

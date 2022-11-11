@@ -6,9 +6,12 @@ import boundary.MovieView;
  * This class controls the display of the movies and their details and reviews.
  */
 public class DisplayMovieControl implements MainControl {
+    /**
+     * Shows if user is Customer or Staff
+     */
     private boolean isCustomer;
     /**
-     * Creates a new {@code MovieControl} object for the customer or staff
+     * This constructor creates a new {@code MovieControl} object for the customer or staff
      * 
      * @param isCustomer the customer or staff that wants to view the movie details
      */

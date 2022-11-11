@@ -37,13 +37,14 @@ public class DataBase implements Serializable {
 	 * List of Movies
 	 */
 	private ArrayList<Movie> movieList = new ArrayList<Movie>();
+	
 	/**
 	 * Configuration of the order to view the Top 5 movies
 	 */
 	private int config;
 
 	/**
-	 * Check if Staff username exists in DataBase
+	 * This method checks if the Staff username exists in DataBase
 	 * 
 	 * @param username check if username belongs to a Cinema Staff
 	 * @return true if Cinema Staff username exists, else false
@@ -53,7 +54,7 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * Check if Staff password is correct and returns the {@code CinemaStaff} object
+	 * This method checks if Staff password is correct and returns the {@code CinemaStaff} object
 	 * if valid
 	 * 
 	 * @param username the username input by the Cinema Staff
@@ -70,26 +71,8 @@ public class DataBase implements Serializable {
 			return null;
 	}
 
-	public ArrayList<String> getCinemaStaffs() {
-		ArrayList<String> staffList = new ArrayList<>();
-		for (String username : cinemaStaffList.keySet()) {
-			staffList.add(username);
-		}
-
-		return staffList;
-	}
-
-	public ArrayList<String> getCustomers() {
-		ArrayList<String> customersList = new ArrayList<>();
-		for (String username : customerList.keySet()) {
-			customersList.add(username);
-		}
-
-		return customersList;
-	}
-
 	/**
-	 * Add new CinemaStaff to DataBase
+	 * This method adds a new {@code CinemaStaff} to DataBase
 	 * 
 	 * @param cinemaStaff the new Cinema Staff to be added to DataBase
 	 * @return true if new Cinema Staff was added, else false
@@ -107,7 +90,7 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * Check if Customer username exists
+	 * This method checks if a Customer's username exists
 	 * 
 	 * @param username the username of the Customer being checked
 	 * @return true if username exists in DataBase, else false
@@ -117,7 +100,7 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * Returns the {@code Customer} object if the password is correct
+	 * This method gets the {@code Customer} object if the password is correct
 	 * 
 	 * @param username the username input by the Customer
 	 * @param password the password input by the Customer
@@ -134,7 +117,7 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * Add new Customer to DataBase
+	 * This customer adds a new Customer to DataBase
 	 * 
 	 * @param customer the new Customer to be added to DataBase
 	 * @return true if new Customer was added, else false
@@ -152,7 +135,7 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * This function returns the Ticket Price of the Movie
+	 * This method gets the Ticket Price of the Movie
 	 * 
 	 * @return Ticket Price of the Movie
 	 */
@@ -161,52 +144,37 @@ public class DataBase implements Serializable {
 	}
 
 	/**
-	 * This function returns the list of Cineplexes
+	 * This method returns the list of Cineplexes
 	 * 
-	 * @return Cinplex List
+	 * @return List of Cinplexes
 	 */
 	public ArrayList<Cineplex> getCineplexList() {
 		return cineplexList;
 	}
 
 	/**
-	 * This function returns the list of Movies
+	 * This method returns the list of Movies
 	 * 
-	 * @return Movie List
+	 * @return List of Movies
 	 */
 	public ArrayList<Movie> getMovieList() {
 		return movieList;
 	}
-
-	public void deleteCineplex(String cineplexName) {
-		for (Cineplex cineplex : cineplexList) {
-			if (cineplex.getName() == cineplexName) {
-				cineplexList.remove(cineplex);
-			}
-		}
-	}
-
-	public void deleteCinema(String cinemaName) {
-		for (Cineplex cineplex : cineplexList) {
-			for (Cinema cinema : cineplex.getCinemas())
-				if (cinemaName.equals(cinema.nameToString())) {
-					cineplex.getCinemas().remove(cinema);
-				}
-		}
-	}
-
-	public void deleteStaff(String userName) {
-		cinemaStaffList.remove(userName);
-	}
-
-	public void deleteCustomer(String userName) {
-		customerList.remove(userName);
-	}
-
+	
+	/**
+	 * This method gets the Config for sorting of Top 5 Movies by Rating or Ticket Sales
+	 * 
+	 * @return config setting for sorting of Top 5 Movies by Rating or Ticket Sales
+	 */ 
 	public int getConfig() {
 		return config;
 	}
-
+	
+	/**
+	 * This method sets the Configurtion choice for sorting of Top 5 Movies by Rating or Ticket Sales
+	 *
+	 * @param choice Configuration choice for sorting of Top 5 Movies by Rating or Ticket Sales
+	 */
 	public void setConfig(int choice) {
 		config = choice;
 	}

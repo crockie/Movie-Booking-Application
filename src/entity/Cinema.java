@@ -8,10 +8,9 @@ import java.util.ArrayList;
  */
 public class Cinema implements Serializable, ItemName{
     /**
-     * Cinema code of the cinema
+     * The cinema code of the cinema
      */
     private String cinemaCode;
-
     /**
      * The cinema class of the cinema
      */
@@ -25,25 +24,23 @@ public class Cinema implements Serializable, ItemName{
      */
     private ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
     /**
-	 * The serialisation version number
-	 */
-	private static final long serialVersionUID = 48485464514484848L; 
-	
+    * The serialisation version number
+    */
+    private static final long serialVersionUID = 48485464514484848L; 	
     /**
-	 * Creates a {@code Cinema} object for the given cinema name, cinema class and layout
-	 * @param cinemaCode the code of the cinema
-	 * @param cinemaClass the cinema class of the cinema
-     * @param seatLayout the seating layout of the cinema
-	 */
+    * This constuctor creates a {@code Cinema} object for the given cinema name, cinema class and layout
+    * @param cinemaCode the code of the cinema
+    * @param cinemaClass the cinema class of the cinema
+    * @param seatLayout the seating layout of the cinema
+    */
     public Cinema(String cinemaCode, CinemaClass cinemaClass, boolean[][] seatLayout){
         this.cinemaCode = cinemaCode;
         this.cinemaClass = cinemaClass;
         this.seatLayout = seatLayout;
     }
 
-    
     /** 
-     * Create {@code MovieTime} object and add it to the list of movieTimes
+     * This method creates a {@code MovieTime} object and add it to the list of movieTimes
      * @param movieDateTime the date and time of the movie
      * @param movie the movie to be shown
      */
@@ -54,29 +51,33 @@ public class Cinema implements Serializable, ItemName{
 
     
     /** 
-     * @return String the name of the cinema
-     */
+    * This method gets the name of the cinema
+    * @return the name of the cinema
+    */
     public String getCinemaCode(){
         return this.cinemaCode;
     }
     
     /** 
-     * @return CinemaClass the cinema class of the cinema
-     */
+    * This method gets the cinema class of the cinema 
+    * @return the cinema class of the cinema
+    */
     public CinemaClass getCinemaClass(){
         return this.cinemaClass;
     }
     
     /** 
-     * @return boolean[][] the seating layout of the cinema
-     */
+    * This method gets the seating layout of the cinema
+    * @return the seating layout of the cinema
+    */
     public boolean[][] getSeatLayout(){
         return this.seatLayout;
     }
     
     /**  
-     * @return ArrayList<MovieTime> the showtimes in the cinema
-     */
+    * This method gets the showtimes in the cinema
+    * @return the showtimes in the cinema
+    */
     public ArrayList<MovieTime> getMovieTimes(){
         return this.movieTimes;
     }

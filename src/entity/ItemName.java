@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * Interface for all the items to get the name
+ * The interface for all the items to get the name
  */
 public interface ItemName {
 	/**
