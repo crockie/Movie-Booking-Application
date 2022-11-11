@@ -10,17 +10,16 @@ import java.util.Scanner;
 import entity.*;
 
 /*
- * This class is the boundary class for the show time edit view
+ * This class edits the show time of movie
  */
 @SuppressWarnings("resource")
 public class ShowTimeEditView {
     /*
-     * This method is used to display the add show time view
+     * This method displays the add show time view
      */
     public static void addMovieTime() {
         Scanner sc = new Scanner(System.in);
 
-        
         Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
                 DatabaseManager.getDataBase().getCineplexList());
 
@@ -42,18 +41,17 @@ public class ShowTimeEditView {
         }
 
         Duration duration = movie.getDuration();
-        
+
         if (isClash(movieTime, duration, cinema)) {
             System.out.println("Movie time clashes with another movie time. Please try again.");
         } else {
             cinema.addMovieTime(movieTime, movie);
         }
 
-        
     }
 
     /*
-     * This method is used to display the remove show time view
+     * This method displays the remove show time view
      */
     public static void removeMovieTime() {
         Cineplex cineplex = MenuView.getItemName("Select a cineplex: ",
@@ -64,11 +62,10 @@ public class ShowTimeEditView {
         MovieTime movieTime = MenuView.getItemName("Select a movie time to remove: ", cinema.getMovieTimes());
         movieTime.remove();
 
-        
     }
 
     /*
-     * This method is used to update the show time of a movie
+     * This method updates the show time of a movie
      */
     public static void updateMovieTime() {
         Scanner sc = new Scanner(System.in);
@@ -114,12 +111,13 @@ public class ShowTimeEditView {
                 break;
         }
 
-        
     }
 
     /**
-     * This method is used to check if the movie time clashes with another movie time
-     * @return true if the movie time clashes with another movie time, else it is false
+     * This method checks if the movie time clashes with another movie time
+     * 
+     * @return true if the movie time clashes with another movie time, else it is
+     *         false
      */
     public static boolean isClash(LocalDateTime movieTime, Duration duration, Cinema cinema) {
         ArrayList<MovieTime> movieTimeList = cinema.getMovieTimes();

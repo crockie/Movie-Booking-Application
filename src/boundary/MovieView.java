@@ -11,12 +11,12 @@ import entity.ReviewAndRating;
 import entity.ShowStatus;
 
 /**
- * Display movie details to user
+ * This class displays movie details to user
  */
 @SuppressWarnings("resource")
 public class MovieView {
     /**
-     * Display all movies with details in database
+     * This method displays all movies with details in database
      */
     public static void getAllMoviesView(boolean isCustomer) {
         DataBase database = DatabaseManager.getDataBase();
@@ -43,7 +43,8 @@ public class MovieView {
     }
 
     /**
-     * Take user's query for movie and display the specific movie details
+     * This method takes user's query for movie and display the specific movie
+     * details
      * 
      * @param movie The movie that user query
      */
@@ -53,8 +54,8 @@ public class MovieView {
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Director: " + movie.getDirector());
         int i = 1;
-        for (String cast : movie.getCast()){
-            System.out.println("Cast " + i + ": "+ cast);
+        for (String cast : movie.getCast()) {
+            System.out.println("Cast " + i + ": " + cast);
             i++;
         }
 
@@ -68,9 +69,9 @@ public class MovieView {
     }
 
     /**
-     * For user to add review and rating
+     * This method adds review and rating to a movie
      * 
-     * @param movie The movie that user wants to review
+     * @param movie    The movie that user wants to review
      * @param customer The customer
      */
     public static void addMovieReview(Movie movie, Customer customer) {

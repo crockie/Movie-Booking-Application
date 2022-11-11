@@ -38,6 +38,9 @@ public class CinemaStaffControl implements MainControl {
         showMenu();
     }
 
+    /**
+     * This method controls main menu display for the cinema staff
+     */
     private void showMenu() {
         int choice = MenuView.getMenuOption(
                 "Please select an option:",
