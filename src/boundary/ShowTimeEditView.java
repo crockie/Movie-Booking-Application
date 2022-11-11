@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 import entity.*;
 
-/*
+/**
  * This class edits the show time of movie
  */
 @SuppressWarnings("resource")
 public class ShowTimeEditView {
-    /*
+    /**
      * This method displays the add show time view
      */
     public static void addMovieTime() {
@@ -50,7 +50,7 @@ public class ShowTimeEditView {
 
     }
 
-    /*
+    /**
      * This method displays the remove show time view
      */
     public static void removeMovieTime() {
@@ -64,7 +64,7 @@ public class ShowTimeEditView {
 
     }
 
-    /*
+    /**
      * This method updates the show time of a movie
      */
     public static void updateMovieTime() {
@@ -115,7 +115,9 @@ public class ShowTimeEditView {
 
     /**
      * This method checks if the movie time clashes with another movie time
-     * 
+     * @param movieTime The movie time to check
+     * @param duration The duration of the movie
+     * @param cinema The cinema to check
      * @return true if the movie time clashes with another movie time, else it is
      *         false
      */
@@ -124,7 +126,7 @@ public class ShowTimeEditView {
 
         // need to check logic again
         for (MovieTime mt : movieTimeList) {
-            if (movieTime.isAfter(mt.getMovieDateTime().plus(duration)) && movieTime.isBefore(mt.getMovieDateTime())) {
+            if (movieTime.isBefore(mt.getMovieDateTime()) && movieTime.isAfter(mt.getMovieDateTime().plus(duration))) {
                 return true;
             }
         }
