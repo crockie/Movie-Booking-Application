@@ -6,51 +6,51 @@ package entity;
 public enum MovieRating implements ItemName {
 
    /**
-   * General
-   */
+    * General
+    */
     G("G"),
 
     /**
-    * Parental Guidance
-    */
+     * Parental Guidance
+     */
     PG("PG"),
 
     /**
-    * Parental Guidance 13
-    */
+     * Parental Guidance 13
+     */
     PG13("PG13"),
 
     /**
-    * No Children Under 16
-    */
+     * No Children Under 16
+     */
     NC16("NC16"),
 
     /**
-    * Mature 18
-    */
+     * Mature 18
+     */
     M18("M18"),
 	
     /**
-    * Restricted 21
-    */
+     * Restricted 21
+     */
     R21("R21");
 
     /**
-    * The name of the release rating
-    */
+     * The name of the release rating
+     */
     private final String name;
 
     /**
-    * This constuctor creates a {@code MovieRating} object with the given name
-    * @param name
-    */
+     * This constuctor creates a {@code MovieRating} object with the given name
+     * @param name
+     */
     private MovieRating(String name) {
         this.name = name;
     }
 	
     /**
-    * {@inheritDoc}
-    */
+     * {@inheritDoc}
+     */
     @Override
     public String nameToString() {
         return name;
