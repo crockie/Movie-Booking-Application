@@ -15,7 +15,7 @@ public class SerializeDB {
      * This method reads the database
      * 
      * @param pathName The path of the database
-     * @return the database
+     * @return database The database
      */
     public static DataBase readSerializedObject(String path) {
         DataBase database = null;
