@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * The different date categories available for ticket pricing
+ * The enumeration of the different date categories available for ticket pricing
  */
 public enum DateGroup implements ItemName{
 	/**

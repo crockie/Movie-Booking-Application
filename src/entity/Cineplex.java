@@ -8,29 +8,28 @@ import java.util.ArrayList;
  */
 public class Cineplex implements Serializable, ItemName{
     /**
-	 * Name of the cineplex
-	 */
+     * Name of the cineplex
+     */
     private String name;
     /**
-	 * List of cinemas in the cineplex
-	 */
+     * List of cinemas in the cineplex
+     */
     private ArrayList<Cinema> cinemas = new ArrayList<Cinema>();
-
     /**
-	 * Serialisation version number
-	 */
+     * Serialisation version number
+     */
     private static final long serialVersionUID = 6151514848117524L; 
     
     /**
-	 * Creates a {@code Cineplex} with the given name
-	 * @param name the name of the cineplex
-	 */
+     * This constuctor creates a {@code Cineplex} with the given name
+     * @param name the name of the cineplex
+     */
     public Cineplex(String name){
         this.name = name;
     }
     
     /** 
-     * Creates cinema and add it to the list of cinemas
+     * This method creates cinema and add it to the list of cinemas
      * @param cinemaName the name of the cinema
      * @param cinemaClass the cinema class of the cinema
      * @param seatLayout the seating layout of the cinema
@@ -42,8 +41,8 @@ public class Cineplex implements Serializable, ItemName{
 
     
     /** 
-     * Return the list of movieTimes in all the cinemas under the cineplex
-     * @return ArrayList<MovieTime> the list of movieTimes 
+     * This method gets the list of movieTimes in all the cinemas under the cineplex
+     * @return the list of movieTimes 
      */
     public ArrayList<MovieTime> getMovieTimes(){
         ArrayList<MovieTime> movieTimes = new ArrayList<MovieTime>();
@@ -56,8 +55,8 @@ public class Cineplex implements Serializable, ItemName{
     
     
     /** 
-     * Return the list of cinemas under the cineplex
-     * @return ArrayList<Cinema> the list of cinemas
+     * This method gets the list of cinemas under the cineplex
+     * @return the list of cinemas
      */
     public ArrayList<Cinema> getCinemas(){
         return cinemas;
@@ -65,8 +64,8 @@ public class Cineplex implements Serializable, ItemName{
 
     
     /** 
-     * Return the name of the cineplex
-     * @return String the name of the cineplex
+     * This method gets the name of the cineplex
+     * @return the name of the cineplex
      */
     public String getName(){
         return name;

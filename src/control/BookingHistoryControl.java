@@ -16,12 +16,12 @@ import boundary.ListView;
  */
 public class BookingHistoryControl implements MainControl {
 	/**
-	 * The Customer that the booking history is being displayed for
+	 * The customer that the booking history is being displayed for
 	 */
 	private Customer customer;
 
 	/**
-	 * Creates a new {@code BookingHistoryControl} object for the current Customer
+	 * This constructor creates a new {@code BookingHistoryControl} object for the current Customer
 	 * 
 	 * @param customer the Customer that the booking history is being displayed for
 	 */

@@ -25,8 +25,7 @@ public class Customer extends User{
      */
     private String password;
     /**
-     * Constructor for Customer's account
-     * Creates a {@code Customer} object with the given username, name, mobile/handphone number, email address and password
+     * This constuctor creates a {@code Customer} object with the given username, name, mobile/handphone number, email address and password
      * @param username the username of the Customer's account
      * @param password the password of the Customer's account
      * @param name the name of the Customer
@@ -43,7 +42,7 @@ public class Customer extends User{
         this.emailAddress = emailAddress;
     }
     /**
-     * Function to check if correct password was entered
+     * This method checks if a correct password was entered
      * @param password the password entered which will be checked against the Customer's account hashed password
      * @return true if password matches, false if passwords do not match
      */
@@ -51,56 +50,56 @@ public class Customer extends User{
         return this.password.equals(toHash(password, this.username));
     }
     /**
-     * Getter for Customer's username
+     * This method gets the Customer's username
      * @return username of the Customer
      */
     public String getUsername() {
         return this.username;
     }
     /**
-     * Getter for Customer's name
+     * This method gets the Customer's name
      * @return name of the Customer
      */
     public String getName() {
         return name;
     }
     /**
-     * Setter for Customer's name
+     * This method sets the Customer's name
      * @param name new name for the Customer
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     * Getter for Customer's mobile number
+     * This method gets the Customer's mobile number
      * @return mobile/handphone number of the Customer
      */
     public Integer getMobileNumber() {
         return mobileNumber;
     }
     /**
-     * Setter for Customer's mobile number
+     * This method sets the Customer's mobile number
      * @param mobileNumber new mobile/handphone number of the Customer
      */
     public void setMobileNumber(Integer mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
     /**
-     * Getter for Customer's email address
+     * This method gets the Customer's email address
      * @return email address of the Customer
      */
     public String getEmailAddress() {
         return emailAddress;
     }
     /**
-     * Setter for Customer's email address
+     * This method sets the Customer's email address
      * @param emailAddress new email address of the Customer
      */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
     /**
-     * Setter for Customer's password
+     * This method sets the Customer's password
      * @param new password for the Customer's account
      */
     public void setPassword(String password) {

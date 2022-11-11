@@ -20,7 +20,7 @@ public enum CinemaClass implements ItemName{
     private String cinemaClass;
 
     /**
-    * Creates a {@code CinemaClass} object with the given cinema class
+    * This constuctor creates a {@code CinemaClass} object with the given cinema class
     * @param cinemaClass
     */
     private CinemaClass(String cinemaClass){
