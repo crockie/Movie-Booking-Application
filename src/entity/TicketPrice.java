@@ -107,8 +107,6 @@ public class TicketPrice implements Serializable {
         return normalPrice;
     }
 
-    // For all setter, need to add a condition to check whether the price for the
-    // particular object exists
     /**
      * This method updates/sets the normal price of the ticket
      * 
