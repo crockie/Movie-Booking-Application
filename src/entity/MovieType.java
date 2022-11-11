@@ -26,7 +26,7 @@ public enum MovieType implements ItemName {
     private final String name;
     
     /**
-     * Creates a {@code MovieType} object with the given name
+     * This method creates a {@code MovieType} object with the given name
      * @param name the movie type
      */
     private MovieType(String name) {
