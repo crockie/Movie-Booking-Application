@@ -15,9 +15,9 @@ public class CinemaStaff extends User {
     private String password;
 
     /**
-     * This constuctor creates a CinemaStaff object with username and password provided
+     * This constuctor creates a {@code CinemaStaff} object with username and password provided
      * 
-     * @param us  Username of the cinema staff
+     * @param us Username of the cinema staff
      * @param pwd Password of the cinema staff
      */
     public CinemaStaff(String us, String pwd) {
