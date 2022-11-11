@@ -1,5 +1,7 @@
 package entity;
-
+/**
+ * This enumeration shows the different seat types
+ */
 public enum SeatType implements ItemName {
     /**
      * The seat type is normal
@@ -20,7 +22,7 @@ public enum SeatType implements ItemName {
     private String name;
 
     /**
-     * Creates a {@code SeatType} object with the given label
+     * This constructor creates a {@code SeatType} object with the given label
      * 
      * @param name
      */
