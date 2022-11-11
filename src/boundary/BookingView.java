@@ -63,6 +63,7 @@ public class BookingView {
                                 selectedSeat[row][col - 1] = true;
                                 selectedSeat[row][col - 2] = true;
                             }
+
                         } else if (selectedSeat[row][col - 1] == true){
                             System.out.println("Seat " + input.toUpperCase() + " has already been selected, choose a different seat.");
                             continue;
@@ -132,7 +133,8 @@ public class BookingView {
     /**
      * This method displays the seating plan for the selected show time
      * 
-     * @param showTime the selected show time to display the seats of
+     * @param showTime     the selected show time to display the seats of
+     * @param selectedSeat The seats selected by customer
      */
     public static void displaySeats(BookMovie showTime, boolean[][] selectedSeat) {
         SeatStatus[][] availSeats = showTime.getAvailableSeats();
@@ -267,6 +269,7 @@ public class BookingView {
     /**
      * This method displays the booking information
      * 
+     * @param movieTime     the movie time of the selected movie
      * @param ageGroupCount the number of tickets for each age group
      * @param totalPrice    the total price of the booking
      */

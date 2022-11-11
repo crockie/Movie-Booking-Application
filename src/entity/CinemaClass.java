@@ -1,7 +1,7 @@
 package entity;
 
 /**
-* The cinema classes for a cinema
+* The enumeration of the cinema classes for a cinema
 */
 public enum CinemaClass implements ItemName{
     /**
