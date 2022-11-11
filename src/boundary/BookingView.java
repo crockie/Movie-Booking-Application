@@ -236,7 +236,7 @@ public class BookingView {
     }
 
     /**
-     * Display price once customer selects the seat
+     * This method displays price once customer selects the seat
      * 
      * @param movieTime Movie details
      */
