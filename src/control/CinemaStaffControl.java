@@ -5,7 +5,7 @@ import boundary.CinemaStaffLoginView;
 import boundary.MenuView;
 
 /**
- * Controls the main menu and login for the cinema staff
+ * This class controls the main menu and login for the cinema staff
  */
 public class CinemaStaffControl implements MainControl {
     /**
@@ -39,7 +39,7 @@ public class CinemaStaffControl implements MainControl {
     }
 
     /**
-     * Controls main menu display for the cinema staff
+     * This method controls the main menu display for the cinema staff
      */
     private void showMenu() {
         int choice = MenuView.getMenuOption(
