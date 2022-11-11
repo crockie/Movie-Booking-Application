@@ -17,6 +17,7 @@ import entity.ShowStatus;
 public class MovieView {
     /**
      * This method displays all movies with details in database
+     * @param isCustomer Customer query the available movies
      */
     public static void getAllMoviesView(boolean isCustomer) {
         DataBase database = DatabaseManager.getDataBase();
