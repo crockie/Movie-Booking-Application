@@ -33,7 +33,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     private static final long serialVersionUID = 5854487874565188L;
 
     /**
-     * Creates a {@code MovieTime} object for the given cinema, date and time and
+     * This constructor creates a {@code MovieTime} object for the given cinema, date and time and
      * movie
      * 
      * @param cinema        the cinema where the movie is shown
@@ -48,7 +48,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * Create {@code Booking} object for the given customer, bookedSeats and price.
+     * This method creates {@code Booking} object for the given customer, bookedSeats and price.
      * Add it to the list of bookings
      * 
      * @param customer    the customer who made the booking
@@ -63,6 +63,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
+     * This method creates the transaction id of the booking
      * @return String the transaction id of the booking
      */
     public String createtransactionID() {
@@ -72,6 +73,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
+     * This method gets the total sales of the movie
      * @return double the total sales of the movie time
      */
     public double getTotalSales() {
