@@ -7,12 +7,12 @@ import java.util.Scanner;
 import entity.*;
 
 /*
- * This class is the boundary class for the movie edit view
+ * This class edits the movie listings
  */
 @SuppressWarnings("resource")
 public class MovieEditView {
     /*
-     * This method is used to display the add movie view
+     * This method displays the add movie view
      */
     public static void addMovie() {
         Scanner sc = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class MovieEditView {
     }
 
     /*
-     * This method is used to display the remove movie view
+     * This method displays the remove movie view
      */
     public static void removeMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
@@ -67,7 +67,7 @@ public class MovieEditView {
     }
 
     /*
-     * This method is used to display the update movie view
+     * This method displays the update movie view
      */
     public static void updateMovie() {
         ArrayList<Movie> movieList = DatabaseManager.getDataBase().getMovieList();
