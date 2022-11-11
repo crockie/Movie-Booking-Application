@@ -25,7 +25,7 @@ public class MovieControl implements MainControl {
 	private Movie movie;
 
 	/**
-	 * Creates a new {@code MovieControl} object for the customer
+	 * This constructor creates a new {@code MovieControl} object for the customer
 	 * 
 	 * @param customer the customer that wants to view the movie
 	 */
