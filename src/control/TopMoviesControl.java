@@ -82,13 +82,17 @@ public class TopMoviesControl implements MainControl {
 			}
 		}
 	}
-
+	/**
+	 * This method lists the movies by Ticket Sales
+	 */
 	public void listMoviesByTicketSales() {
 		List<String> movieStrings;
 		movieStrings = getTopMoviesByTicketSales();
 		ListView.showStringList("Top 5 Movies By Ticket Sales", movieStrings, "No available data");
 	}
-
+	/**
+	 * This method lists the movies by their ratings
+	 */
 	public void listMoviesByRating() {
 		List<String> movieStrings;
 		movieStrings = getTopMoviesByOverallRating();
