@@ -6,8 +6,8 @@ import boundary.TicketPriceView;
  */
 public class TicketPriceControl implements MainControl {
     /**
-	 * {@inheritDoc}
-	 */
+    * {@inheritDoc}
+    */
     @Override
     public void begin() {
         TicketPriceView.displayAllTicketPrice();
