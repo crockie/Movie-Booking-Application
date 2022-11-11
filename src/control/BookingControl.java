@@ -179,6 +179,7 @@ public class BookingControl implements MainControl {
 	 * 
 	 * @param ageGroupCount an {@code EnumMap} containing the number of tickets in
 	 *                      each age group
+	 * @param noOfCoupleSeats number of couple seats 
 	 * @return the total cost of the tickets
 	 */
 	public double calculatePrice(EnumMap<AgeGroup, Integer> ageGroupCount, int noOfCoupleSeats) {
