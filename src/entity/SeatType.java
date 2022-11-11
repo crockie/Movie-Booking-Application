@@ -24,7 +24,7 @@ public enum SeatType implements ItemName {
     /**
      * This constructor creates a {@code SeatType} object with the given label
      * 
-     * @param name
+     * @param name the seat type
      */
     private SeatType(String name) {
         this.name = name;
