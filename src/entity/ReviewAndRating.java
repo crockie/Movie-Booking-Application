@@ -44,8 +44,8 @@ public class ReviewAndRating implements Serializable, ItemName {
     /**
      * This method creates a {@code ReviewAndRating} object with the given customer, review and rating
      * @param customer the customer who made the review rating
-     * @param review the review
-     * @param rating the rating
+     * @param review   the review
+     * @param rating   the rating
      * @return the {@code ReviewAndRating} object if it's valid, null otherwise
      */   
     public static ReviewAndRating createReviewRating(Customer customer, String review, int rating) {
