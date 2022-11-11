@@ -20,7 +20,7 @@ public class Ticket implements Serializable{
 	
 	/**
 	 * This constructor creates a {@code Ticket} object of seat booked for a given row and column
-	 * @param row row of the booked seat
+	 * @param row    row of the booked seat
 	 * @param column column of the booked seat
 	 */
 	public Ticket(int row, int column) {
