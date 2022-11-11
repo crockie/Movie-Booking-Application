@@ -1,8 +1,8 @@
 package entity;
 
 /**
-* The enumeration of the movie types
-*/
+ * The enumeration of the movie types
+ */
 public enum MovieType implements ItemName {
 	
     /**
