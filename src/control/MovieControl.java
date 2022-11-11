@@ -16,7 +16,7 @@ import entity.ShowStatus;
  */
 public class MovieControl implements MainControl {
 	/**
-	 * Customer
+	 * The customer 
 	 */
 	private Customer customer;
 	/**

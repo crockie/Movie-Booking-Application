@@ -3,7 +3,7 @@ package control;
 import java.util.Stack;
 
 /**
- * This method controls navigation between classes in the control package
+ * This class controls navigation between classes in the control package
  */
 public class NavigateControl {
     /**
@@ -15,7 +15,7 @@ public class NavigateControl {
     private static Stack<MainControl> stack = new Stack<MainControl>();
 
     /**
-     * Push control class to the stack and call its begin method
+     * This method pushes the control class to the stack and call its begin method
      * @param mainController the maincontrol class to be loaded
      */
     public static void load(MainControl mainController) {

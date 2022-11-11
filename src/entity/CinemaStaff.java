@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * Serves as the login system of cinema staff
+ * This classs serves as the login system of cinema staff
  */
 public class CinemaStaff extends User {
     /**
@@ -15,7 +15,7 @@ public class CinemaStaff extends User {
     private String password;
 
     /**
-     * Create a CinemaStaff object with username and password provided
+     * This constuctor creates a CinemaStaff object with username and password provided
      * 
      * @param us  Username of the cinema staff
      * @param pwd Password of the cinema staff
