@@ -39,7 +39,7 @@ public class BookingHistoryControl implements MainControl {
 	}
 
 	/**
-	 * This function goes through all the cineplexes, cinemas, movie times and
+	 * This method goes through all the cineplexes, cinemas, movie times and
 	 * bookings to find the Customer's bookings
 	 * The information of the bookings is returned as a string
 	 * 
