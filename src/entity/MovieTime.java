@@ -33,7 +33,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     private static final long serialVersionUID = 5854487874565188L;
 
     /**
-     * This constructor creates a {@code MovieTime} object for the given cinema, date and time and
+     * This method creates a {@code MovieTime} object for the given cinema, date and time and
      * movie
      * 
      * @param cinema        the cinema where the movie is shown
@@ -48,7 +48,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method creates {@code Booking} object for the given customer, bookedSeats and price.
+     * This method creates a {@code Booking} object for the given customer, bookedSeats and price.
      * Add it to the list of bookings
      * 
      * @param customer    the customer who made the booking
@@ -63,8 +63,8 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method creates the transaction id of the booking
-     * @return String the transaction id of the booking
+     * This method creates the transaction ID of the booking
+     * @return the transaction ID of the booking
      */
     public String createtransactionID() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
@@ -73,8 +73,8 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method gets the total sales of the movie
-     * @return double the total sales of the movie time
+     * This method gets the total sales of the specific movie and time
+     * @return double the total sales of the specific movie and time
      */
     public double getTotalSales() {
         double totalSales = 0;
@@ -120,8 +120,8 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method counts the number of available seats in the movie time
-     * @return int the number of available seats for the movie time
+     * This method counts the number of available seats in the specific movie and time
+     * @return the number of available seats in the specific movie and time
      */
     @Override
     public int countAvailableSeats(){
@@ -138,7 +138,8 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method returns the seat types of the movie time
+     * This method gets the seat types of each seat of a specific movie and time
+     * @return the seatTypes of each seat of a specific movie and time
      */
 
     @Override
@@ -212,7 +213,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     /**
      * This method returns the movie date
      * 
-     * @return LocalDate the date of the movie
+     * @return the date of the movie
      */
     public LocalDate getDate() {
         return this.movieDateTime.toLocalDate();
@@ -221,7 +222,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     /**
      * This method returns the movie date and time
      * 
-     * @return LocalDateTime the date and time of the movie
+     * @return the date and time of the movie
      */
     public LocalDateTime getMovieDateTime() {
         return this.movieDateTime;
@@ -266,7 +267,7 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method remove the movie time from the movie and cinema
+     * This method removes the specific movie and time from the movie and cinema
      */
     public void remove() {
         this.movie.getMovieTimes().remove(this);
@@ -274,9 +275,9 @@ public class MovieTime implements Serializable, BookMovie, ItemName {
     }
 
     /**
-     * This method returns the bookings made for the movie
+     * This method gets all the bookings made for the movie
      * 
-     * @return ArrayList<Booking> the list of bookings
+     * @return the list of bookings
      */
     public ArrayList<Booking> getBookings() {
         return this.bookings;
