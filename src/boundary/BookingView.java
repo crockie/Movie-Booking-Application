@@ -68,10 +68,10 @@ public class BookingView {
                             System.out.println("Seat " + input.toUpperCase() + " has already been selected, choose a different seat.");
                             continue;
                         }else if (col - 3 >= 0 && selectedSeat[row][col-2] == false && selectedSeat[row][col-3] == true) {
-                            System.out.println("Your cannot leave a single unoccupied seat between selected seats.");
+                            System.out.println("You cannot leave a single unoccupied seat between selected seats.");
                             continue;
                         } else if (col + 1 <= seatLayout[row].length && selectedSeat[row][col] == false && selectedSeat[row][col+1] == true) {
-                            System.out.println("Your cannot leave a single unoccupied seat between selected seats.");
+                            System.out.println("You cannot leave a single unoccupied seat between selected seats.");
                             continue;
                         } else {
                             selectedSeat[row][col - 1] = true;
