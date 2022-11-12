@@ -60,10 +60,10 @@ public class MovieView {
             i++;
         }
 
-        System.out.println("Overall reviewer rating: " + movie.getAverageRating());
+        System.out.printf("Overall reviewer rating: %.2f\n", movie.getAverageRating());
         System.out.println("Past reviews and reviewers' ratings: ");
         for (ReviewAndRating review : movie.getReviewAndRating()) {
-            System.out.println("Reviewer " + review.getCustomer().getName());
+            System.out.println("Reviewer - " + review.getCustomer().getName());
             System.out.println("Rating: " + review.getRating());
             System.out.println("Review: " + review.getReview());
         }
