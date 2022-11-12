@@ -1,5 +1,7 @@
 {
     "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "SC2002-MOBLIMA/commons-codec-1.15.jar",
         "commons-codec-1.15.jar"
     ]
 }
