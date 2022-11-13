@@ -2,7 +2,7 @@
 
 **MOvie Booking and LIsting Management Application (MOBLIMA)**
 
-MOBLIMA is an application to computerize the processes of making online booking and purchase of movie tickets, listing of movies and sale reporting. It will be used by the movie- goers and cinema staff.
+MOBLIMA is an application to computerize the processes of making online booking and purchase of movie tickets, listing of movies and sale reporting. It will be used by the movie-goers and cinema staff. Do note that in our program, movie-goers are referred to as customers and cinema staff are referred to as cinema staff.
 
 ## Setup Instructions
 
@@ -14,7 +14,7 @@ MOBLIMA is an application to computerize the processes of making online booking 
 
 ## Account
 
-### Movie-goer
+### Customer
 - Username: Edmund
 - Password: Edmund
 
