@@ -59,14 +59,22 @@ public class MovieView {
             System.out.println("Cast " + i + ": " + cast);
             i++;
         }
-
-        System.out.printf("Overall reviewer rating: %.2f\n", movie.getAverageRating());
-        System.out.println("Past reviews and reviewers' ratings: ");
-        for (ReviewAndRating review : movie.getReviewAndRating()) {
-            System.out.println("Reviewer - " + review.getCustomer().getName());
-            System.out.println("Rating: " + review.getRating());
-            System.out.println("Review: " + review.getReview());
+        if(movie.getAverageRating() != null)
+            System.out.printf("Overall reviewer rating: %.2f\n", movie.getAverageRating());
+        else
+            System.out.println("Overall reviewer rating: N/A");
+        
+        if(movie.getReviewAndRating().size() != 0) {
+            System.out.println("Past reviews and reviewers' ratings: ");
+            for (ReviewAndRating review : movie.getReviewAndRating()) {
+                System.out.println("Reviewer - " + review.getCustomer().getName());
+                System.out.println("Rating: " + review.getRating());
+                System.out.println("Review: " + review.getReview());
+            }
         }
+        else
+            System.out.println("Past reviews and reviewers' ratings: N/A");
+
     }
 
     /**
