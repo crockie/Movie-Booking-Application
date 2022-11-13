@@ -9,7 +9,7 @@ MOBLIMA is an application to computerize the processes of making online booking 
 *Git clone only works in Eclipse so follow the instructions below if you are not using Eclipse.
 1) Download ZIP from GitHub
 2) Extract the zip file
-3) Go to **Terminal(MacOS) / Command Prompt(Windows)** and run `cd Downloads/SC2002-MOBLIMA`
+3) Go to **Terminal(MacOS) / Command Prompt(Windows)** and run `cd Downloads/SC2002-MOBLIMA-main`
 4) Run `java -jar ./SC2002-MOBLIMA.jar`
 
 ## Account
